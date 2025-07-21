@@ -1,7 +1,546 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #00ff41;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 10px 15px;
+            font-family: inherit;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .menu-btn:hover {
+            background: rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .menu-content {
+            text-align: center;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .menu-item {
+            display: block;
+            color: #00ff41;
+            text-decoration: none;
+            margin: 15px 0;
+            padding: 10px 20px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .galaxy-view {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center center;
+        }
+
+        .name-title {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(16px, 4vw, 24px);
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            z-index: 10;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 65, 0.8), 0 0 30px rgba(0, 255, 65, 0.3); }
+        }
+
+        .galaxy {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(6px, 1.2vw, 12px);
+            line-height: 1.1;
+            white-space: pre;
+            animation: rotate 60s linear infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .solar-system {
+            position: absolute;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            transition: all 0.4s ease;
+            background: rgba(0, 255, 65, 0.05);
+            backdrop-filter: blur(2px);
+            z-index: 5;
+        }
+
+        .solar-system:hover {
+            border-color: #00ff41;
+            background: rgba(0, 255, 65, 0.15);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+            transform: scale(1.1);
+        }
+
+        .solar-system::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, #00ff41, transparent);
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .solar-system:hover::before {
+            opacity: 0.3;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .detail-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            padding: 20px;
+        }
+
+        .detail-content {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-title {
+            font-size: clamp(24px, 6vw, 48px);
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+        }
+
+        .detail-text {
+            font-size: clamp(14px, 2.5vw, 18px);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 15px 30px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 255, 65, 0.2);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+        }
+
+        .zoom-transition {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: radial-gradient(circle, #00ff41, transparent);
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .zooming {
+            animation: zoomExplosion 1.5s ease-out;
+        }
+
+        @keyframes zoomExplosion {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(100);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(200);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .galaxy {
+                font-size: 8px;
+            }
+            
+            .name-title {
+                font-size: 18px;
+                top: 5%;
+            }
+            
+            .solar-system {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .menu-content {
+                font-size: 16px;
+            }
+            
+            .detail-content {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .galaxy {
+                font-size: 6px;
+            }
+            
+            .name-title {
+                font-size: 16px;
+            }
+            
+            .solar-system {
+                padding: 6px 8px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="container">
+        <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-content">
+                <a href="#" class="menu-item" onclick="showSection('resume')">RESUME</a>
+                <a href="#" class="menu-item" onclick="showSection('gamedev')">GAME DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('ai')">ARTIFICIAL INTELLIGENCE</a>
+                <a href="#" class="menu-item" onclick="showSection('software')">SOFTWARE DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="toggleMenu()">CLOSE</a>
+            </div>
+        </div>
+
+        <div class="galaxy-view" id="galaxyView">
+            <div class="name-title">
+                ╔═══════════════════╗<br>
+                ║   YOUR NAME HERE   ║<br>
+                ╚═══════════════════╝
+            </div>
+            
+            <div class="galaxy" id="galaxy">                    ✦       ·
+         ·           ✧               ·    ★
+    ·         ✦           ·               
+        ·  ◆     ·    ✧        ·         ✦
+              ·           ★    ·    
+    ✧    ·        ·             ✦      ·  
+         ·    ✦       ◆              ·    
+    ·              ·    ●●●●●●●●●●●●    ★
+        ✦      ·    ●●●●●●●●●●●●●●●●●●    
+    ·     ★    ·  ●●●●●●●●●●●●●●●●●●●●●●  
+        ·        ●●●●●●●●●●●●●●●●●●●●●●●●
+    ✧       ·   ●●●●●●●●●●◎●●●●●●●●●●●●●●
+        ·        ●●●●●●●●●●●●●●●●●●●●●●●●
+    ·      ★   ·  ●●●●●●●●●●●●●●●●●●●●●●  
+        ·    ✦    ●●●●●●●●●●●●●●●●●●    
+    ✧    ·      ·    ●●●●●●●●●●●●    ·  
+         ·         ·           ·         ·
+    ·         ✦           ·           ✦    
+        ·        ·    ★         ·        
+              ★           ·           ·   
+    ✦    ·         ·         ✧         · 
+         ·               ·         ·     
+    ·           ·            ★          ·
+                      ✦            ·</div>
+
+            <div class="solar-system" style="top: 25%; left: 20%;" onclick="zoomToSection('resume')">
+                ★ RESUME
+            </div>
+            
+            <div class="solar-system" style="top: 35%; right: 25%;" onclick="zoomToSection('gamedev')">
+                ✦ GAME DEV
+            </div>
+            
+            <div class="solar-system" style="bottom: 30%; left: 25%;" onclick="zoomToSection('ai')">
+                ◆ AI RESEARCH
+            </div>
+            
+            <div class="solar-system" style="bottom: 25%; right: 20%;" onclick="zoomToSection('software')">
+                ◎ SOFTWARE
+            </div>
+        </div>
+
+        <div class="zoom-transition" id="zoomTransition"></div>
+
+        <div class="detail-view" id="resumeView">
+            <div class="detail-content">
+                <div class="detail-title">
+                    ╔═══════════════════╗<br>
+                    ║      RESUME       ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <div class="detail-text">
+                    Welcome to my professional experience constellation. Here you'll find my journey through 
+                    various technologies, projects, and achievements. From my early days learning to code 
+                    to leading complex software projects, this is where my career trajectory unfolds.
+                    <br><br>
+                    • Senior Software Developer<br>
+                    • Full-Stack Web Development<br>
+                    • Team Leadership & Mentoring<br>
+                    • Agile Development Methodologies
+                </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
+
+        <div class="detail-view" id="gamedevView">
+            <div class="detail-content">
+                <div class="detail-title">
+                    ╔═══════════════════╗<br>
+                    ║   GAME DEVELOPMENT ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <div class="detail-text">
+                    Enter the realm of interactive experiences and digital worlds. This sector showcases 
+                    my passion for creating immersive games and interactive applications that captivate 
+                    players and push the boundaries of what's possible in digital entertainment.
+                    <br><br>
+                    • Unity 3D Game Engine<br>
+                    • C# Gameplay Programming<br>
+                    • Level Design & Game Mechanics<br>
+                    • Mobile & PC Game Development
+                </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
+
+        <div class="detail-view" id="aiView">
+            <div class="detail-content">
+                <div class="detail-title">
+                    ╔═══════════════════╗<br>
+                    ║  AI RESEARCH       ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <div class="detail-text">
+                    Journey into the frontier of artificial intelligence and machine learning. This 
+                    domain represents my exploration of cutting-edge AI technologies, from neural 
+                    networks to natural language processing, shaping the future of intelligent systems.
+                    <br><br>
+                    • Machine Learning Algorithms<br>
+                    • Neural Network Architecture<br>
+                    • Natural Language Processing<br>
+                    • Computer Vision Projects
+                </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
+
+        <div class="detail-view" id="softwareView">
+            <div class="detail-content">
+                <div class="detail-title">
+                    ╔═══════════════════╗<br>
+                    ║ SOFTWARE DEV      ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <div class="detail-text">
+                    Explore the core of my technical expertise in software development. This system 
+                    contains my mastery of various programming languages, frameworks, and development 
+                    methodologies that power modern applications and digital solutions.
+                    <br><br>
+                    • Full-Stack Web Applications<br>
+                    • API Design & Development<br>
+                    • Database Architecture<br>
+                    • Cloud Computing & DevOps
+                </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isMenuOpen = false;
+        let currentView = 'galaxy';
+
+        function toggleMenu() {
+            const overlay = document.getElementById('menuOverlay');
+            isMenuOpen = !isMenuOpen;
+            overlay.style.display = isMenuOpen ? 'flex' : 'none';
+        }
+
+        function zoomToSection(section) {
+            if (currentView !== 'galaxy') return;
+            
+            const zoomTransition = document.getElementById('zoomTransition');
+            const galaxyView = document.getElementById('galaxyView');
+            
+            // Start zoom effect
+            zoomTransition.classList.add('zooming');
+            
+            // Hide galaxy and show detail view after animation
+            setTimeout(() => {
+                galaxyView.style.display = 'none';
+                showDetailView(section);
+                zoomTransition.classList.remove('zooming');
+            }, 800);
+            
+            currentView = section;
+        }
+
+        function showSection(section) {
+            toggleMenu();
+            if (currentView === 'galaxy') {
+                zoomToSection(section);
+            } else {
+                showDetailView(section);
+                currentView = section;
+            }
+        }
+
+        function showDetailView(section) {
+            // Hide all detail views
+            const detailViews = document.querySelectorAll('.detail-view');
+            detailViews.forEach(view => view.style.display = 'none');
+            
+            // Show selected view
+            const targetView = document.getElementById(section + 'View');
+            if (targetView) {
+                targetView.style.display = 'flex';
+            }
+        }
+
+        function backToGalaxy() {
+            // Hide all detail views
+            const detailViews = document.querySelectorAll('.detail-view');
+            detailViews.forEach(view => view.style.display = 'none');
+            
+            // Show galaxy with fade-in effect
+            const galaxyView = document.getElementById('galaxyView');
+            galaxyView.style.display = 'block';
+            galaxyView.style.opacity = '0';
+            
+            setTimeout(() => {
+                galaxyView.style.transition = 'opacity 0.8s ease-out';
+                galaxyView.style.opacity = '1';
+            }, 50);
+            
+            currentView = 'galaxy';
+        }
+
+        // Close menu when clicking outside
+        document.getElementById('menuOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleMenu();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (isMenuOpen) {
+                    toggleMenu();
+                } else if (currentView !== 'galaxy') {
+                    backToGalaxy();
+                }
+            }
+        });
+
+        // Prevent context menu on right click for a more immersive feel
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>
