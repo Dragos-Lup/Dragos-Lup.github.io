@@ -207,33 +207,28 @@
 
         .zoom-transition {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 2px;
-            background: radial-gradient(circle, #00ff41, transparent);
-            transform: translate(-50%, -50%) scale(0);
+            border: 1px solid #00ff41;
+            background: rgba(0, 255, 65, 0.05);
+            backdrop-filter: blur(2px);
             z-index: 15;
             pointer-events: none;
+            border-radius: 3px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-family: inherit;
+            color: #00ff41;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .zooming {
-            animation: zoomExplosion 1.5s ease-out;
-        }
-
-        @keyframes zoomExplosion {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(100);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(200);
-                opacity: 0;
-            }
+            width: 100vw !important;
+            height: 100vh !important;
+            top: 0 !important;
+            left: 0 !important;
+            background: #000 !important;
+            border: none !important;
+            border-radius: 0 !important;
         }
 
         /* Mobile optimizations */
@@ -440,18 +435,50 @@
         function zoomToSection(section) {
             if (currentView !== 'galaxy') return;
             
+            // Find the clicked solar system button
+            const clickedButton = event.currentTarget;
+            const rect = clickedButton.getBoundingClientRect();
+            
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             
-            // Start zoom effect
-            zoomTransition.classList.add('zooming');
+            // Position and size the transition element to match the button exactly
+            zoomTransition.style.top = rect.top + 'px';
+            zoomTransition.style.left = rect.left + 'px';
+            zoomTransition.style.width = rect.width + 'px';
+            zoomTransition.style.height = rect.height + 'px';
+            zoomTransition.innerHTML = clickedButton.innerHTML;
+            zoomTransition.style.fontSize = window.getComputedStyle(clickedButton).fontSize;
+            
+            // Show the transition element
+            zoomTransition.style.display = 'flex';
+            
+            // Force a reflow to ensure the initial position is set
+            zoomTransition.offsetHeight;
+            
+            // Start expansion animation after a brief delay
+            setTimeout(() => {
+                zoomTransition.classList.add('zooming');
+            }, 50);
             
             // Hide galaxy and show detail view after animation
             setTimeout(() => {
                 galaxyView.style.display = 'none';
                 showDetailView(section);
-                zoomTransition.classList.remove('zooming');
-            }, 800);
+                
+                // Clean up transition element
+                setTimeout(() => {
+                    zoomTransition.classList.remove('zooming');
+                    zoomTransition.style.display = 'none';
+                    // Reset styles for next use
+                    zoomTransition.style.width = '';
+                    zoomTransition.style.height = '';
+                    zoomTransition.style.top = '';
+                    zoomTransition.style.left = '';
+                    zoomTransition.style.fontSize = '';
+                    zoomTransition.innerHTML = '';
+                }, 100);
+            }, 1200);
             
             currentView = section;
         }
