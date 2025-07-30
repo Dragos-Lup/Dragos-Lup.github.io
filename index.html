@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+
+        .main_back { color: #000; }
+        .main_color { color: #00ff41; }
+
         body {
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             background: #000;
@@ -118,6 +122,17 @@
             white-space: pre;
             transform-origin: center center;
         }
+
+        .star-purple { color: #9b59b6; }
+        .star-blue { color: #3498db; }
+        .star-cyan { color: #1abc9c; }
+        .star-pink { color: #e91e63; }
+        .star-red { color: #e74c3c; }
+        .star-indigo { color: #6c5ce7; }
+        .star-teal { color: #00cec9; }
+        .galaxy-purple { color: #8e44ad; }
+        .galaxy-blue { color: #2980b9; }
+        .galaxy-cyan { color: #16a085; }
 
         @keyframes rotate {
             from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -289,34 +304,34 @@
         <div class="galaxy-view" id="galaxyView">
             <div class="name-title">
                 ╔═══════════════════╗<br>
-                ║   YOUR NAME HERE   ║<br>
+                ║   DRAGOS LUP   ║<br>
                 ╚═══════════════════╝
             </div>
             
-            <div class="galaxy" id="galaxy">                    ✦       ·
-         ·           ✧               ·    ★
-    ·         ✦           ·               
-        ·  ◆     ·    ✧        ·         ✦
-              ·           ★    ·    
-    ✧    ·        ·             ✦      ·  
-         ·    ✦       ◆              ·    
-    ·              ·    ●●●●●●●●●●●●    ★
-        ✦      ·    ●●●●●●●●●●●●●●●●●●    
-    ·     ★    ·  ●●●●●●●●●●●●●●●●●●●●●●  
-        ·        ●●●●●●●●●●●●●●●●●●●●●●●●
-    ✧       ·   ●●●●●●●●●●◎●●●●●●●●●●●●●●
-        ·        ●●●●●●●●●●●●●●●●●●●●●●●●
-    ·      ★   ·  ●●●●●●●●●●●●●●●●●●●●●●  
-        ·    ✦    ●●●●●●●●●●●●●●●●●●    
-    ✧    ·      ·    ●●●●●●●●●●●●    ·  
-         ·         ·           ·         ·
-    ·         ✦           ·           ✦    
-        ·        ·    ★         ·        
-              ★           ·           ·   
-    ✦    ·         ·         ✧         · 
-         ·               ·         ·     
-    ·           ·            ★          ·
-                      ✦            ·</div>
+            <div class="galaxy" id="galaxy">                    <span class="star-purple">✦</span>       <span class="star-cyan">·</span>
+         <span class="star-blue">·</span>           <span class="star-indigo">✧</span>               <span class="star-teal">·</span>    <span class="star-pink">★</span>
+    <span class="star-cyan">·</span>         <span class="star-purple">✦</span>           <span class="star-blue">·</span>               
+        <span class="star-teal">·</span>  <span class="star-red">◆</span>     <span class="star-indigo">·</span>    <span class="star-purple">✧</span>        <span class="star-cyan">·</span>         <span class="star-blue">✦</span>
+              <span class="star-pink">·</span>           <span class="star-red">★</span>    <span class="star-teal">·</span>    
+    <span class="star-indigo">✧</span>    <span class="star-cyan">·</span>        <span class="star-purple">·</span>             <span class="star-blue">✦</span>      <span class="star-pink">·</span>  
+         <span class="star-teal">·</span>    <span class="star-purple">✦</span>       <span class="star-red">◆</span>              <span class="star-indigo">·</span>    
+    <span class="star-cyan">·</span>              <span class="star-blue">·</span>    <span class="galaxy-purple">●●●●●●●●●●●●</span>    <span class="star-pink">★</span>
+        <span class="star-purple">✦</span>      <span class="star-teal">·</span>    <span class="galaxy-blue">●●●●●●●●●●●●●●●●●●</span>    
+    <span class="star-indigo">·</span>     <span class="star-red">★</span>    <span class="star-cyan">·</span>  <span class="galaxy-cyan">●●●●●●●●●●●●●●●●●●●●●●</span>  
+        <span class="star-blue">·</span>        <span class="galaxy-purple">●●●●●●●●●●●●●●●●●●●●●●●●</span>
+    <span class="star-purple">✧</span>       <span class="star-teal">·</span>   <span class="galaxy-blue">●●●●●●●●●●</span><span class="star-pink">◎</span><span class="galaxy-blue">●●●●●●●●●●●●●●</span>
+        <span class="star-indigo">·</span>        <span class="galaxy-cyan">●●●●●●●●●●●●●●●●●●●●●●●●</span>
+    <span class="star-cyan">·</span>      <span class="star-red">★</span>   <span class="star-purple">·</span>  <span class="galaxy-purple">●●●●●●●●●●●●●●●●●●●●●●</span>  
+        <span class="star-teal">·</span>    <span class="star-blue">✦</span>    <span class="galaxy-blue">●●●●●●●●●●●●●●●●●●</span>    
+    <span class="star-indigo">✧</span>    <span class="star-pink">·</span>      <span class="star-cyan">·</span>    <span class="galaxy-cyan">●●●●●●●●●●●●</span>    <span class="star-purple">·</span>  
+         <span class="star-red">·</span>         <span class="star-blue">·</span>           <span class="star-teal">·</span>         <span class="star-indigo">·</span>
+    <span class="star-cyan">·</span>         <span class="star-purple">✦</span>           <span class="star-pink">·</span>           <span class="star-blue">✦</span>    
+        <span class="star-teal">·</span>        <span class="star-indigo">·</span>    <span class="star-red">★</span>         <span class="star-cyan">·</span>        
+              <span class="star-purple">★</span>           <span class="star-blue">·</span>           <span class="star-pink">·</span>   
+    <span class="star-indigo">✦</span>    <span class="star-teal">·</span>         <span class="star-cyan">·</span>         <span class="star-purple">✧</span>         <span class="star-red">·</span> 
+         <span class="star-blue">·</span>               <span class="star-pink">·</span>         <span class="star-indigo">·</span>     
+    <span class="star-cyan">·</span>           <span class="star-teal">·</span>            <span class="star-red">★</span>          <span class="star-purple">·</span>
+                      <span class="star-blue">✦</span>            <span class="star-indigo">·</span></div>
 
             <div class="solar-system" style="top: 25%; left: 20%;" onclick="zoomToSection('resume')">
                 ★ RESUME
@@ -342,7 +357,7 @@
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
                     ║      RESUME       ║<br>
-                    ╚═══════════════════╝
+                    ╚══════════════════╝
                 </div>
                 <div class="detail-text">
                     Welcome to my professional experience constellation. Here you'll find my journey through 
@@ -362,7 +377,7 @@
             <div class="detail-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║   GAME DEVELOPMENT ║<br>
+                    ║  GAME DEVELOPMENT ║<br>
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
@@ -383,7 +398,7 @@
             <div class="detail-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║  AI RESEARCH       ║<br>
+                    ║  AI RESEARCH      ║<br>
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
@@ -542,6 +557,7 @@
         });
 
         // Prevent context menu on right click for a more immersive feel
+        // TODO: Remove this i dont like it
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
