@@ -11,16 +11,18 @@
             box-sizing: border-box;
         }
 
-
         .main_back { color: #000; }
         .main_color { color: #00ff41; }
 
         body {
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-family: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             background: #000;
             color: #00ff41;
             overflow: hidden;
             height: 100vh;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
         }
 
         .container {
@@ -36,20 +38,21 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid #00ff41;
+            background: #000;
+            border: 2px solid #00ff41;
             color: #00ff41;
-            padding: 10px 15px;
+            padding: 8px 16px;
             font-family: inherit;
             cursor: pointer;
             z-index: 1000;
-            transition: all 0.3s ease;
-            font-size: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .menu-btn:hover {
-            background: rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            background: #00ff41;
+            color: #000;
         }
 
         .menu-overlay {
@@ -58,58 +61,56 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
+            background: #000;
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 999;
-            backdrop-filter: blur(5px);
         }
 
         .menu-content {
             text-align: center;
             font-size: 18px;
-            line-height: 2;
+            line-height: 2.5;
+            border: 2px solid #00ff41;
+            padding: 40px;
+            background: #000;
         }
 
         .menu-item {
             display: block;
             color: #00ff41;
             text-decoration: none;
-            margin: 15px 0;
-            padding: 10px 20px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
+            margin: 10px 0;
+            padding: 8px 16px;
+            border: 1px solid #00ff41;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #000;
         }
 
         .menu-item:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            background: #00ff41;
+            color: #000;
         }
 
         .galaxy-view {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-origin: center center;
         }
 
         .name-title {
             position: absolute;
-            top: 10%;
+            top: 8%;
             left: 50%;
             transform: translateX(-50%);
-            font-size: clamp(16px, 4vw, 24px);
+            font-size: 20px;
             text-align: center;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
             z-index: 10;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
-            to { text-shadow: 0 0 20px rgba(0, 255, 65, 0.8), 0 0 30px rgba(0, 255, 65, 0.3); }
+            font-weight: bold;
+            letter-spacing: 2px;
         }
 
         .galaxy {
@@ -117,47 +118,87 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: clamp(6px, 1.2vw, 12px);
-            line-height: 1.1;
+            font-size: 10px;
+            line-height: 1;
             white-space: pre;
             transform-origin: center center;
-        }
-
-        .star-purple { color: #9b59b6; }
-        .star-blue { color: #3498db; }
-        .star-cyan { color: #1abc9c; }
-        .star-pink { color: #e91e63; }
-        .star-red { color: #e74c3c; }
-        .star-indigo { color: #6c5ce7; }
-        .star-teal { color: #00cec9; }
-        .galaxy-purple { color: #8e44ad; }
-        .galaxy-blue { color: #2980b9; }
-        .galaxy-cyan { color: #16a085; }
-
-        @keyframes rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            font-family: 'Courier New', monospace;
         }
 
         .solar-system {
             position: absolute;
             cursor: pointer;
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            border-radius: 3px;
-            transition: border-color 0.3s ease;
-            background: rgba(0, 255, 65, 0.05);
-            backdrop-filter: blur(2px);
+            padding: 8px 12px;
+            border: 2px solid #00ff41;
+            background: #000;
+            color: #00ff41;
+            font-family: inherit;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
             z-index: 5;
+            min-width: 120px;
+            text-align: center;
         }
 
         .solar-system:hover {
-            border-color: #00ff41;
+            background: #00ff41;
+            color: #000;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+        /* Fixed positioning for different screen sizes */
+        .solar-system.resume {
+            top: 25%;
+            left: 15%;
+        }
+
+        .solar-system.gamedev {
+            top: 25%;
+            right: 15%;
+        }
+
+        .solar-system.ai {
+            bottom: 25%;
+            left: 15%;
+        }
+
+        .solar-system.software {
+            bottom: 25%;
+            right: 15%;
+        }
+
+        /* ASCII-style pointer lines */
+        .ascii-pointer {
+            position: absolute;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: pre;
+        }
+
+        .ascii-pointer.active {
+            opacity: 1;
+        }
+
+        .ascii-pointer .star-end {
+            color: #ff0041;
+            text-shadow: 0 0 10px #ff0041;
+            animation: starPulse 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes starPulse {
+            from { 
+                text-shadow: 0 0 10px #ff0041;
+            }
+            to { 
+                text-shadow: 0 0 20px #ff0041, 0 0 30px #ff0041;
+            }
         }
 
         .detail-view {
@@ -177,63 +218,62 @@
         .detail-content {
             max-width: 800px;
             width: 100%;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            text-align: left;
+            border: 2px solid #00ff41;
+            padding: 40px;
+            background: #000;
         }
 
         .detail-title {
-            font-size: clamp(24px, 6vw, 48px);
+            font-size: 24px;
             margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .detail-text {
-            font-size: clamp(14px, 2.5vw, 18px);
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.8;
             margin-bottom: 30px;
+            font-family: 'Courier New', monospace;
         }
 
         .back-btn {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid #00ff41;
+            background: #000;
+            border: 2px solid #00ff41;
             color: #00ff41;
-            padding: 15px 30px;
+            padding: 10px 20px;
             font-family: inherit;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 16px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin: 0 auto;
         }
 
         .back-btn:hover {
-            background: rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+            background: #00ff41;
+            color: #000;
         }
 
         .zoom-transition {
             position: fixed;
-            border: 1px solid #00ff41;
-            background: rgba(0, 255, 65, 0.05);
-            backdrop-filter: blur(2px);
+            border: 2px solid #00ff41;
+            background: #000;
             z-index: 15;
             pointer-events: none;
-            border-radius: 3px;
             display: none;
             align-items: center;
             justify-content: center;
             font-family: inherit;
             color: #00ff41;
-            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.8s linear;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .zooming {
@@ -243,31 +283,76 @@
             left: 0 !important;
             background: #000 !important;
             border: none !important;
-            border-radius: 0 !important;
         }
 
-        /* Mobile optimizations */
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .solar-system.resume {
+                top: 20%;
+                left: 10%;
+            }
+            .solar-system.gamedev {
+                top: 20%;
+                right: 10%;
+            }
+            .solar-system.ai {
+                bottom: 20%;
+                left: 10%;
+            }
+            .solar-system.software {
+                bottom: 20%;
+                right: 10%;
+            }
+        }
+
         @media (max-width: 768px) {
             .galaxy {
                 font-size: 8px;
             }
             
             .name-title {
-                font-size: 18px;
+                font-size: 16px;
                 top: 5%;
             }
             
             .solar-system {
-                padding: 8px 12px;
+                padding: 6px 10px;
                 font-size: 12px;
+                min-width: 100px;
+            }
+            
+            .solar-system.resume {
+                top: 15%;
+                left: 5%;
+            }
+            .solar-system.gamedev {
+                top: 15%;
+                right: 5%;
+            }
+            .solar-system.ai {
+                bottom: 15%;
+                left: 5%;
+            }
+            .solar-system.software {
+                bottom: 15%;
+                right: 5%;
             }
             
             .menu-content {
                 font-size: 16px;
+                padding: 30px;
             }
             
             .detail-content {
-                padding: 0 10px;
+                padding: 20px;
+            }
+            
+            .detail-title {
+                font-size: 20px;
+            }
+            
+            .detail-text {
+                font-size: 14px;
             }
         }
 
@@ -277,12 +362,60 @@
             }
             
             .name-title {
-                font-size: 16px;
+                font-size: 14px;
             }
             
             .solar-system {
-                padding: 6px 8px;
+                padding: 4px 8px;
                 font-size: 10px;
+                min-width: 80px;
+            }
+            
+            .detail-content {
+                padding: 15px;
+            }
+            
+            .detail-title {
+                font-size: 18px;
+            }
+            
+            .detail-text {
+                font-size: 12px;
+            }
+        }
+
+        /* Ultra-wide and portrait orientation fixes */
+        @media (min-aspect-ratio: 21/9) {
+            .solar-system.resume {
+                left: 25%;
+            }
+            .solar-system.gamedev {
+                right: 25%;
+            }
+            .solar-system.ai {
+                left: 25%;
+            }
+            .solar-system.software {
+                right: 25%;
+            }
+        }
+
+        @media (max-aspect-ratio: 3/4) {
+            .solar-system.resume {
+                top: 30%;
+                left: 10%;
+            }
+            .solar-system.gamedev {
+                top: 45%;
+                right: 10%;
+            }
+            .solar-system.ai {
+                bottom: 45%;
+                left: 10%;
+            }
+            .solar-system.software {
+                bottom: 30%;
+                right: 10%;
             }
         }
     </style>
@@ -293,29 +426,26 @@
         
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-content">
-                <a href="#" class="menu-item" onclick="showSection('resume')">RESUME</a>
-                <a href="#" class="menu-item" onclick="showSection('gamedev')">GAME DEVELOPMENT</a>
-                <a href="#" class="menu-item" onclick="showSection('ai')">ARTIFICIAL INTELLIGENCE</a>
-                <a href="#" class="menu-item" onclick="showSection('software')">SOFTWARE DEVELOPMENT</a>
-                <a href="#" class="menu-item" onclick="toggleMenu()">CLOSE</a>
+                <div style="margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+                    ╔═══════════════════╗<br>
+                    ║    MAIN MENU      ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <a href="#" class="menu-item" onclick="showSection('resume')">[1] RESUME</a>
+                <a href="#" class="menu-item" onclick="showSection('gamedev')">[2] GAME DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('ai')">[3] ARTIFICIAL INTELLIGENCE</a>
+                <a href="#" class="menu-item" onclick="showSection('software')">[4] SOFTWARE DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="toggleMenu()">[ESC] CLOSE</a>
             </div>
         </div>
 
         <div class="galaxy-view" id="galaxyView">
             <div class="name-title">
                 ╔═══════════════════╗<br>
-                ║   DRAGOS LUP   ║<br>
+                ║   DRAGOS LUP      ║<br>
                 ╚═══════════════════╝
             </div>
-            <pre style="font-family: 'Courier New', Consolas, monospace; 
-line-height: 1; 
-font-size: 12px; 
-background: #000; 
-color: #fff; 
-padding: 10px; 
-margin: 0; 
-white-space: pre; 
-overflow-x: auto;">                                                              i                                                        u                    
+            <pre class="galaxy">                                                              i                                                        u                    
                                               .                                                     ,     .                                 
                                     7BW   js      cC            c                                                      .Q                   
                                     zBc   x-                                                  ,.      x.z                                   
@@ -359,21 +489,27 @@ overflow-x: auto;">                                                             
                         ,,                                                                                                                  
                                          o,                                                                                                 </pre>
                                          
-            <div class="solar-system" style="top: 25%; left: 20%;" onclick="zoomToSection('resume')">
-                ★ RESUME
+            <div class="solar-system resume" onclick="zoomToSection('resume')" onmouseenter="showPointer('resume')" onmouseleave="hidePointer('resume')">
+                [1] RESUME
             </div>
             
-            <div class="solar-system" style="top: 35%; right: 25%;" onclick="zoomToSection('gamedev')">
-                ✦ GAME DEV
+            <div class="solar-system gamedev" onclick="zoomToSection('gamedev')" onmouseenter="showPointer('gamedev')" onmouseleave="hidePointer('gamedev')">
+                [2] GAME DEV
             </div>
             
-            <div class="solar-system" style="bottom: 30%; left: 25%;" onclick="zoomToSection('ai')">
-                ◆ AI RESEARCH
+            <div class="solar-system ai" onclick="zoomToSection('ai')" onmouseenter="showPointer('ai')" onmouseleave="hidePointer('ai')">
+                [3] AI RESEARCH
             </div>
             
-            <div class="solar-system" style="bottom: 25%; right: 20%;" onclick="zoomToSection('software')">
-                ◎ SOFTWARE
+            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="showPointer('software')" onmouseleave="hidePointer('software')">
+                [4] SOFTWARE
             </div>
+
+            <!-- ASCII pointer lines -->
+            <div class="ascii-pointer" id="resumePointer"></div>
+            <div class="ascii-pointer" id="gamedevPointer"></div>
+            <div class="ascii-pointer" id="aiPointer"></div>
+            <div class="ascii-pointer" id="softwarePointer"></div>
         </div>
 
         <div class="zoom-transition" id="zoomTransition"></div>
@@ -383,17 +519,37 @@ overflow-x: auto;">                                                             
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
                     ║      RESUME       ║<br>
-                    ╚══════════════════╝
+                    ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-                    Welcome to my professional experience constellation. Here you'll find my journey through 
-                    various technologies, projects, and achievements. From my early days learning to code 
-                    to leading complex software projects, this is where my career trajectory unfolds.
-                    <br><br>
-                    • Senior Software Developer<br>
-                    • Full-Stack Web Development<br>
-                    • Team Leadership & Mentoring<br>
-                    • Agile Development Methodologies
+PERSONAL INFORMATION:
+--------------------
+Name: Dragos Lup
+Profession: Senior Software Developer
+Location: [CLASSIFIED]
+Status: ACTIVE
+
+EXPERIENCE SUMMARY:
+------------------
+> Full-Stack Web Development
+> Team Leadership & Mentoring  
+> Agile Development Methodologies
+> Cross-Platform Application Development
+> Database Architecture & Optimization
+
+TECHNICAL SKILLS:
+----------------
+Languages: JavaScript, Python, C#, Java, SQL
+Frameworks: React, Node.js, .NET, Spring Boot
+Databases: PostgreSQL, MongoDB, Redis
+Tools: Docker, Git, AWS, Linux
+
+ACHIEVEMENTS:
+------------
+[*] Led development team of 8+ engineers
+[*] Delivered 15+ production applications
+[*] Reduced system latency by 40%
+[*] Implemented CI/CD pipelines
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -407,14 +563,39 @@ overflow-x: auto;">                                                             
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-                    Enter the realm of interactive experiences and digital worlds. This sector showcases 
-                    my passion for creating immersive games and interactive applications that captivate 
-                    players and push the boundaries of what's possible in digital entertainment.
-                    <br><br>
-                    • Unity 3D Game Engine<br>
-                    • C# Gameplay Programming<br>
-                    • Level Design & Game Mechanics<br>
-                    • Mobile & PC Game Development
+GAME DEVELOPMENT SECTOR:
+-----------------------
+Status: OPERATIONAL
+Classification: ENTERTAINMENT
+
+CORE TECHNOLOGIES:
+-----------------
+> Unity 3D Game Engine
+> C# Gameplay Programming
+> Level Design & Game Mechanics
+> Mobile & PC Game Development
+> 2D/3D Graphics Programming
+
+PROJECT PORTFOLIO:
+-----------------
+[ALPHA] Retro Space Shooter - Complete
+[BETA]  Puzzle Platformer - In Development  
+[GOLD]  Mobile Strategy Game - Released
+[DEV]   VR Experience - Prototype Phase
+
+SPECIALIZATIONS:
+---------------
+* Procedural Content Generation
+* Physics Simulation Systems
+* AI Behavior Programming
+* Performance Optimization
+* Cross-Platform Deployment
+
+CURRENT OBJECTIVES:
+------------------
+[→] Developing next-gen game mechanics
+[→] Exploring VR/AR technologies
+[→] Mentoring junior game developers
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -428,14 +609,45 @@ overflow-x: auto;">                                                             
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-                    Journey into the frontier of artificial intelligence and machine learning. This 
-                    domain represents my exploration of cutting-edge AI technologies, from neural 
-                    networks to natural language processing, shaping the future of intelligent systems.
-                    <br><br>
-                    • Machine Learning Algorithms<br>
-                    • Neural Network Architecture<br>
-                    • Natural Language Processing<br>
-                    • Computer Vision Projects
+ARTIFICIAL INTELLIGENCE DIVISION:
+--------------------------------
+Status: ACTIVE RESEARCH
+Clearance Level: HIGH
+
+RESEARCH AREAS:
+--------------
+> Machine Learning Algorithms
+> Neural Network Architecture
+> Natural Language Processing
+> Computer Vision Systems
+> Deep Learning Frameworks
+
+CURRENT PROJECTS:
+----------------
+[CLASSIFIED] Autonomous Decision Systems
+[ACTIVE]     Language Model Fine-tuning
+[COMPLETE]   Image Recognition Pipeline
+[PROTOTYPE]  Reinforcement Learning Agent
+
+TECHNICAL EXPERTISE:
+-------------------
+* TensorFlow & PyTorch
+* Transformer Architectures  
+* CNN & RNN Implementation
+* Data Pipeline Engineering
+* Model Optimization & Deployment
+
+PUBLICATIONS:
+------------
+[2024] "Efficient Neural Architecture Search"
+[2023] "Multi-Agent Reinforcement Learning"
+[2023] "Computer Vision in Real-Time Systems"
+
+OBJECTIVES:
+----------
+[→] Advancing AGI research boundaries
+[→] Optimizing model efficiency
+[→] Bridging AI theory and practice
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -449,14 +661,49 @@ overflow-x: auto;">                                                             
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-                    Explore the core of my technical expertise in software development. This system 
-                    contains my mastery of various programming languages, frameworks, and development 
-                    methodologies that power modern applications and digital solutions.
-                    <br><br>
-                    • Full-Stack Web Applications<br>
-                    • API Design & Development<br>
-                    • Database Architecture<br>
-                    • Cloud Computing & DevOps
+SOFTWARE DEVELOPMENT CORE:
+-------------------------
+System Status: ONLINE
+Performance: OPTIMAL
+Uptime: 99.97%
+
+CORE COMPETENCIES:
+-----------------
+> Full-Stack Web Applications
+> API Design & Development  
+> Database Architecture
+> Cloud Computing & DevOps
+> Microservices Architecture
+
+TECHNOLOGY STACK:
+----------------
+Frontend: React, Vue.js, TypeScript
+Backend: Node.js, Python, Java, C#
+Databases: PostgreSQL, MongoDB, Redis
+Cloud: AWS, Docker, Kubernetes
+Tools: Git, Jenkins, Terraform
+
+ARCHITECTURE PATTERNS:
+---------------------
+* RESTful API Design
+* Event-Driven Architecture
+* Domain-Driven Design
+* SOLID Principles
+* Test-Driven Development
+
+CURRENT SYSTEMS:
+---------------
+[PROD] E-commerce Platform - 1M+ users
+[PROD] Real-time Analytics Dashboard
+[STAGING] Distributed Message Queue
+[DEV] Blockchain Integration Layer
+
+METRICS:
+-------
+Code Quality Score: A+
+Test Coverage: 95%
+Deployment Success: 99.8%
+Performance Score: 98/100
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -467,6 +714,62 @@ overflow-x: auto;">                                                             
         let isMenuOpen = false;
         let currentView = 'galaxy';
 
+        // ASCII pointer patterns for different directions
+        const pointerPatterns = {
+            resume: {
+                pattern: `\\
+ \\
+  \\
+   \\____<span class="star-end">[*]</span>`,
+                offsetX: -60,
+                offsetY: -40
+            },
+            gamedev: {
+                pattern: `   /
+  /
+ /
+/____<span class="star-end">[*]</span>`,
+                offsetX: 20,
+                offsetY: -40
+            },
+            ai: {
+                pattern: `\\
+ \\____<span class="star-end">[*]</span>`,
+                offsetX: -40,
+                offsetY: 20
+            },
+            software: {
+                pattern: `    /
+   /
+  /____<span class="star-end">[*]</span>`,
+                offsetX: 10,
+                offsetY: 20
+            }
+        };
+
+        function showPointer(section) {
+            const button = document.querySelector(`.solar-system.${section}`);
+            const pointer = document.getElementById(`${section}Pointer`);
+            
+            // Get button position
+            const buttonRect = button.getBoundingClientRect();
+            const pattern = pointerPatterns[section];
+            
+            // Position the ASCII pointer relative to the button
+            const pointerX = buttonRect.left + buttonRect.width + pattern.offsetX;
+            const pointerY = buttonRect.top + pattern.offsetY;
+            
+            pointer.style.left = pointerX + 'px';
+            pointer.style.top = pointerY + 'px';
+            pointer.innerHTML = pattern.pattern;
+            pointer.classList.add('active');
+        }
+
+        function hidePointer(section) {
+            const pointer = document.getElementById(`${section}Pointer`);
+            pointer.classList.remove('active');
+        }
+
         function toggleMenu() {
             const overlay = document.getElementById('menuOverlay');
             isMenuOpen = !isMenuOpen;
@@ -476,14 +779,12 @@ overflow-x: auto;">                                                             
         function zoomToSection(section) {
             if (currentView !== 'galaxy') return;
             
-            // Find the clicked solar system button
             const clickedButton = event.currentTarget;
             const rect = clickedButton.getBoundingClientRect();
             
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             
-            // Position and size the transition element to match the button exactly
             zoomTransition.style.top = rect.top + 'px';
             zoomTransition.style.left = rect.left + 'px';
             zoomTransition.style.width = rect.width + 'px';
@@ -491,27 +792,20 @@ overflow-x: auto;">                                                             
             zoomTransition.innerHTML = clickedButton.innerHTML;
             zoomTransition.style.fontSize = window.getComputedStyle(clickedButton).fontSize;
             
-            // Show the transition element
             zoomTransition.style.display = 'flex';
-            
-            // Force a reflow to ensure the initial position is set
             zoomTransition.offsetHeight;
             
-            // Start expansion animation after a brief delay
             setTimeout(() => {
                 zoomTransition.classList.add('zooming');
             }, 50);
             
-            // Hide galaxy and show detail view after animation
             setTimeout(() => {
                 galaxyView.style.display = 'none';
                 showDetailView(section);
                 
-                // Clean up transition element
                 setTimeout(() => {
                     zoomTransition.classList.remove('zooming');
                     zoomTransition.style.display = 'none';
-                    // Reset styles for next use
                     zoomTransition.style.width = '';
                     zoomTransition.style.height = '';
                     zoomTransition.style.top = '';
@@ -519,7 +813,7 @@ overflow-x: auto;">                                                             
                     zoomTransition.style.fontSize = '';
                     zoomTransition.innerHTML = '';
                 }, 100);
-            }, 1200);
+            }, 800);
             
             currentView = section;
         }
@@ -535,11 +829,9 @@ overflow-x: auto;">                                                             
         }
 
         function showDetailView(section) {
-            // Hide all detail views
             const detailViews = document.querySelectorAll('.detail-view');
             detailViews.forEach(view => view.style.display = 'none');
             
-            // Show selected view
             const targetView = document.getElementById(section + 'View');
             if (targetView) {
                 targetView.style.display = 'flex';
@@ -547,31 +839,21 @@ overflow-x: auto;">                                                             
         }
 
         function backToGalaxy() {
-            // Hide all detail views
             const detailViews = document.querySelectorAll('.detail-view');
             detailViews.forEach(view => view.style.display = 'none');
             
-            // Show galaxy with fade-in effect
             const galaxyView = document.getElementById('galaxyView');
             galaxyView.style.display = 'block';
-            galaxyView.style.opacity = '0';
-            
-            setTimeout(() => {
-                galaxyView.style.transition = 'opacity 0.8s ease-out';
-                galaxyView.style.opacity = '1';
-            }, 50);
             
             currentView = 'galaxy';
         }
 
-        // Close menu when clicking outside
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 toggleMenu();
             }
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 if (isMenuOpen) {
@@ -580,12 +862,24 @@ overflow-x: auto;">                                                             
                     backToGalaxy();
                 }
             }
-        });
-
-        // Prevent context menu on right click for a more immersive feel
-        // TODO: Remove this i dont like it
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
+            
+            // Number key navigation
+            if (!isMenuOpen && currentView === 'galaxy') {
+                switch(e.key) {
+                    case '1':
+                        document.querySelector('.solar-system.resume').click();
+                        break;
+                    case '2':
+                        document.querySelector('.solar-system.gamedev').click();
+                        break;
+                    case '3':
+                        document.querySelector('.solar-system.ai').click();
+                        break;
+                    case '4':
+                        document.querySelector('.solar-system.software').click();
+                        break;
+                }
+            }
         });
     </script>
 </body>
