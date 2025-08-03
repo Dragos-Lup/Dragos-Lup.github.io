@@ -11,6 +11,9 @@
             box-sizing: border-box;
         }
 
+        .main_back { color: #000; }
+        .main_color { color: #00ff41; }
+
         body {
             font-family: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             background: #000;
@@ -18,6 +21,8 @@
             overflow: hidden;
             height: 100vh;
             image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
         }
 
         .container {
@@ -93,6 +98,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            transform-origin: center center;
         }
 
         .name-title {
@@ -115,6 +121,7 @@
             font-size: 10px;
             line-height: 1;
             white-space: pre;
+            transform-origin: center center;
             font-family: 'Courier New', monospace;
         }
 
@@ -140,16 +147,35 @@
             color: #000;
         }
 
-        .solar-system.resume { top: 25%; left: 15%; }
-        .solar-system.gamedev { top: 25%; right: 15%; }
-        .solar-system.ai { bottom: 25%; left: 15%; }
-        .solar-system.software { bottom: 25%; right: 15%; }
+        /* Fixed positioning for different screen sizes */
+        .solar-system.resume {
+            top: 25%;
+            left: 15%;
+        }
 
+        .solar-system.gamedev {
+            top: 25%;
+            right: 15%;
+        }
+
+        .solar-system.ai {
+            bottom: 25%;
+            left: 15%;
+        }
+
+        .solar-system.software {
+            bottom: 25%;
+            right: 15%;
+        }
+
+        /* Target character styling */
         .target-char {
             color: #ff0041;
             text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
             animation: targetPulse 2s ease-in-out infinite alternate;
             font-weight: bold;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes targetPulse {
@@ -163,15 +189,18 @@
             }
         }
 
+        /* Pointer lines */
         .pointer-line {
             position: absolute;
             z-index: 3;
             pointer-events: none;
-            opacity: 0;
             transition: opacity 0.3s ease;
+            opacity: 0;
         }
 
-        .pointer-line.active { opacity: 1; }
+        .pointer-line.active {
+            opacity: 1;
+        }
 
         .line-segment {
             position: absolute;
@@ -180,6 +209,39 @@
             font-size: 12px;
             line-height: 1;
             text-shadow: 0 0 10px #ff0041;
+        }
+
+        /* ASCII-style pointer lines */
+        .ascii-pointer {
+            position: absolute;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: pre;
+        }
+
+        .ascii-pointer.active {
+            opacity: 1;
+        }
+
+        .ascii-pointer .star-end {
+            color: #ff0041;
+            text-shadow: 0 0 10px #ff0041;
+            animation: starPulse 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes starPulse {
+            from { 
+                text-shadow: 0 0 10px #ff0041;
+            }
+            to { 
+                text-shadow: 0 0 20px #ff0041, 0 0 30px #ff0041;
+            }
         }
 
         .detail-view {
@@ -268,47 +330,136 @@
 
         /* Responsive adjustments */
         @media (max-width: 1024px) {
-            .solar-system.resume { top: 20%; left: 10%; }
-            .solar-system.gamedev { top: 20%; right: 10%; }
-            .solar-system.ai { bottom: 20%; left: 10%; }
-            .solar-system.software { bottom: 20%; right: 10%; }
+            .solar-system.resume {
+                top: 20%;
+                left: 10%;
+            }
+            .solar-system.gamedev {
+                top: 20%;
+                right: 10%;
+            }
+            .solar-system.ai {
+                bottom: 20%;
+                left: 10%;
+            }
+            .solar-system.software {
+                bottom: 20%;
+                right: 10%;
+            }
         }
 
         @media (max-width: 768px) {
-            .galaxy { font-size: 8px; }
-            .name-title { font-size: 16px; top: 5%; }
-            .solar-system { padding: 6px 10px; font-size: 12px; min-width: 100px; }
-            .solar-system.resume { top: 15%; left: 5%; }
-            .solar-system.gamedev { top: 15%; right: 5%; }
-            .solar-system.ai { bottom: 15%; left: 5%; }
-            .solar-system.software { bottom: 15%; right: 5%; }
-            .menu-content { font-size: 16px; padding: 30px; }
-            .detail-content { padding: 20px; }
-            .detail-title { font-size: 20px; }
-            .detail-text { font-size: 14px; }
+            .galaxy {
+                font-size: 8px;
+            }
+            
+            .name-title {
+                font-size: 16px;
+                top: 5%;
+            }
+            
+            .solar-system {
+                padding: 6px 10px;
+                font-size: 12px;
+                min-width: 100px;
+            }
+            
+            .solar-system.resume {
+                top: 15%;
+                left: 5%;
+            }
+            .solar-system.gamedev {
+                top: 15%;
+                right: 5%;
+            }
+            .solar-system.ai {
+                bottom: 15%;
+                left: 5%;
+            }
+            .solar-system.software {
+                bottom: 15%;
+                right: 5%;
+            }
+            
+            .menu-content {
+                font-size: 16px;
+                padding: 30px;
+            }
+            
+            .detail-content {
+                padding: 20px;
+            }
+            
+            .detail-title {
+                font-size: 20px;
+            }
+            
+            .detail-text {
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 480px) {
-            .galaxy { font-size: 6px; }
-            .name-title { font-size: 14px; }
-            .solar-system { padding: 4px 8px; font-size: 10px; min-width: 80px; }
-            .detail-content { padding: 15px; }
-            .detail-title { font-size: 18px; }
-            .detail-text { font-size: 12px; }
+            .galaxy {
+                font-size: 6px;
+            }
+            
+            .name-title {
+                font-size: 14px;
+            }
+            
+            .solar-system {
+                padding: 4px 8px;
+                font-size: 10px;
+                min-width: 80px;
+            }
+            
+            .detail-content {
+                padding: 15px;
+            }
+            
+            .detail-title {
+                font-size: 18px;
+            }
+            
+            .detail-text {
+                font-size: 12px;
+            }
         }
 
+        /* Ultra-wide and portrait orientation fixes */
         @media (min-aspect-ratio: 21/9) {
-            .solar-system.resume { left: 25%; }
-            .solar-system.gamedev { right: 25%; }
-            .solar-system.ai { left: 25%; }
-            .solar-system.software { right: 25%; }
+            .solar-system.resume {
+                left: 25%;
+            }
+            .solar-system.gamedev {
+                right: 25%;
+            }
+            .solar-system.ai {
+                left: 25%;
+            }
+            .solar-system.software {
+                right: 25%;
+            }
         }
 
         @media (max-aspect-ratio: 3/4) {
-            .solar-system.resume { top: 30%; left: 10%; }
-            .solar-system.gamedev { top: 45%; right: 10%; }
-            .solar-system.ai { bottom: 45%; left: 10%; }
-            .solar-system.software { bottom: 30%; right: 10%; }
+            .solar-system.resume {
+                top: 30%;
+                left: 10%;
+            }
+            .solar-system.gamedev {
+                top: 45%;
+                right: 10%;
+            }
+            .solar-system.ai {
+                bottom: 45%;
+                left: 10%;
+            }
+            .solar-system.software {
+                bottom: 30%;
+                right: 10%;
+            }
         }
     </style>
 </head>
@@ -397,6 +548,7 @@
                 [4] SOFTWARE
             </div>
 
+            <!-- Pointer lines container -->
             <div class="pointer-line" id="resumePointer"></div>
             <div class="pointer-line" id="gamedevPointer"></div>
             <div class="pointer-line" id="aiPointer"></div>
@@ -602,6 +754,149 @@ Performance Score: 98/100
     </div>
 
     <script>
+        function getTargetPosition() {
+            const targetChar = document.getElementById('targetChar');
+            const rect = targetChar.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
+        }
+
+        function getButtonPosition(buttonClass) {
+            const button = document.querySelector(`.solar-system.${buttonClass}`);
+            const rect = button.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
+        }
+
+        function createLine(startX, startY, endX, endY) {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            
+            let lineElements = [];
+            const segmentSpacing = 15; // pixels between characters
+            
+            // Phase 1: Diagonal line to reach target's Y level
+            if (Math.abs(deltaY) > 5) { // Only draw diagonal if there's significant Y difference
+                const diagonalSteps = Math.floor(Math.abs(deltaY) / segmentSpacing);
+                const yDirection = deltaY > 0 ? 1 : -1;
+                const xDirection = deltaX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= diagonalSteps; i++) {
+                    // Move both X and Y to create actual diagonal
+                    const x = startX + (i * segmentSpacing * 0.5 * xDirection); // Move horizontally at half rate
+                    const y = startY + (i * segmentSpacing * yDirection);
+                    
+                    // Choose diagonal character based on the actual direction of movement
+                    let char;
+                    if ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) {
+                        // Moving down-right or up-left
+                        char = '\\';
+                    } else {
+                        // Moving down-left or up-right
+                        char = '/';
+                    }
+                    
+                    lineElements.push({
+                        char: char,
+                        x: x,
+                        y: y
+                    });
+                }
+            }
+            
+            // Phase 2: Horizontal line from current diagonal end position to target X
+            const diagonalEndX = startX + (Math.floor(Math.abs(deltaY) / segmentSpacing) * segmentSpacing * 0.5 * (deltaX > 0 ? 1 : -1));
+            const currentY = startY + deltaY; // We're now at target's Y level
+            const remainingX = endX - diagonalEndX;
+            
+            if (Math.abs(remainingX) > 5) { // Only draw horizontal if there's significant X difference remaining
+                const horizontalSteps = Math.floor(Math.abs(remainingX) / segmentSpacing);
+                const xDirection = remainingX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= horizontalSteps; i++) {
+                    const x = diagonalEndX + (i * segmentSpacing * xDirection);
+                    const y = currentY;
+                    
+                    lineElements.push({
+                        char: '_',
+                        x: x,
+                        y: y
+                    });
+                }
+            }
+            
+            // Add star at the end pointing to target
+            lineElements.push({
+                char: '★',
+                x: endX - 8,
+                y: endY - 8
+            });
+            
+            return lineElements;
+        }
+
+        function showPointer(section) {
+            const buttonPos = getButtonPosition(section);
+            const targetPos = getTargetPosition();
+            
+            const pointer = document.getElementById(`${section}Pointer`);
+            const lineElements = createLine(buttonPos.x, buttonPos.y, targetPos.x, targetPos.y);
+            
+            // Clear previous line
+            pointer.innerHTML = '';
+            
+            // Create line segments
+            lineElements.forEach(element => {
+                const segment = document.createElement('div');
+                segment.className = 'line-segment';
+                segment.textContent = element.char;
+                segment.style.left = element.x + 'px';
+                segment.style.top = element.y + 'px';
+                pointer.appendChild(segment);
+            });
+            
+            pointer.classList.add('active');
+        }
+
+        function hidePointer(section) {
+            const pointer = document.getElementById(`${section}Pointer`);
+            pointer.classList.remove('active');
+        }
+
+        // Update pointers on window resize
+        let activePointers = [];
+        
+        window.addEventListener('resize', () => {
+            // Redraw any active pointers
+            activePointers.forEach(section => {
+                hidePointer(section);
+                setTimeout(() => showPointer(section), 10);
+            });
+        });
+
+        // Track which pointers are active
+        const originalShowPointer = showPointer;
+        const originalHidePointer = hidePointer;
+
+        showPointer = function(section) {
+            if (!activePointers.includes(section)) {
+                activePointers.push(section);
+            }
+            originalShowPointer(section);
+        };
+
+        hidePointer = function(section) {
+            const index = activePointers.indexOf(section);
+            if (index > -1) {
+                activePointers.splice(index, 1);
+            }
+            originalHidePointer(section);
+        };
+
         let isMenuOpen = false;
         let currentView = 'galaxy';
 
@@ -611,77 +906,42 @@ Performance Score: 98/100
             overlay.style.display = isMenuOpen ? 'flex' : 'none';
         }
 
-        function showPointer(section) {
-            const button = document.querySelector(`.solar-system.${section}`);
-            const target = document.getElementById('targetChar');
-            const pointer = document.getElementById(`${section}Pointer`);
-            
-            const buttonRect = button.getBoundingClientRect();
-            const targetRect = target.getBoundingClientRect();
-            
-            const startX = buttonRect.left + buttonRect.width / 2;
-            const startY = buttonRect.top + buttonRect.height / 2;
-            const endX = targetRect.left + targetRect.width / 2;
-            const endY = targetRect.top + targetRect.height / 2;
-            
-            const deltaX = endX - startX;
-            const deltaY = endY - startY;
-            
-            let html = '';
-            const segmentSpacing = 15;
-            
-            // Diagonal line
-            if (Math.abs(deltaY) > 5) {
-                const steps = Math.floor(Math.abs(deltaY) / segmentSpacing);
-                const yDir = deltaY > 0 ? 1 : -1;
-                const xDir = deltaX > 0 ? 1 : -1;
-                
-                for (let i = 1; i <= steps; i++) {
-                    const x = startX + (i * segmentSpacing * 0.5 * xDir);
-                    const y = startY + (i * segmentSpacing * yDir);
-                    const char = ((yDir > 0 && xDir > 0) || (yDir < 0 && xDir < 0)) ? '\\' : '/';
-                    html += `<div class="line-segment" style="left: ${x}px; top: ${y}px;">${char}</div>`;
-                }
-            }
-            
-            // Star at end
-            html += `<div class="line-segment" style="left: ${endX - 8}px; top: ${endY - 8}px;">★</div>`;
-            
-            pointer.innerHTML = html;
-            pointer.classList.add('active');
-        }
-
-        function hidePointer(section) {
-            document.getElementById(`${section}Pointer`).classList.remove('active');
-        }
-
         function zoomToSection(section) {
             if (currentView !== 'galaxy') return;
             
-            const button = event.currentTarget;
-            const rect = button.getBoundingClientRect();
-            const transition = document.getElementById('zoomTransition');
+            const clickedButton = event.currentTarget;
+            const rect = clickedButton.getBoundingClientRect();
+            
+            const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             
-            // Setup transition
-            transition.style.cssText = `
-                top: ${rect.top}px;
-                left: ${rect.left}px;
-                width: ${rect.width}px;
-                height: ${rect.height}px;
-                display: flex;
-            `;
-            transition.innerHTML = button.innerHTML;
+            zoomTransition.style.top = rect.top + 'px';
+            zoomTransition.style.left = rect.left + 'px';
+            zoomTransition.style.width = rect.width + 'px';
+            zoomTransition.style.height = rect.height + 'px';
+            zoomTransition.innerHTML = clickedButton.innerHTML;
+            zoomTransition.style.fontSize = window.getComputedStyle(clickedButton).fontSize;
             
-            setTimeout(() => transition.classList.add('zooming'), 50);
+            zoomTransition.style.display = 'flex';
+            zoomTransition.offsetHeight;
+            
+            setTimeout(() => {
+                zoomTransition.classList.add('zooming');
+            }, 50);
             
             setTimeout(() => {
                 galaxyView.style.display = 'none';
                 showDetailView(section);
+                
                 setTimeout(() => {
-                    transition.classList.remove('zooming');
-                    transition.style.display = 'none';
-                    transition.innerHTML = '';
+                    zoomTransition.classList.remove('zooming');
+                    zoomTransition.style.display = 'none';
+                    zoomTransition.style.width = '';
+                    zoomTransition.style.height = '';
+                    zoomTransition.style.top = '';
+                    zoomTransition.style.left = '';
+                    zoomTransition.style.fontSize = '';
+                    zoomTransition.innerHTML = '';
                 }, 100);
             }, 800);
             
@@ -699,19 +959,29 @@ Performance Score: 98/100
         }
 
         function showDetailView(section) {
-            document.querySelectorAll('.detail-view').forEach(view => view.style.display = 'none');
-            document.getElementById(section + 'View').style.display = 'flex';
+            const detailViews = document.querySelectorAll('.detail-view');
+            detailViews.forEach(view => view.style.display = 'none');
+            
+            const targetView = document.getElementById(section + 'View');
+            if (targetView) {
+                targetView.style.display = 'flex';
+            }
         }
 
         function backToGalaxy() {
-            document.querySelectorAll('.detail-view').forEach(view => view.style.display = 'none');
-            document.getElementById('galaxyView').style.display = 'block';
+            const detailViews = document.querySelectorAll('.detail-view');
+            detailViews.forEach(view => view.style.display = 'none');
+            
+            const galaxyView = document.getElementById('galaxyView');
+            galaxyView.style.display = 'block';
+            
             currentView = 'galaxy';
         }
 
-        // Event listeners
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
-            if (e.target === this) toggleMenu();
+            if (e.target === this) {
+                toggleMenu();
+            }
         });
 
         document.addEventListener('keydown', function(e) {
@@ -723,15 +993,21 @@ Performance Score: 98/100
                 }
             }
             
+            // Number key navigation
             if (!isMenuOpen && currentView === 'galaxy') {
-                const buttons = {
-                    '1': '.solar-system.resume',
-                    '2': '.solar-system.gamedev', 
-                    '3': '.solar-system.ai',
-                    '4': '.solar-system.software'
-                };
-                if (buttons[e.key]) {
-                    document.querySelector(buttons[e.key]).click();
+                switch(e.key) {
+                    case '1':
+                        document.querySelector('.solar-system.resume').click();
+                        break;
+                    case '2':
+                        document.querySelector('.solar-system.gamedev').click();
+                        break;
+                    case '3':
+                        document.querySelector('.solar-system.ai').click();
+                        break;
+                    case '4':
+                        document.querySelector('.solar-system.software').click();
+                        break;
                 }
             }
         });
