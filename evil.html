@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Portfolio - Character Targeting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main_back { color: #000; }
+        .main_color { color: #00ff41; }
+
+        body {
+            font-family: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: #000;
+            color: #00ff41;
+            overflow: hidden;
+            height: 100vh;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #000;
+            border: 2px solid #00ff41;
+            color: #00ff41;
+            padding: 8px 16px;
+            font-family: inherit;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-btn:hover {
+            background: #00ff41;
+            color: #000;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .menu-content {
+            text-align: center;
+            font-size: 18px;
+            line-height: 2.5;
+            border: 2px solid #00ff41;
+            padding: 40px;
+            background: #000;
+        }
+
+        .menu-item {
+            display: block;
+            color: #00ff41;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 8px 16px;
+            border: 1px solid #00ff41;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #000;
+        }
+
+        .menu-item:hover {
+            background: #00ff41;
+            color: #000;
+        }
+
+        .galaxy-view {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-origin: center center;
+        }
+
+        .name-title {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            text-align: center;
+            z-index: 10;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .galaxy {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            line-height: 1;
+            white-space: pre;
+            transform-origin: center center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .solar-system {
+            position: absolute;
+            cursor: pointer;
+            padding: 8px 12px;
+            border: 2px solid #00ff41;
+            background: #000;
+            color: #00ff41;
+            font-family: inherit;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            z-index: 5;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .solar-system:hover {
+            background: #00ff41;
+            color: #000;
+        }
+
+        /* Fixed positioning for different screen sizes */
+        .solar-system.resume {
+            top: 25%;
+            left: 15%;
+        }
+
+        .solar-system.gamedev {
+            top: 25%;
+            right: 15%;
+        }
+
+        .solar-system.ai {
+            bottom: 25%;
+            left: 15%;
+        }
+
+        .solar-system.software {
+            bottom: 25%;
+            right: 15%;
+        }
+
+        /* Target character styling */
+        .target-char {
+            color: #ff0041;
+            text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
+            animation: targetPulse 2s ease-in-out infinite alternate;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes targetPulse {
+            from { 
+                text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
+                transform: scale(1);
+            }
+            to { 
+                text-shadow: 0 0 25px #ff0041, 0 0 35px #ff0041, 0 0 45px #ff0041;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Pointer lines */
+        .pointer-line {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .pointer-line.active {
+            opacity: 1;
+        }
+
+        .line-segment {
+            position: absolute;
+            color: #ff0041;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1;
+            text-shadow: 0 0 10px #ff0041;
+        }
+
+        @media (max-width: 768px) {
+            .galaxy {
+                font-size: 8px;
+            }
+            
+            .name-title {
+                font-size: 16px;
+                top: 5%;
+            }
+            
+            .solar-system {
+                padding: 6px 10px;
+                font-size: 12px;
+                min-width: 100px;
+            }
+            
+            .solar-system.resume {
+                top: 15%;
+                left: 5%;
+            }
+            .solar-system.gamedev {
+                top: 15%;
+                right: 5%;
+            }
+            .solar-system.ai {
+                bottom: 15%;
+                left: 5%;
+            }
+            .solar-system.software {
+                bottom: 15%;
+                right: 5%;
+            }
+            
+            .menu-content {
+                font-size: 16px;
+                padding: 30px;
+            }
+            
+            .detail-content {
+                padding: 20px;
+            }
+            
+            .detail-title {
+                font-size: 20px;
+            }
+            
+            .detail-text {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .galaxy {
+                font-size: 6px;
+            }
+            
+            .name-title {
+                font-size: 14px;
+            }
+            
+            .solar-system {
+                padding: 4px 8px;
+                font-size: 10px;
+                min-width: 80px;
+            }
+            
+            .detail-content {
+                padding: 15px;
+            }
+            
+            .detail-title {
+                font-size: 18px;
+            }
+            
+            .detail-text {
+                font-size: 12px;
+            }
+        }
+
+        /* Ultra-wide and portrait orientation fixes */
+        @media (min-aspect-ratio: 21/9) {
+            .solar-system.resume {
+                left: 25%;
+            }
+            .solar-system.gamedev {
+                right: 25%;
+            }
+            .solar-system.ai {
+                left: 25%;
+            }
+            .solar-system.software {
+                right: 25%;
+            }
+        }
+
+        @media (max-aspect-ratio: 3/4) {
+            .solar-system.resume {
+                top: 30%;
+                left: 10%;
+            }
+            .solar-system.gamedev {
+                top: 45%;
+                right: 10%;
+            }
+            .solar-system.ai {
+                bottom: 45%;
+                left: 10%;
+            }
+            .solar-system.software {
+                bottom: 30%;
+                right: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-content">
+                <div style="margin-bottom: 20px; font-size: 20px; font-weight: bold;">
+                    ╔═══════════════════╗<br>
+                    ║    MAIN MENU      ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <a href="#" class="menu-item" onclick="showSection('resume')">[1] RESUME</a>
+                <a href="#" class="menu-item" onclick="showSection('gamedev')">[2] GAME DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('ai')">[3] ARTIFICIAL INTELLIGENCE</a>
+                <a href="#" class="menu-item" onclick="showSection('software')">[4] SOFTWARE DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="toggleMenu()">[ESC] CLOSE</a>
+            </div>
+        </div>
+
+        <div class="galaxy-view" id="galaxyView">
+            <div class="name-title">
+                ╔═══════════════════╗<br>
+                ║   DRAGOS LUP      ║<br>
+                ╚═══════════════════╝
+            </div>
+            <pre class="galaxy">                                                              i                                                        u                    
+                                              .                                                     ,     .                                 
+                                    7BW   js      cC            c                                                      .Q                   
+                                    zBc   x-                                                  ,.      x.z                                   
+                                                                   z       , ..-, ,,-,,- -,   .     . ,    .                                
+                                                7m             ,, .- ,,.,, .,.-,, ,,,...,,,,-.,..,-.--...,-- ..--.-                         
+                                                            .,,,.. -,. .,.     -k-..,,.-.,-.,zh,.-,,,s. -,.  bh-b,-, . -                    
+                                                  .. . . -.       -,-,,--,.kzohbsh-.,-,..u,-zkhzkch,.-,--.---h,-,.,.,.-. -.  s,             
+                                                  uk.,.,, u,-kucnkmIj1anmhannabxbbuu,,sbhmmbuzokzxuhux-.--.-no,-  ,.-.-,-,., ,              
+                                .                    .xsotIanmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
+                                                 .okherccmavbz.ouhkxszuxxohkzrx,uuhxxohkokohsnacaxbuohhhsbstz-.-aD.ohbk,....-               
+                                             -xbeteeneskoboksushshhzbuzb,ouskxububxxhuxutbxusskSaszhhkzkobxuho,.  -,.sshoh..,               
+   .,                                   .hkuzsmres,u....,ssksuk.,.-szhoushooommmahenrzukuznuxksrnvcrbhhuhoxxsuh,-,zxkbook..,,-..            
+                                      xkhrbhovsbs.--..osbk..-.,-khhbnuhxttxmebrvcrmmzrzxkkuuoe1JIIituskuubuzoukzhbooxxbzh,,,--              
+                                   ,-,hbkstrshsoo,,z,-uuhz.,.,,zhbzecmrtevmmnifIJaanmtveeasartlnIvuukohbuhuxushzzbzbhzobs.,,-               
+                          ae     .,zubsvvbhsbh....xk.-..-,,zuznxenert1711il1iJEF1rL7lmtjmrcmuJJfahokobkxzubzukxbxokxboouh -.                
+                          QH   .-bzbenbux--.-..uohkoh..-ksktbvenmJ1flFFZTVEl7fJiilMUTf1rtrnojImnkeabbxbxozhczzzkbhzozuhkb                   
+                             ,,kuxubzx-.     .xknosookbzvcentJjfjEVEZAXGODULELECGVDXEfvnmtcmIvbzxxkbkuuxsshohuzo,ho.-,...          .        
+                             ,bxuz-,   .   ,bbkzbkuxkmaaecjJJLSLYUUYDNNKQBBGTCYWLTYGZ1FEvrjlcukoohohhkbkooxzzs,-,.k,.,.-              ,     
+                        -,-bhsbo-,   -   -zkkkmsokueejmniEFTFUDDGUNWQBRMRQRMYYXGLCLE7ltrcIcczzk.kkbzuuzkbbzos-,.u,-.,.                      
+                      .,o.bvkzz-.. -,-,..kzkma7ae1EIcnnfTCPUDQRRHNHBWMWMHRNBROXOYCCJ7mrfemubzk,kxhzhhooxbzk.-,,h,--             .           
+                      x,,o-su-,...--,--bstcl1febrUnac7Cj1ZDBHPQWWMKBMHQNBRHHDFOOZL1nct1cmoxxxuszuksbzzzxk,--k-s,.                     .     
+            ,h   -- .kah.xzh-,-..---..znaJI1rralJrnlJLVTMCLQNUOBMRRBMNQNRNXZVYSC7cvrncrxssuzuuhkbhxszbsk.-,..-,.                     WQK    
+             .   .,-.oo-xux,,..,-,.-.hav17aem1GTnerlIFAGMYDNWMKPMBBMUUTF7ZZCFi7jntteneexxsuhbsbhkuskzh.,,,s.,                         .     
+          rk    .-,-z,-,,,..,.,.,,kksnTQFvmnILF1raflTTVSUOXDUCDPPGXYDXZSATCjfiImvrvcrsxussouskxzkzhu,.,,xu-                              b  
+         oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozx<span class="target-char" id="targetChar">K</span>O.sboz..                     -          e  
+               ,,---...-,.zx.,bvvuxbefJEZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
+              -.,---,,.,sb-.-soboxzxmr7CCFikaiYZfsaCUCFZ7LTFLLlTj71JtIfvrmtcerranmcvntvnmxhoxoxhbxk,        t         ,HNO,                 
+                h- .-.ob.,.hhkoksuxumvJcjrlcr1V7lIv1TLFCjJ1jSSTIijJeifnrvcvaveeamnmvnvobxbbnnzzuuk-       .QMN        .WMV                  
+                z,.--uxu.huhksuzuukkumvmff7JrJJLfTVISTVEiJ7l7j1avttmrtvetaveecctmaaraezoshzbk,              c                               
+                     -.--,.-usoksuuomrctcctI11rlLETJJrtIretreatvetemnr1eracntnccvtvarvxzux-,                                                
+                  D1 ,..-..,-,,zkzbobbmvkseecemSIjLIIfLIEiJI7ifnI1mjf7rm1v7anrmeeahbsb,---,.                                                
+                     --bo...-,xx,buuhsuzxhxxrkaramciaimfijiSi7ntveevzvtnflcvmarshk.,----,               .H                    .             
+                     .,.,.,.ou-,.uhuxuhxkbkzsusuokkhokovrhYRcererlnemnvtnrvozu---- .-,.                  -                                  
+                       -.-.-.b.,---,.-,hs-koksuohksrxoxmbkkzhtvce1kztos,,-,,.,...                                                           
+                        --......,..,-,....,...-,,obxzbxxuhabshshbo,-,,,,...- .    n                                                         
+          -      t FWY    .  ,-.,.-,-.,....-...        , -b-.                    bB                                                         
+                   JHJ               ,..  -.                                 ,         -                              b,                    
+                             .-                                                                                                             
+                                                                           cW                                                               
+                                                                                    -   ,           u                                       
+                        ,,                                                                                                                  
+                                         o,                                                                                                 </pre>
+                                         
+            <div class="solar-system resume" onmouseenter="showPointer('resume')" onmouseleave="hidePointer('resume')">
+                [1] RESUME
+            </div>
+            
+            <div class="solar-system gamedev" onmouseenter="showPointer('gamedev')" onmouseleave="hidePointer('gamedev')">
+                [2] GAME DEV
+            </div>
+            
+            <div class="solar-system ai" onmouseenter="showPointer('ai')" onmouseleave="hidePointer('ai')">
+                [3] AI RESEARCH
+            </div>
+            
+            <div class="solar-system software" onmouseenter="showPointer('software')" onmouseleave="hidePointer('software')">
+                [4] SOFTWARE
+            </div>
+
+            <!-- Pointer lines container -->
+            <div class="pointer-line" id="resumePointer"></div>
+            <div class="pointer-line" id="gamedevPointer"></div>
+            <div class="pointer-line" id="aiPointer"></div>
+            <div class="pointer-line" id="softwarePointer"></div>
+        </div>
+    </div>
+
+    <script>
+        function getTargetPosition() {
+            const targetChar = document.getElementById('targetChar');
+            const rect = targetChar.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
+        }
+
+        function getButtonPosition(buttonClass) {
+            const button = document.querySelector(`.solar-system.${buttonClass}`);
+            const rect = button.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
+        }
+
+        function createLine(startX, startY, endX, endY) {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            
+            let lineElements = [];
+            const segmentSpacing = 15; // pixels between characters
+            
+            // Phase 1: Diagonal line to reach target's Y level
+            if (Math.abs(deltaY) > 5) { // Only draw diagonal if there's significant Y difference
+                const diagonalSteps = Math.floor(Math.abs(deltaY) / segmentSpacing);
+                const yDirection = deltaY > 0 ? 1 : -1;
+                const xDirection = deltaX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= diagonalSteps; i++) {
+                    // Move both X and Y to create actual diagonal
+                    const x = startX + (i * segmentSpacing * 0.5 * xDirection); // Move horizontally at half rate
+                    const y = startY + (i * segmentSpacing * yDirection);
+                    
+                    // Choose diagonal character based on the actual direction of movement
+                    let char;
+                    if ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) {
+                        // Moving down-right or up-left
+                        char = '\\';
+                    } else {
+                        // Moving down-left or up-right
+                        char = '/';
+                    }
+                    
+                    lineElements.push({
+                        char: char,
+                        x: x,
+                        y: y
+                    });
+                }
+            }
+            
+            // Phase 2: Horizontal line from current diagonal end position to target X
+            const diagonalEndX = startX + (Math.floor(Math.abs(deltaY) / segmentSpacing) * segmentSpacing * 0.5 * (deltaX > 0 ? 1 : -1));
+            const currentY = startY + deltaY; // We're now at target's Y level
+            const remainingX = endX - diagonalEndX;
+            
+            if (Math.abs(remainingX) > 5) { // Only draw horizontal if there's significant X difference remaining
+                const horizontalSteps = Math.floor(Math.abs(remainingX) / segmentSpacing);
+                const xDirection = remainingX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= horizontalSteps; i++) {
+                    const x = diagonalEndX + (i * segmentSpacing * xDirection);
+                    const y = currentY;
+                    
+                    lineElements.push({
+                        char: '_',
+                        x: x,
+                        y: y
+                    });
+                }
+            }
+            
+            // Add star at the end pointing to target
+            lineElements.push({
+                char: '★',
+                x: endX - 8,
+                y: endY - 8
+            });
+            
+            return lineElements;
+        }
+
+        function showPointer(section) {
+            const buttonPos = getButtonPosition(section);
+            const targetPos = getTargetPosition();
+            
+            const pointer = document.getElementById(`${section}Pointer`);
+            const lineElements = createLine(buttonPos.x, buttonPos.y, targetPos.x, targetPos.y);
+            
+            // Clear previous line
+            pointer.innerHTML = '';
+            
+            // Create line segments
+            lineElements.forEach(element => {
+                const segment = document.createElement('div');
+                segment.className = 'line-segment';
+                segment.textContent = element.char;
+                segment.style.left = element.x + 'px';
+                segment.style.top = element.y + 'px';
+                pointer.appendChild(segment);
+            });
+            
+            pointer.classList.add('active');
+        }
+
+        function hidePointer(section) {
+            const pointer = document.getElementById(`${section}Pointer`);
+            pointer.classList.remove('active');
+        }
+
+        // Update pointers on window resize
+        let activePointers = [];
+        
+        window.addEventListener('resize', () => {
+            // Redraw any active pointers
+            activePointers.forEach(section => {
+                hidePointer(section);
+                setTimeout(() => showPointer(section), 10);
+            });
+        });
+
+        // Track which pointers are active
+        const originalShowPointer = showPointer;
+        const originalHidePointer = hidePointer;
+
+        showPointer = function(section) {
+            if (!activePointers.includes(section)) {
+                activePointers.push(section);
+            }
+            originalShowPointer(section);
+        };
+
+        hidePointer = function(section) {
+            const index = activePointers.indexOf(section);
+            if (index > -1) {
+                activePointers.splice(index, 1);
+            }
+            originalHidePointer(section);
+        };
+    </script>
+</body>
+</html>
