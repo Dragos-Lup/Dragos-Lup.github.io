@@ -11,9 +11,6 @@
             box-sizing: border-box;
         }
 
-        .main_back { color: #000; }
-        .main_color { color: #00ff41; }
-
         body {
             font-family: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             background: #000;
@@ -48,6 +45,7 @@
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: all 0.2s ease;
         }
 
         .menu-btn:hover {
@@ -87,6 +85,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             background: #000;
+            transition: all 0.2s ease;
         }
 
         .menu-item:hover {
@@ -98,7 +97,6 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transform-origin: center center;
         }
 
         .name-title {
@@ -121,7 +119,6 @@
             font-size: 10px;
             line-height: 1;
             white-space: pre;
-            transform-origin: center center;
             font-family: 'Courier New', monospace;
         }
 
@@ -140,6 +137,7 @@
             z-index: 5;
             min-width: 120px;
             text-align: center;
+            transition: all 0.2s ease;
         }
 
         .solar-system:hover {
@@ -147,28 +145,11 @@
             color: #000;
         }
 
-        /* Fixed positioning for different screen sizes */
-        .solar-system.resume {
-            top: 25%;
-            left: 15%;
-        }
+        .solar-system.resume { top: 25%; left: 15%; }
+        .solar-system.gamedev { top: 25%; right: 15%; }
+        .solar-system.ai { bottom: 25%; left: 15%; }
+        .solar-system.software { bottom: 25%; right: 15%; }
 
-        .solar-system.gamedev {
-            top: 25%;
-            right: 15%;
-        }
-
-        .solar-system.ai {
-            bottom: 25%;
-            left: 15%;
-        }
-
-        .solar-system.software {
-            bottom: 25%;
-            right: 15%;
-        }
-
-        /* Target character styling */
         .target-char {
             color: #ff0041;
             text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
@@ -189,13 +170,12 @@
             }
         }
 
-        /* Pointer lines */
         .pointer-line {
             position: absolute;
             z-index: 3;
             pointer-events: none;
-            transition: opacity 0.3s ease;
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .pointer-line.active {
@@ -209,39 +189,6 @@
             font-size: 12px;
             line-height: 1;
             text-shadow: 0 0 10px #ff0041;
-        }
-
-        /* ASCII-style pointer lines */
-        .ascii-pointer {
-            position: absolute;
-            color: #00ff41;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1;
-            z-index: 3;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            white-space: pre;
-        }
-
-        .ascii-pointer.active {
-            opacity: 1;
-        }
-
-        .ascii-pointer .star-end {
-            color: #ff0041;
-            text-shadow: 0 0 10px #ff0041;
-            animation: starPulse 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes starPulse {
-            from { 
-                text-shadow: 0 0 10px #ff0041;
-            }
-            to { 
-                text-shadow: 0 0 20px #ff0041, 0 0 30px #ff0041;
-            }
         }
 
         .detail-view {
@@ -295,6 +242,7 @@
             letter-spacing: 1px;
             display: block;
             margin: 0 auto;
+            transition: all 0.2s ease;
         }
 
         .back-btn:hover {
@@ -328,138 +276,55 @@
             border: none !important;
         }
 
-        /* Responsive adjustments */
+        /* Responsive Design */
         @media (max-width: 1024px) {
-            .solar-system.resume {
-                top: 20%;
-                left: 10%;
-            }
-            .solar-system.gamedev {
-                top: 20%;
-                right: 10%;
-            }
-            .solar-system.ai {
-                bottom: 20%;
-                left: 10%;
-            }
-            .solar-system.software {
-                bottom: 20%;
-                right: 10%;
-            }
+            .solar-system.resume { top: 20%; left: 10%; }
+            .solar-system.gamedev { top: 20%; right: 10%; }
+            .solar-system.ai { bottom: 20%; left: 10%; }
+            .solar-system.software { bottom: 20%; right: 10%; }
         }
 
         @media (max-width: 768px) {
-            .galaxy {
-                font-size: 8px;
+            .galaxy { font-size: 8px; }
+            .name-title { font-size: 16px; top: 5%; }
+            .solar-system { 
+                padding: 6px 10px; 
+                font-size: 12px; 
+                min-width: 100px; 
             }
-            
-            .name-title {
-                font-size: 16px;
-                top: 5%;
-            }
-            
-            .solar-system {
-                padding: 6px 10px;
-                font-size: 12px;
-                min-width: 100px;
-            }
-            
-            .solar-system.resume {
-                top: 15%;
-                left: 5%;
-            }
-            .solar-system.gamedev {
-                top: 15%;
-                right: 5%;
-            }
-            .solar-system.ai {
-                bottom: 15%;
-                left: 5%;
-            }
-            .solar-system.software {
-                bottom: 15%;
-                right: 5%;
-            }
-            
-            .menu-content {
-                font-size: 16px;
-                padding: 30px;
-            }
-            
-            .detail-content {
-                padding: 20px;
-            }
-            
-            .detail-title {
-                font-size: 20px;
-            }
-            
-            .detail-text {
-                font-size: 14px;
-            }
+            .solar-system.resume { top: 15%; left: 5%; }
+            .solar-system.gamedev { top: 15%; right: 5%; }
+            .solar-system.ai { bottom: 15%; left: 5%; }
+            .solar-system.software { bottom: 15%; right: 5%; }
+            .menu-content { font-size: 16px; padding: 30px; }
+            .detail-content { padding: 20px; }
+            .detail-title { font-size: 20px; }
+            .detail-text { font-size: 14px; }
         }
 
         @media (max-width: 480px) {
-            .galaxy {
-                font-size: 6px;
+            .galaxy { font-size: 6px; }
+            .name-title { font-size: 14px; }
+            .solar-system { 
+                padding: 4px 8px; 
+                font-size: 10px; 
+                min-width: 80px; 
             }
-            
-            .name-title {
-                font-size: 14px;
-            }
-            
-            .solar-system {
-                padding: 4px 8px;
-                font-size: 10px;
-                min-width: 80px;
-            }
-            
-            .detail-content {
-                padding: 15px;
-            }
-            
-            .detail-title {
-                font-size: 18px;
-            }
-            
-            .detail-text {
-                font-size: 12px;
-            }
+            .detail-content { padding: 15px; }
+            .detail-title { font-size: 18px; }
+            .detail-text { font-size: 12px; }
         }
 
-        /* Ultra-wide and portrait orientation fixes */
         @media (min-aspect-ratio: 21/9) {
-            .solar-system.resume {
-                left: 25%;
-            }
-            .solar-system.gamedev {
-                right: 25%;
-            }
-            .solar-system.ai {
-                left: 25%;
-            }
-            .solar-system.software {
-                right: 25%;
-            }
+            .solar-system.resume, .solar-system.ai { left: 25%; }
+            .solar-system.gamedev, .solar-system.software { right: 25%; }
         }
 
         @media (max-aspect-ratio: 3/4) {
-            .solar-system.resume {
-                top: 30%;
-                left: 10%;
-            }
-            .solar-system.gamedev {
-                top: 45%;
-                right: 10%;
-            }
-            .solar-system.ai {
-                bottom: 45%;
-                left: 10%;
-            }
-            .solar-system.software {
-                bottom: 30%;
-                right: 10%;
-            }
+            .solar-system.resume { top: 30%; left: 10%; }
+            .solar-system.gamedev { top: 45%; right: 10%; }
+            .solar-system.ai { bottom: 45%; left: 10%; }
+            .solar-system.software { bottom: 30%; right: 10%; }
         }
     </style>
 </head>
@@ -548,7 +413,6 @@
                 [4] SOFTWARE
             </div>
 
-            <!-- Pointer lines container -->
             <div class="pointer-line" id="resumePointer"></div>
             <div class="pointer-line" id="gamedevPointer"></div>
             <div class="pointer-line" id="aiPointer"></div>
@@ -754,6 +618,10 @@ Performance Score: 98/100
     </div>
 
     <script>
+        let isMenuOpen = false;
+        let currentView = 'galaxy';
+        let activePointers = [];
+
         function getTargetPosition() {
             const targetChar = document.getElementById('targetChar');
             const rect = targetChar.getBoundingClientRect();
@@ -775,61 +643,42 @@ Performance Score: 98/100
         function createLine(startX, startY, endX, endY) {
             const deltaX = endX - startX;
             const deltaY = endY - startY;
+            const lineElements = [];
+            const segmentSpacing = 15;
             
-            let lineElements = [];
-            const segmentSpacing = 15; // pixels between characters
-            
-            // Phase 1: Diagonal line to reach target's Y level
-            if (Math.abs(deltaY) > 5) { // Only draw diagonal if there's significant Y difference
+            // Diagonal line to reach target's Y level
+            if (Math.abs(deltaY) > 5) {
                 const diagonalSteps = Math.floor(Math.abs(deltaY) / segmentSpacing);
                 const yDirection = deltaY > 0 ? 1 : -1;
                 const xDirection = deltaX > 0 ? 1 : -1;
                 
                 for (let i = 1; i <= diagonalSteps; i++) {
-                    // Move both X and Y to create actual diagonal
-                    const x = startX + (i * segmentSpacing * 0.5 * xDirection); // Move horizontally at half rate
+                    const x = startX + (i * segmentSpacing * 0.5 * xDirection);
                     const y = startY + (i * segmentSpacing * yDirection);
                     
-                    // Choose diagonal character based on the actual direction of movement
-                    let char;
-                    if ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) {
-                        // Moving down-right or up-left
-                        char = '\\';
-                    } else {
-                        // Moving down-left or up-right
-                        char = '/';
-                    }
+                    const char = ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) ? '\\' : '/';
                     
-                    lineElements.push({
-                        char: char,
-                        x: x,
-                        y: y
-                    });
+                    lineElements.push({ char, x, y });
                 }
             }
             
-            // Phase 2: Horizontal line from current diagonal end position to target X
+            // Horizontal line to target X
             const diagonalEndX = startX + (Math.floor(Math.abs(deltaY) / segmentSpacing) * segmentSpacing * 0.5 * (deltaX > 0 ? 1 : -1));
-            const currentY = startY + deltaY; // We're now at target's Y level
+            const currentY = startY + deltaY;
             const remainingX = endX - diagonalEndX;
             
-            if (Math.abs(remainingX) > 5) { // Only draw horizontal if there's significant X difference remaining
+            if (Math.abs(remainingX) > 5) {
                 const horizontalSteps = Math.floor(Math.abs(remainingX) / segmentSpacing);
                 const xDirection = remainingX > 0 ? 1 : -1;
                 
                 for (let i = 1; i <= horizontalSteps; i++) {
                     const x = diagonalEndX + (i * segmentSpacing * xDirection);
                     const y = currentY;
-                    
-                    lineElements.push({
-                        char: '_',
-                        x: x,
-                        y: y
-                    });
+                    lineElements.push({ char: '_', x, y });
                 }
             }
             
-            // Add star at the end pointing to target
+            // Star at target
             lineElements.push({
                 char: '★',
                 x: endX - 8,
@@ -842,14 +691,11 @@ Performance Score: 98/100
         function showPointer(section) {
             const buttonPos = getButtonPosition(section);
             const targetPos = getTargetPosition();
-            
             const pointer = document.getElementById(`${section}Pointer`);
             const lineElements = createLine(buttonPos.x, buttonPos.y, targetPos.x, targetPos.y);
             
-            // Clear previous line
             pointer.innerHTML = '';
             
-            // Create line segments
             lineElements.forEach(element => {
                 const segment = document.createElement('div');
                 segment.className = 'line-segment';
@@ -860,45 +706,16 @@ Performance Score: 98/100
             });
             
             pointer.classList.add('active');
+            if (!activePointers.includes(section)) {
+                activePointers.push(section);
+            }
         }
 
         function hidePointer(section) {
             const pointer = document.getElementById(`${section}Pointer`);
             pointer.classList.remove('active');
+            activePointers = activePointers.filter(p => p !== section);
         }
-
-        // Update pointers on window resize
-        let activePointers = [];
-        
-        window.addEventListener('resize', () => {
-            // Redraw any active pointers
-            activePointers.forEach(section => {
-                hidePointer(section);
-                setTimeout(() => showPointer(section), 10);
-            });
-        });
-
-        // Track which pointers are active
-        const originalShowPointer = showPointer;
-        const originalHidePointer = hidePointer;
-
-        showPointer = function(section) {
-            if (!activePointers.includes(section)) {
-                activePointers.push(section);
-            }
-            originalShowPointer(section);
-        };
-
-        hidePointer = function(section) {
-            const index = activePointers.indexOf(section);
-            if (index > -1) {
-                activePointers.splice(index, 1);
-            }
-            originalHidePointer(section);
-        };
-
-        let isMenuOpen = false;
-        let currentView = 'galaxy';
 
         function toggleMenu() {
             const overlay = document.getElementById('menuOverlay');
@@ -911,10 +728,10 @@ Performance Score: 98/100
             
             const clickedButton = event.currentTarget;
             const rect = clickedButton.getBoundingClientRect();
-            
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             
+            // Set initial zoom transition position
             zoomTransition.style.top = rect.top + 'px';
             zoomTransition.style.left = rect.left + 'px';
             zoomTransition.style.width = rect.width + 'px';
@@ -923,7 +740,7 @@ Performance Score: 98/100
             zoomTransition.style.fontSize = window.getComputedStyle(clickedButton).fontSize;
             
             zoomTransition.style.display = 'flex';
-            zoomTransition.offsetHeight;
+            zoomTransition.offsetHeight; // Force reflow
             
             setTimeout(() => {
                 zoomTransition.classList.add('zooming');
@@ -972,12 +789,11 @@ Performance Score: 98/100
             const detailViews = document.querySelectorAll('.detail-view');
             detailViews.forEach(view => view.style.display = 'none');
             
-            const galaxyView = document.getElementById('galaxyView');
-            galaxyView.style.display = 'block';
-            
+            document.getElementById('galaxyView').style.display = 'block';
             currentView = 'galaxy';
         }
 
+        // Event Listeners
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 toggleMenu();
@@ -993,23 +809,27 @@ Performance Score: 98/100
                 }
             }
             
-            // Number key navigation
+            // Number key navigation in galaxy view
             if (!isMenuOpen && currentView === 'galaxy') {
-                switch(e.key) {
-                    case '1':
-                        document.querySelector('.solar-system.resume').click();
-                        break;
-                    case '2':
-                        document.querySelector('.solar-system.gamedev').click();
-                        break;
-                    case '3':
-                        document.querySelector('.solar-system.ai').click();
-                        break;
-                    case '4':
-                        document.querySelector('.solar-system.software').click();
-                        break;
+                const sectionMap = {
+                    '1': 'resume',
+                    '2': 'gamedev', 
+                    '3': 'ai',
+                    '4': 'software'
+                };
+                
+                if (sectionMap[e.key]) {
+                    document.querySelector(`.solar-system.${sectionMap[e.key]}`).click();
                 }
             }
+        });
+
+        // Update pointers on window resize
+        window.addEventListener('resize', () => {
+            activePointers.forEach(section => {
+                hidePointer(section);
+                setTimeout(() => showPointer(section), 10);
+            });
         });
     </script>
 </body>
