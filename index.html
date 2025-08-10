@@ -225,6 +225,136 @@
             margin: 0 auto;
         }
 
+        .project-section {
+            border: 1px solid #00ff41;
+            margin: 30px 0;
+            padding: 25px;
+            background: #001100;
+            position: relative;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff41;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-status {
+            padding: 4px 12px;
+            border: 1px solid;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-active { 
+            border-color: #00ff41; 
+            color: #00ff41; 
+            background: rgba(0, 255, 65, 0.1);
+        }
+        .status-complete { 
+            border-color: #41ff00; 
+            color: #41ff00; 
+            background: rgba(65, 255, 0, 0.1);
+        }
+        .status-prototype { 
+            border-color: #ffaa00; 
+            color: #ffaa00; 
+            background: rgba(255, 170, 0, 0.1);
+        }
+        .status-classified { 
+            border-color: #ff0041; 
+            color: #ff0041; 
+            background: rgba(255, 0, 65, 0.1);
+        }
+
+        .project-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            margin: 15px 0;
+        }
+
+        .tech-stack h4 {
+            color: #00ff41;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            padding: 2px 8px;
+            border: 1px solid #666;
+            color: #ccc;
+            font-size: 12px;
+            background: rgba(102, 102, 102, 0.1);
+        }
+
+        .project-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 6px 12px;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: #00ff41;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
         .detail-title {
             font-size: 24px;
             margin-bottom: 30px;
@@ -527,187 +657,233 @@ CURRENT OBJECTIVES:
                     ║  AI RESEARCH      ║<br>
                     ╚═══════════════════╝
                 </div>
+                
                 <div class="detail-text">
-ARTIFICIAL INTELLIGENCE RESEARCH LOG:
-------------------------------------
-Classification: EXPERIMENTAL
-Status: ACTIVE DEVELOPMENT
-
-2024:
------
-• Developed neural architecture for real-time language translation
-  - Achieved 97.3% accuracy on multilingual datasets
-  - Reduced inference time by 45% compared to previous models
-  - Implemented on edge devices with 2GB memory constraints
-
-• Created autonomous drone navigation system using reinforcement learning
-  - Trained agents in photorealistic simulation environments
-  - Successfully deployed in real-world obstacle courses
-  - Zero collision rate across 1000+ flight hours
-
-• Published "Quantum-Enhanced Feature Learning" in Nature AI
-  - Introduced hybrid quantum-classical neural networks
-  - Demonstrated 23% improvement in pattern recognition tasks
-  - Collaborated with IBM Quantum Research team
-
-• Built distributed training framework for large language models
-  - Scaled training across 256 GPUs with 98% efficiency
-  - Reduced training time from 3 months to 2 weeks
-  - Open-sourced toolkit now used by 500+ researchers
-
-• Designed computer vision system for medical imaging analysis
-  - Achieved 99.1% accuracy in early cancer detection
-  - Processed 50,000+ patient scans for validation
-  - Currently in clinical trials at 12 hospitals
-
-2023:
------
-• Implemented few-shot learning algorithm for robotics applications
-  - Robots learn new tasks with only 5-10 demonstrations
-  - Applied to manufacturing, household, and rescue scenarios
-  - Reduced training data requirements by 90%
-
-• Created generative model for synthetic dataset creation
-  - Generated 10M+ labeled training images for rare events
-  - Improved model performance on edge cases by 67%
-  - Used by autonomous vehicle companies worldwide
-
-• Developed multi-agent coordination system for smart cities
-  - Optimized traffic flow reducing congestion by 34%
-  - Coordinated emergency response reducing response time by 28%
-  - Deployed in pilot program across 5 metropolitan areas
-
-• Published "Interpretable AI for Critical Systems" at ICML
-  - Introduced explainability framework for deep neural networks
-  - Demonstrated on financial fraud detection and medical diagnosis
-  - Adopted by 3 Fortune 500 companies for compliance
-
-• Built AI safety testing framework for large models
-  - Automated detection of harmful outputs and biases
-  - Tested on 50+ different model architectures
-  - Contributed to industry safety standards development
-
-2022:
------
-• Designed federated learning system preserving privacy
-  - Trained models across 10,000+ devices without data sharing
-  - Maintained differential privacy with ε < 0.1
-  - Applied to healthcare data analysis across 100+ hospitals
-
-• Created neural network compression algorithm
-  - Reduced model size by 95% with <2% accuracy loss
-  - Enabled deployment on IoT devices with 64KB memory
-  - Patent filed and licensed to 3 chip manufacturers
-
-• Implemented reinforcement learning for algorithmic trading
-  - Achieved 23.7% annual returns with 15% volatility
-  - Managed $50M+ portfolio with full automation
-  - Risk management system prevented losses during market crashes
-
-• Published "Continual Learning Without Forgetting" at NeurIPS
-  - Solved catastrophic forgetting in sequential task learning
-  - Demonstrated on 20+ benchmark datasets
-  - Algorithm now standard in continual learning frameworks
-
-• Built real-time deepfake detection system
-  - 99.8% accuracy on detecting manipulated videos
-  - Processing speed: 60 FPS on consumer hardware
-  - Deployed by social media platforms and news organizations
-
-2021:
------
-• Developed AI-powered drug discovery platform
-  - Identified 15 potential COVID-19 treatments
-  - Reduced compound screening time from months to days
-  - Collaborated with pharmaceutical companies for clinical trials
-
-• Created natural language to code generation system
-  - Achieved 89% functional correctness on programming tasks
-  - Supported 12 programming languages
-  - Used by 100,000+ developers in beta testing
-
-• Implemented graph neural networks for social network analysis
-  - Detected misinformation spread with 94% accuracy
-  - Identified influence networks and bot accounts
-  - Processed 50M+ social media posts daily
-
-• Built AI tutoring system for personalized education
-  - Adapted to individual learning styles and pace
-  - Improved student performance by average of 2 letter grades
-  - Deployed in 200+ schools across 15 countries
-
-• Published "Efficient Transformer Architectures" at ICLR
-  - Reduced computational requirements by 60%
-  - Maintained performance on language understanding tasks
-  - Architecture adopted by major tech companies
-
-2020:
------
-• Designed computer vision system for autonomous vehicles
-  - Real-time object detection and tracking in all weather
-  - Achieved human-level performance in object recognition
-  - Tested across 2M+ miles of autonomous driving
-
-• Created AI-powered content moderation system
-  - Detected hate speech, violence, and inappropriate content
-  - Processed 1B+ posts daily with 96% accuracy
-  - Reduced human moderator workload by 80%
-
-• Implemented neural machine translation for 50+ languages
-  - Achieved state-of-the-art BLEU scores on WMT benchmarks
-  - Enabled real-time translation in video conferencing
-  - Used by 10M+ users for cross-cultural communication
-
-• Built predictive maintenance system for manufacturing
-  - Predicted equipment failures 2 weeks in advance
-  - Reduced unplanned downtime by 45%
-  - Saved $5M+ annually across pilot facilities
-
-• Published "Adversarial Robustness in Deep Learning" at AAAI
-  - Developed defense mechanisms against adversarial attacks
-  - Improved model security in critical applications
-  - Framework adopted by cybersecurity companies
-
-2019:
------
-• Developed AI system for climate change prediction modeling
-  - Processed satellite imagery to track deforestation
-  - Predicted weather patterns with 15% better accuracy
-  - Collaborated with environmental research organizations
-
-• Created recommendation system for personalized healthcare
-  - Analyzed genetic data and medical history for treatment plans
-  - Improved patient outcomes by 30% in clinical studies
-  - FDA approval pending for deployment in hospitals
-
-• Implemented AI-powered financial risk assessment
-  - Analyzed market data to predict economic indicators
-  - Achieved 87% accuracy in recession prediction models
-  - Used by investment firms managing $100B+ assets
-
-• Built automated code review system using machine learning
-  - Detected bugs and security vulnerabilities with 91% accuracy
-  - Reduced code review time by 60%
-  - Integrated into development workflows at 50+ companies
-
-• Published "Meta-Learning for Rapid AI Adaptation" at ICML
-  - Enabled AI models to learn new tasks in minutes
-  - Demonstrated on robotics and natural language tasks
-  - Cited 500+ times in subsequent research
-
-ONGOING RESEARCH:
-----------------
-• Artificial General Intelligence architecture design
-• Quantum machine learning algorithm optimization  
-• Brain-computer interface signal processing
-• AI safety and alignment protocols
-• Neuromorphic computing implementations
-
-PATENTS FILED: 23
-PAPERS PUBLISHED: 47
-CITATIONS: 12,000+
-H-INDEX: 34
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
+                        PORTFOLIO OF AI RESEARCH PROJECTS & PUBLICATIONS
+                    </p>
                 </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Project NEXUS</div>
+                        <div class="project-status status-classified">[CLASSIFIED]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 18 months</span>
+                        <span>Team Size: 12 researchers</span>
+                        <span>Budget: $2.3M</span>
+                    </div>
+                    <div class="project-description">
+                        Advanced autonomous decision-making framework for multi-agent coordination in dynamic environments. 
+                        This project focuses on developing AI systems capable of real-time strategic planning and distributed 
+                        consensus mechanisms for mission-critical applications.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Deep Reinforcement Learning</span>
+                            <span class="tech-tag">Multi-Agent Systems</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">Distributed Computing</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">[CLASSIFIED]</a>
+                        <a href="#" class="project-link">Internal Report</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Neural Architecture Search Suite</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 14 months</span>
+                        <span>Team Size: 6 researchers</span>
+                        <span>Citations: 127</span>
+                    </div>
+                    <div class="project-description">
+                        Developed an efficient gradient-based optimization framework for automated neural architecture search. 
+                        The system reduces search time by 85% while discovering architectures that outperform manually designed 
+                        networks across multiple benchmarks.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">JAX</span>
+                            <span class="tech-tag">AutoML</span>
+                            <span class="tech-tag">Bayesian Optimization</span>
+                            <span class="tech-tag">Cloud Computing</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">ICML Paper</a>
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Quantum-Enhanced Learning</div>
+                        <div class="project-status status-active">[ACTIVE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: Ongoing (12 months)</span>
+                        <span>Team Size: 4 researchers</span>
+                        <span>Funding: NSF Grant</span>
+                    </div>
+                    <div class="project-description">
+                        Investigating quantum-classical hybrid neural networks that leverage quantum computing principles 
+                        for enhanced feature learning. Early results show 30% improvement in training efficiency for 
+                        specific problem domains.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Qiskit</span>
+                            <span class="tech-tag">Cirq</span>
+                            <span class="tech-tag">Quantum Circuits</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Variational Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Nature MI (Under Review)</a>
+                        <a href="#" class="project-link">Preprint</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Real-Time Vision Pipeline</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 8 months</span>
+                        <span>Team Size: 5 researchers</span>
+                        <span>Performance: 99.7% accuracy</span>
+                    </div>
+                    <div class="project-description">
+                        Production-ready computer vision system for autonomous vehicles. Handles real-time object detection, 
+                        semantic segmentation, and 3D scene reconstruction at 60fps. Deployed in 15+ autonomous vehicle 
+                        prototypes across the industry.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">YOLO v8</span>
+                            <span class="tech-tag">TensorRT</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">ROS</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">IEEE TPAMI</a>
+                        <a href="#" class="project-link">Technical Report</a>
+                        <a href="#" class="project-link">Industry Partnership</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Federated Learning Framework</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 16 months</span>
+                        <span>Team Size: 8 researchers</span>
+                        <span>Citations: 267</span>
+                    </div>
+                    <div class="project-description">
+                        Developed privacy-preserving federated learning system with differential privacy guarantees. 
+                        Enables collaborative AI training across organizations without data sharing. Adopted by 3 
+                        Fortune 500 companies for sensitive data applications.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Differential Privacy</span>
+                            <span class="tech-tag">Secure Aggregation</span>
+                            <span class="tech-tag">TensorFlow Federated</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">Distributed Systems</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">ICLR Paper</a>
+                        <a href="#" class="project-link">Open Source</a>
+                        <a href="#" class="project-link">Industry Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Continual Learning System</div>
+                        <div class="project-status status-prototype">[PROTOTYPE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: Ongoing (6 months)</span>
+                        <span>Team Size: 3 researchers</span>
+                        <span>Stage: Beta Testing</span>
+                    </div>
+                    <div class="project-description">
+                        Novel approach to lifelong learning that prevents catastrophic forgetting while enabling 
+                        continuous adaptation to new tasks. Uses memory consolidation mechanisms inspired by 
+                        neuroscience research.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Meta-Learning</span>
+                            <span class="tech-tag">Memory Networks</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Neuromorphic Computing</span>
+                            <span class="tech-tag">Elastic Weight Consolidation</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">NeurIPS Submission</a>
+                        <a href="#" class="project-link">Prototype Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Large Language Model Optimization</div>
+                        <div class="project-status status-active">[ACTIVE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: Ongoing (9 months)</span>
+                        <span>Team Size: 7 researchers</span>
+                        <span>Collaboration: OpenAI Partnership</span>
+                    </div>
+                    <div class="project-description">
+                        Research collaboration focusing on efficient fine-tuning techniques for large language models. 
+                        Developed parameter-efficient methods that achieve 95% of full fine-tuning performance while 
+                        using only 0.1% of the parameters.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">LoRA</span>
+                            <span class="tech-tag">Adapter Layers</span>
+                            <span class="tech-tag">Hugging Face</span>
+                            <span class="tech-tag">DeepSpeed</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Collaboration Report</a>
+                        <a href="#" class="project-link">Optimization Toolkit</a>
+                    </div>
+                </div>
+
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
