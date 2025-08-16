@@ -64,6 +64,12 @@
             align-items: center;
             justify-content: center;
             z-index: 999;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .menu-overlay.show {
+            opacity: 1;
         }
 
         .menu-content {
@@ -73,6 +79,12 @@
             border: 2px solid #00ff41;
             padding: 40px;
             background: #000;
+            transform: scale(0.9);
+            transition: transform 0.2s ease;
+        }
+
+        .menu-overlay.show .menu-content {
+            transform: scale(1);
         }
 
         .menu-item {
@@ -97,6 +109,12 @@
             position: relative;
             width: 100%;
             height: 100%;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .galaxy-view.fade-out {
+            opacity: 0;
         }
 
         .name-title {
@@ -204,6 +222,12 @@
             z-index: 20;
             padding: 20px;
             overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .detail-view.show {
+            opacity: 1;
         }
 
         .detail-view.scrollable {
@@ -219,6 +243,12 @@
             border: 2px solid #00ff41;
             padding: 40px;
             background: #000;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .detail-view.show .detail-content {
+            transform: translateY(0);
         }
 
         .detail-content.long-content {
@@ -231,7 +261,24 @@
             padding: 25px;
             background: #001100;
             position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
         }
+
+        .detail-view.show .project-section {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .detail-view.show .project-section:nth-child(1) { transition-delay: 0.1s; }
+        .detail-view.show .project-section:nth-child(2) { transition-delay: 0.2s; }
+        .detail-view.show .project-section:nth-child(3) { transition-delay: 0.3s; }
+        .detail-view.show .project-section:nth-child(4) { transition-delay: 0.4s; }
+        .detail-view.show .project-section:nth-child(5) { transition-delay: 0.5s; }
+        .detail-view.show .project-section:nth-child(6) { transition-delay: 0.6s; }
+        .detail-view.show .project-section:nth-child(7) { transition-delay: 0.7s; }
+        .detail-view.show .project-section:nth-child(8) { transition-delay: 0.8s; }
 
         .project-header {
             display: flex;
@@ -342,6 +389,57 @@
             color: #000;
         }
 
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 25;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .loading-overlay.show {
+            opacity: 1;
+        }
+
+        .loading-content {
+            text-align: center;
+            border: 2px solid #00ff41;
+            padding: 30px;
+            background: #000;
+            color: #00ff41;
+        }
+
+        .loading-text {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            border: 1px solid #00ff41;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: #00ff41;
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #00ff41;
+        }
+
         @media (max-width: 768px) {
             .project-header {
                 flex-direction: column;
@@ -362,6 +460,15 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .detail-view.show .detail-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
         }
 
         .detail-text {
@@ -369,6 +476,15 @@
             line-height: 1.8;
             margin-bottom: 30px;
             font-family: 'Courier New', monospace;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .detail-view.show .detail-text {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
         }
 
         .back-btn {
@@ -384,6 +500,14 @@
             display: block;
             margin: 0 auto;
             transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .detail-view.show .back-btn {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
         }
 
         .back-btn:hover {
@@ -473,6 +597,15 @@
 <body>
     <div class="container">
         <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-text">ACCESSING SECTOR...</div>
+                <div class="loading-bar">
+                    <div class="loading-progress" id="loadingProgress"></div>
+                </div>
+            </div>
+        </div>
         
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-content">
@@ -1048,7 +1181,42 @@ Performance Score: 98/100
         function toggleMenu() {
             const overlay = document.getElementById('menuOverlay');
             isMenuOpen = !isMenuOpen;
-            overlay.style.display = isMenuOpen ? 'flex' : 'none';
+            
+            if (isMenuOpen) {
+                overlay.style.display = 'flex';
+                setTimeout(() => overlay.classList.add('show'), 10);
+            } else {
+                overlay.classList.remove('show');
+                setTimeout(() => overlay.style.display = 'none', 200);
+            }
+        }
+
+        function showLoadingScreen(section) {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const loadingProgress = document.getElementById('loadingProgress');
+            
+            loadingOverlay.style.display = 'flex';
+            setTimeout(() => loadingOverlay.classList.add('show'), 10);
+            
+            // Animate progress bar
+            loadingProgress.style.width = '0%';
+            setTimeout(() => {
+                loadingProgress.style.width = '30%';
+            }, 100);
+            setTimeout(() => {
+                loadingProgress.style.width = '70%';
+            }, 200);
+            setTimeout(() => {
+                loadingProgress.style.width = '100%';
+            }, 300);
+            
+            // Hide loading after animation
+            setTimeout(() => {
+                loadingOverlay.classList.remove('show');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 200);
+            }, 500);
         }
 
         function zoomToSection(section) {
@@ -1059,7 +1227,7 @@ Performance Score: 98/100
             const galaxyView = document.getElementById('galaxyView');
             
             // Set initial zoom transition position at the target character
-            const initialSize = 30; // Small initial size around the character
+            const initialSize = 30;
             zoomTransition.style.top = (targetPos.y - initialSize/2) + 'px';
             zoomTransition.style.left = (targetPos.x - initialSize/2) + 'px';
             zoomTransition.style.width = initialSize + 'px';
@@ -1075,10 +1243,16 @@ Performance Score: 98/100
             }, 50);
             
             setTimeout(() => {
+                galaxyView.classList.add('fade-out');
+            }, 300);
+            
+            setTimeout(() => {
                 galaxyView.style.display = 'none';
-                showDetailView(section);
+                galaxyView.classList.remove('fade-out');
+                showLoadingScreen(section);
                 
                 setTimeout(() => {
+                    showDetailView(section);
                     zoomTransition.classList.remove('zooming');
                     zoomTransition.style.display = 'none';
                     zoomTransition.style.width = '';
@@ -1087,7 +1261,7 @@ Performance Score: 98/100
                     zoomTransition.style.left = '';
                     zoomTransition.style.fontSize = '';
                     zoomTransition.innerHTML = '';
-                }, 100);
+                }, 400);
             }, 800);
             
             currentView = section;
@@ -1098,27 +1272,45 @@ Performance Score: 98/100
             if (currentView === 'galaxy') {
                 zoomToSection(section);
             } else {
-                showDetailView(section);
-                currentView = section;
+                showLoadingScreen(section);
+                setTimeout(() => {
+                    showDetailView(section);
+                    currentView = section;
+                }, 600);
             }
         }
 
         function showDetailView(section) {
             const detailViews = document.querySelectorAll('.detail-view');
-            detailViews.forEach(view => view.style.display = 'none');
+            detailViews.forEach(view => {
+                view.classList.remove('show');
+                view.style.display = 'none';
+            });
             
             const targetView = document.getElementById(section + 'View');
             if (targetView) {
                 targetView.style.display = 'flex';
+                setTimeout(() => targetView.classList.add('show'), 50);
             }
         }
 
         function backToGalaxy() {
             const detailViews = document.querySelectorAll('.detail-view');
-            detailViews.forEach(view => view.style.display = 'none');
+            const galaxyView = document.getElementById('galaxyView');
             
-            document.getElementById('galaxyView').style.display = 'block';
-            currentView = 'galaxy';
+            detailViews.forEach(view => {
+                view.classList.remove('show');
+                setTimeout(() => view.style.display = 'none', 300);
+            });
+            
+            setTimeout(() => {
+                galaxyView.style.display = 'block';
+                galaxyView.style.opacity = '0';
+                setTimeout(() => {
+                    galaxyView.style.opacity = '1';
+                }, 50);
+                currentView = 'galaxy';
+            }, 300);
         }
 
         // Event Listeners
