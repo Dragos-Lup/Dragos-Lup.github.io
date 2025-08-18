@@ -395,13 +395,14 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000;
+            background: transparent;
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 25;
+            z-index: 16;
             opacity: 0;
             transition: opacity 0.2s ease;
+            pointer-events: none;
         }
 
         .loading-overlay.show {
@@ -411,21 +412,30 @@
         .loading-content {
             text-align: center;
             border: 2px solid #00ff41;
-            padding: 30px;
+            padding: 20px 30px;
             background: #000;
             color: #00ff41;
+            transform: translateY(80px) scale(0.8);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            opacity: 0;
+            transition: all 0.4s ease-out;
+        }
+
+        .loading-overlay.show .loading-content {
+            transform: translateY(80px) scale(1);
+            opacity: 1;
         }
 
         .loading-text {
-            font-size: 16px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .loading-bar {
-            width: 200px;
-            height: 4px;
+            width: 180px;
+            height: 3px;
             border: 1px solid #00ff41;
             margin: 0 auto;
             position: relative;
@@ -1225,6 +1235,8 @@ Performance Score: 98/100
             const targetPos = getTargetPosition();
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const loadingProgress = document.getElementById('loadingProgress');
             
             // Set initial zoom transition position at the target character
             const initialSize = 30;
@@ -1235,11 +1247,24 @@ Performance Score: 98/100
             zoomTransition.innerHTML = 'K';
             zoomTransition.style.fontSize = '24px';
             
+            // Show loading overlay and zoom transition simultaneously
+            loadingOverlay.style.display = 'flex';
             zoomTransition.style.display = 'flex';
-            zoomTransition.offsetHeight; // Force reflow
             
+            // Small delay to ensure elements are rendered
             setTimeout(() => {
                 zoomTransition.classList.add('zooming');
+                
+                // Delay loading appearance slightly for natural flow
+                setTimeout(() => {
+                    loadingOverlay.classList.add('show');
+                }, 150);
+                
+                // Start progress bar animation
+                loadingProgress.style.width = '0%';
+                setTimeout(() => loadingProgress.style.width = '40%', 300);
+                setTimeout(() => loadingProgress.style.width = '75%', 500);
+                setTimeout(() => loadingProgress.style.width = '100%', 700);
             }, 50);
             
             setTimeout(() => {
@@ -1249,7 +1274,10 @@ Performance Score: 98/100
             setTimeout(() => {
                 galaxyView.style.display = 'none';
                 galaxyView.classList.remove('fade-out');
-                showLoadingScreen(section);
+                
+                // Hide loading overlay
+                loadingOverlay.classList.remove('show');
+                setTimeout(() => loadingOverlay.style.display = 'none', 200);
                 
                 setTimeout(() => {
                     showDetailView(section);
@@ -1261,7 +1289,7 @@ Performance Score: 98/100
                     zoomTransition.style.left = '';
                     zoomTransition.style.fontSize = '';
                     zoomTransition.innerHTML = '';
-                }, 400);
+                }, 100);
             }, 800);
             
             currentView = section;
