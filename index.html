@@ -138,6 +138,14 @@
             line-height: 1;
             white-space: pre;
             font-family: 'Courier New', monospace;
+            transition: transform 0.6s ease-out;
+        }
+
+        /* Style for the target letters */
+        .target-letter {
+            color: #ff0041;
+            text-shadow: 0 0 10px #ff0041, 0 0 15px #ff0041;
+            font-weight: bold;
         }
 
         .solar-system {
@@ -167,47 +175,6 @@
         .solar-system.gamedev { top: 25%; right: 15%; }
         .solar-system.ai { bottom: 25%; left: 15%; }
         .solar-system.software { bottom: 25%; right: 15%; }
-
-        .target-char {
-            color: #ff0041;
-            text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
-            animation: targetPulse 2s ease-in-out infinite alternate;
-            font-weight: bold;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes targetPulse {
-            from { 
-                text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
-                transform: scale(1);
-            }
-            to { 
-                text-shadow: 0 0 25px #ff0041, 0 0 35px #ff0041, 0 0 45px #ff0041;
-                transform: scale(1.2);
-            }
-        }
-
-        .pointer-line {
-            position: absolute;
-            z-index: 3;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .pointer-line.active {
-            opacity: 1;
-        }
-
-        .line-segment {
-            position: absolute;
-            color: #ff0041;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1;
-            text-shadow: 0 0 10px #ff0041;
-        }
 
         .detail-view {
             position: fixed;
@@ -527,8 +494,7 @@
 
         .zoom-transition {
             position: fixed;
-            border: 2px solid #ff0041;
-            background: #000;
+            background: transparent;
             z-index: 15;
             pointer-events: none;
             display: none;
@@ -536,11 +502,12 @@
             justify-content: center;
             font-family: inherit;
             color: #ff0041;
-            transition: all 0.8s linear;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
+            will-change: transform, width, height, top, left, font-size;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .zooming {
@@ -548,8 +515,9 @@
             height: 100vh !important;
             top: 0 !important;
             left: 0 !important;
-            background: #000 !important;
+            background: rgba(0, 0, 0, 0.85) !important;
             border: none !important;
+            font-size: 30vmin !important;
         }
 
         /* Responsive Design */
@@ -640,7 +608,7 @@
             </div>
             <pre class="galaxy">                                                              i                                                        u                    
                                               .                                                     ,     .                                 
-                                    7BW   js      cC            c                                                      .Q                   
+                                    7BW   js      cC            c                                                      .<span id="resumeTarget" class="target-letter">Q</span>                   
                                     zBc   x-                                                  ,.      x.z                                   
                                                                    z       , ..-, ,,-,,- -,   .     . ,    .                                
                                                 7m             ,, .- ,,.,, .,.-,, ,,,...,,,,-.,..,-.--...,-- ..--.-                         
@@ -648,7 +616,7 @@
                                                   .. . . -.       -,-,,--,.kzohbsh-.,-,..u,-zkhzkch,.-,--.---h,-,.,.,.-. -.  s,             
                                                   uk.,.,, u,-kucnkmIj1anmhannabxbbuu,,sbhmmbuzokzxuhux-.--.-no,-  ,.-.-,-,., ,              
                                 .                    .xsotIanmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
-                                                 .okherccmavbz.ouhkxszuxxohkzrx,uuhxxohkokohsnacaxbuohhhsbstz-.-aD.ohbk,....-               
+                                                 .okherccmavbz.ouhkxszuxxohkzrx,uuhxxohkokohsnacaxbuohhhsbstz-.-a<span id="gamedevTarget" class="target-letter">D</span>.ohbk,....-               
                                              -xbeteeneskoboksushshhzbuzb,ouskxububxxhuxutbxusskSaszhhkzkobxuho,.  -,.sshoh..,               
    .,                                   .hkuzsmres,u....,ssksuk.,.-szhoushooommmahenrzukuznuxksrnvcrbhhuhoxxsuh,-,zxkbook..,,-..            
                                       xkhrbhovsbs.--..osbk..-.,-khhbnuhxttxmebrvcrmmzrzxkkuuoe1JIIituskuubuzoukzhbooxxbzh,,,--              
@@ -659,18 +627,18 @@
                              ,bxuz-,   .   ,bbkzbkuxkmaaecjJJLSLYUUYDNNKQBBGTCYWLTYGZ1FEvrjlcukoohohhkbkooxzzs,-,.k,.,.-              ,     
                         -,-bhsbo-,   -   -zkkkmsokueejmniEFTFUDDGUNWQBRMRQRMYYXGLCLE7ltrcIcczzk.kkbzuuzkbbzos-,.u,-.,.                      
                       .,o.bvkzz-.. -,-,..kzkma7ae1EIcnnfTCPUDQRRHNHBWMWMHRNBROXOYCCJ7mrfemubzk,kxhzhhooxbzk.-,,h,--             .           
-                      x,,o-su-,...--,--bstcl1febrUnac7Cj1ZDBHPQWWMKBMHQNBRHHDFOOZL1nct1cmoxxxuszuksbzzzxk,--k-s,.                     .     
+                      x,,o-su-,...--,--bstcl1febrUnac7Cj1ZDBHPQWWMKBMHQNBRHHDFOOZL1nct1cmoxxxuszuksbzzzxk,--<span id="softwareTarget" class="target-letter">K</span>-s,.                     .     
             ,h   -- .kah.xzh-,-..---..znaJI1rralJrnlJLVTMCLQNUOBMRRBMNQNRNXZVYSC7cvrncrxssuzuuhkbhxszbsk.-,..-,.                     WQK    
              .   .,-.oo-xux,,..,-,.-.hav17aem1GTnerlIFAGMYDNWMKPMBBMUUTF7ZZCFi7jntteneexxsuhbsbhkuskzh.,,,s.,                         .     
           rk    .-,-z,-,,,..,.,.,,kksnTQFvmnILF1raflTTVSUOXDUCDPPGXYDXZSATCjfiImvrvcrsxussouskxzkzhu,.,,xu-                              b  
-         oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozx<span class="target-char" id="targetChar">K</span>zo.sboz..                     -          e  
+         oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozxKzo.sboz..                     -          e  
                ,,---...-,.zx.,bvvuxbefJEZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
               -.,---,,.,sb-.-soboxzxmr7CCFikaiYZfsaCUCFZ7LTFLLlTj71JtIfvrmtcerranmcvntvnmxhoxoxhbxk,        t         ,HNO,                 
                 h- .-.ob.,.hhkoksuxumvJcjrlcr1V7lIv1TLFCjJ1jSSTIijJeifnrvcvaveeamnmvnvobxbbnnzzuuk-       .QMN        .WMV                  
                 z,.--uxu.huhksuzuukkumvmff7JrJJLfTVISTVEiJ7l7j1avttmrtvetaveecctmaaraezoshzbk,              c                               
                      -.--,.-usoksuuomrctcctI11rlLETJJrtIretreatvetemnr1eracntnccvtvarvxzux-,                                                
                   D1 ,..-..,-,,zkzbobbmvkseecemSIjLIIfLIEiJI7ifnI1mjf7rm1v7anrmeeahbsb,---,.                                                
-                     --bo...-,xx,buuhsuzxhxxrkaramciaimfijiSi7ntveevzvtnflcvmarshk.,----,               .H                    .             
+                     --bo...-,xx,buuhsuzxhxxrkaramciaimfijiSi7ntveevzvtnflcvmarshk.,----,               .<span id="aiTarget" class="target-letter">H</span>                    .             
                      .,.,.,.ou-,.uhuxuhxkbkzsusuokkhokovrhYRcererlnemnvtnrvozu---- .-,.                  -                                  
                        -.-.-.b.,---,.-,hs-koksuohksrxoxmbkkzhtvce1kztos,,-,,,,...                                                           
                         --......,..,-,....,...-,,obxzbxxuhabshshbo,-,,,,...- .    n                                                         
@@ -681,27 +649,22 @@
                                                                                     -   ,           u                                       
                         ,,                                                                                                                  
                                          o,                                                                                                 </pre>
-                                         
-            <div class="solar-system resume" onclick="zoomToSection('resume')" onmouseenter="showPointer('resume')" onmouseleave="hidePointer('resume')">
+            
+            <div class="solar-system resume" onclick="zoomToSection('resume')" onmouseenter="centerGalaxyOn('resume')" onmouseleave="resetGalaxyPosition()">
                 [1] RESUME
             </div>
             
-            <div class="solar-system gamedev" onclick="zoomToSection('gamedev')" onmouseenter="showPointer('gamedev')" onmouseleave="hidePointer('gamedev')">
+            <div class="solar-system gamedev" onclick="zoomToSection('gamedev')" onmouseenter="centerGalaxyOn('gamedev')" onmouseleave="resetGalaxyPosition()">
                 [2] GAME DEV
             </div>
             
-            <div class="solar-system ai" onclick="zoomToSection('ai')" onmouseenter="showPointer('ai')" onmouseleave="hidePointer('ai')">
+            <div class="solar-system ai" onclick="zoomToSection('ai')" onmouseenter="centerGalaxyOn('ai')" onmouseleave="resetGalaxyPosition()">
                 [3] AI RESEARCH
             </div>
             
-            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="showPointer('software')" onmouseleave="hidePointer('software')">
+            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
                 [4] SOFTWARE
             </div>
-
-            <div class="pointer-line" id="resumePointer"></div>
-            <div class="pointer-line" id="gamedevPointer"></div>
-            <div class="pointer-line" id="aiPointer"></div>
-            <div class="pointer-line" id="softwarePointer"></div>
         </div>
 
         <div class="zoom-transition" id="zoomTransition"></div>
@@ -1091,101 +1054,54 @@ Performance Score: 98/100
     <script>
         let isMenuOpen = false;
         let currentView = 'galaxy';
-        let activePointers = [];
+        let targetLetterCoords = {}; // Object to store initial coordinates
+        const sections = ['resume', 'gamedev', 'ai', 'software'];
 
-        function getTargetPosition() {
-            const targetChar = document.getElementById('targetChar');
-            const rect = targetChar.getBoundingClientRect();
-            return {
-                x: rect.left + rect.width / 2,
-                y: rect.top + rect.height / 2
-            };
+        // Function to calculate and store the resting coordinates of target letters
+        function storeInitialCoords() {
+            const galaxy = document.querySelector('.galaxy');
+            // Temporarily remove transition to get instant, accurate position
+            const originalTransition = galaxy.style.transition;
+            galaxy.style.transition = 'none';
+            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
+
+            // Allow DOM to update before measuring
+            setTimeout(() => {
+                sections.forEach(section => {
+                    const target = document.getElementById(section + 'Target');
+                    if (target) {
+                        const rect = target.getBoundingClientRect();
+                        targetLetterCoords[section] = {
+                            x: rect.left + rect.width / 2,
+                            y: rect.top + rect.height / 2,
+                        };
+                    }
+                });
+                // Restore transition
+                galaxy.style.transition = originalTransition;
+            }, 0);
         }
 
-        function getButtonPosition(buttonClass) {
-            const button = document.querySelector(`.solar-system.${buttonClass}`);
-            const rect = button.getBoundingClientRect();
-            return {
-                x: rect.left + rect.width / 2,
-                y: rect.top + rect.height / 2
-            };
+        // The new robust function for centering the galaxy
+        function centerGalaxyOn(section) {
+            if (!targetLetterCoords[section]) return; // Guard clause
+            
+            const galaxy = document.querySelector('.galaxy');
+            const screenCenterX = window.innerWidth / 2;
+            const screenCenterY = window.innerHeight / 2;
+
+            const restingTargetX = targetLetterCoords[section].x;
+            const restingTargetY = targetLetterCoords[section].y;
+
+            const deltaX = screenCenterX - restingTargetX;
+            const deltaY = screenCenterY - restingTargetY;
+            
+            galaxy.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
         }
 
-        function createLine(startX, startY, endX, endY) {
-            const deltaX = endX - startX;
-            const deltaY = endY - startY;
-            const lineElements = [];
-            const segmentSpacing = 15;
-            
-            // Diagonal line to reach target's Y level
-            if (Math.abs(deltaY) > 5) {
-                const diagonalSteps = Math.floor(Math.abs(deltaY) / segmentSpacing);
-                const yDirection = deltaY > 0 ? 1 : -1;
-                const xDirection = deltaX > 0 ? 1 : -1;
-                
-                for (let i = 1; i <= diagonalSteps; i++) {
-                    const x = startX + (i * segmentSpacing * 0.5 * xDirection);
-                    const y = startY + (i * segmentSpacing * yDirection);
-                    
-                    const char = ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) ? '\\' : '/';
-                    
-                    lineElements.push({ char, x, y });
-                }
-            }
-            
-            // Horizontal line to target X
-            const diagonalEndX = startX + (Math.floor(Math.abs(deltaY) / segmentSpacing) * segmentSpacing * 0.5 * (deltaX > 0 ? 1 : -1));
-            const currentY = startY + deltaY;
-            const remainingX = endX - diagonalEndX;
-            
-            if (Math.abs(remainingX) > 5) {
-                const horizontalSteps = Math.floor(Math.abs(remainingX) / segmentSpacing);
-                const xDirection = remainingX > 0 ? 1 : -1;
-                
-                for (let i = 1; i <= horizontalSteps; i++) {
-                    const x = diagonalEndX + (i * segmentSpacing * xDirection);
-                    const y = currentY;
-                    lineElements.push({ char: '_', x, y });
-                }
-            }
-            
-            // Star at target
-            lineElements.push({
-                char: '★',
-                x: endX - 8,
-                y: endY - 8
-            });
-            
-            return lineElements;
-        }
-
-        function showPointer(section) {
-            const buttonPos = getButtonPosition(section);
-            const targetPos = getTargetPosition();
-            const pointer = document.getElementById(`${section}Pointer`);
-            const lineElements = createLine(buttonPos.x, buttonPos.y, targetPos.x, targetPos.y);
-            
-            pointer.innerHTML = '';
-            
-            lineElements.forEach(element => {
-                const segment = document.createElement('div');
-                segment.className = 'line-segment';
-                segment.textContent = element.char;
-                segment.style.left = element.x + 'px';
-                segment.style.top = element.y + 'px';
-                pointer.appendChild(segment);
-            });
-            
-            pointer.classList.add('active');
-            if (!activePointers.includes(section)) {
-                activePointers.push(section);
-            }
-        }
-
-        function hidePointer(section) {
-            const pointer = document.getElementById(`${section}Pointer`);
-            pointer.classList.remove('active');
-            activePointers = activePointers.filter(p => p !== section);
+        function resetGalaxyPosition() {
+            const galaxy = document.querySelector('.galaxy');
+            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
         }
 
         function toggleMenu() {
@@ -1208,59 +1124,43 @@ Performance Score: 98/100
             loadingOverlay.style.display = 'flex';
             setTimeout(() => loadingOverlay.classList.add('show'), 10);
             
-            // Animate progress bar
             loadingProgress.style.width = '0%';
-            setTimeout(() => {
-                loadingProgress.style.width = '30%';
-            }, 100);
-            setTimeout(() => {
-                loadingProgress.style.width = '70%';
-            }, 200);
-            setTimeout(() => {
-                loadingProgress.style.width = '100%';
-            }, 300);
+            setTimeout(() => loadingProgress.style.width = '30%', 100);
+            setTimeout(() => loadingProgress.style.width = '70%', 200);
+            setTimeout(() => loadingProgress.style.width = '100%', 300);
             
-            // Hide loading after animation
             setTimeout(() => {
                 loadingOverlay.classList.remove('show');
-                setTimeout(() => {
-                    loadingOverlay.style.display = 'none';
-                }, 200);
+                setTimeout(() => loadingOverlay.style.display = 'none', 200);
             }, 500);
         }
 
         function zoomToSection(section) {
             if (currentView !== 'galaxy') return;
             
-            const targetPos = getTargetPosition();
+            const targetLetter = document.getElementById(section + 'Target');
+            if (!targetLetter) return;
+
+            const letterRect = targetLetter.getBoundingClientRect();
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
             
-            // Set initial zoom transition position at the target character
-            const initialSize = 30;
-            zoomTransition.style.top = (targetPos.y - initialSize/2) + 'px';
-            zoomTransition.style.left = (targetPos.x - initialSize/2) + 'px';
-            zoomTransition.style.width = initialSize + 'px';
-            zoomTransition.style.height = initialSize + 'px';
-            zoomTransition.innerHTML = 'K';
-            zoomTransition.style.fontSize = '24px';
+            zoomTransition.style.top = `${letterRect.top}px`;
+            zoomTransition.style.left = `${letterRect.left}px`;
+            zoomTransition.style.width = `${letterRect.width}px`;
+            zoomTransition.style.height = `${letterRect.height}px`;
+            zoomTransition.innerHTML = targetLetter.textContent;
+            zoomTransition.style.fontSize = window.getComputedStyle(targetLetter.parentElement).fontSize;
             
-            // Show loading overlay and zoom transition simultaneously
             loadingOverlay.style.display = 'flex';
             zoomTransition.style.display = 'flex';
             
-            // Small delay to ensure elements are rendered
             setTimeout(() => {
                 zoomTransition.classList.add('zooming');
+                setTimeout(() => loadingOverlay.classList.add('show'), 150);
                 
-                // Delay loading appearance slightly for natural flow
-                setTimeout(() => {
-                    loadingOverlay.classList.add('show');
-                }, 150);
-                
-                // Start progress bar animation
                 loadingProgress.style.width = '0%';
                 setTimeout(() => loadingProgress.style.width = '40%', 300);
                 setTimeout(() => loadingProgress.style.width = '75%', 500);
@@ -1275,7 +1175,6 @@ Performance Score: 98/100
                 galaxyView.style.display = 'none';
                 galaxyView.classList.remove('fade-out');
                 
-                // Hide loading overlay
                 loadingOverlay.classList.remove('show');
                 setTimeout(() => loadingOverlay.style.display = 'none', 200);
                 
@@ -1287,8 +1186,8 @@ Performance Score: 98/100
                     zoomTransition.style.height = '';
                     zoomTransition.style.top = '';
                     zoomTransition.style.left = '';
-                    zoomTransition.style.fontSize = '';
                     zoomTransition.innerHTML = '';
+                    zoomTransition.style.fontSize = '';
                 }, 100);
             }, 800);
             
@@ -1341,7 +1240,14 @@ Performance Score: 98/100
             }, 300);
         }
 
-        // Event Listeners
+        // --- Event Listeners ---
+        
+        // Calculate coordinates on initial load
+        document.addEventListener('DOMContentLoaded', storeInitialCoords);
+
+        // Recalculate coordinates on window resize
+        window.addEventListener('resize', storeInitialCoords);
+        
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 toggleMenu();
@@ -1357,7 +1263,6 @@ Performance Score: 98/100
                 }
             }
             
-            // Number key navigation in galaxy view
             if (!isMenuOpen && currentView === 'galaxy') {
                 const sectionMap = {
                     '1': 'resume',
@@ -1372,13 +1277,6 @@ Performance Score: 98/100
             }
         });
 
-        // Update pointers on window resize
-        window.addEventListener('resize', () => {
-            activePointers.forEach(section => {
-                hidePointer(section);
-                setTimeout(() => showPointer(section), 10);
-            });
-        });
     </script>
 </body>
-</html>
+</html>`
