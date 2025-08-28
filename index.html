@@ -172,8 +172,8 @@
         }
 
         .solar-system.resume { top: 25%; left: 15%; }
-        .solar-system.gamedev { top: 25%; right: 15%; }
-        .solar-system.ai { bottom: 25%; left: 15%; }
+        .solar-system.game_development { top: 25%; right: 15%; }
+        .solar-system.other { bottom: 25%; left: 15%; }
         .solar-system.software { bottom: 25%; right: 15%; }
 
         .detail-view {
@@ -522,8 +522,8 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             .solar-system.resume { top: 20%; left: 10%; }
-            .solar-system.gamedev { top: 20%; right: 10%; }
-            .solar-system.ai { bottom: 20%; left: 10%; }
+            .solar-system.game_development { top: 20%; right: 10%; }
+            .solar-system.other { bottom: 20%; left: 10%; }
             .solar-system.software { bottom: 20%; right: 10%; }
         }
 
@@ -536,8 +536,8 @@
                 min-width: 100px; 
             }
             .solar-system.resume { top: 15%; left: 5%; }
-            .solar-system.gamedev { top: 15%; right: 5%; }
-            .solar-system.ai { bottom: 15%; left: 5%; }
+            .solar-system.game_development { top: 15%; right: 5%; }
+            .solar-system.other { bottom: 15%; left: 5%; }
             .solar-system.software { bottom: 15%; right: 5%; }
             .menu-content { font-size: 16px; padding: 30px; }
             .detail-content { padding: 20px; }
@@ -559,14 +559,14 @@
         }
 
         @media (min-aspect-ratio: 21/9) {
-            .solar-system.resume, .solar-system.ai { left: 25%; }
-            .solar-system.gamedev, .solar-system.software { right: 25%; }
+            .solar-system.resume, .solar-system.other { left: 25%; }
+            .solar-system.game_development, .solar-system.software { right: 25%; }
         }
 
         @media (max-aspect-ratio: 3/4) {
             .solar-system.resume { top: 30%; left: 10%; }
-            .solar-system.gamedev { top: 45%; right: 10%; }
-            .solar-system.ai { bottom: 45%; left: 10%; }
+            .solar-system.game_development { top: 45%; right: 10%; }
+            .solar-system.other { bottom: 45%; left: 10%; }
             .solar-system.software { bottom: 30%; right: 10%; }
         }
     </style>
@@ -592,9 +592,9 @@
                     ╚═══════════════════╝
                 </div>
                 <a href="#" class="menu-item" onclick="showSection('resume')">[1] RESUME</a>
-                <a href="#" class="menu-item" onclick="showSection('gamedev')">[2] GAME DEVELOPMENT</a>
-                <a href="#" class="menu-item" onclick="showSection('ai')">[3] ARTIFICIAL INTELLIGENCE</a>
-                <a href="#" class="menu-item" onclick="showSection('software')">[4] SOFTWARE DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('software')">[2] SOFTWARE</a>
+                <a href="#" class="menu-item" onclick="showSection('game_development')">[3] GAME DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('other')">[4] OTHER</a>
                 <a href="#" class="menu-item" onclick="toggleMenu()">[ESC] CLOSE</a>
             </div>
         </div>
@@ -614,7 +614,7 @@
                                                             .,,,.. -,. .,.     -k-..,,.-.,-.,zh,.-,,,s. -,.  bh-b,-, . -                    
                                                   .. . . -.       -,-,,--,.kzohbsh-.,-,..u,-zkhzkch,.-,--.---h,-,.,.,.-. -.  s,             
                                                   uk.,.,, u,-kucnkmIj1anmhannabxbbuu,,sbhmmbuzokzxuhux-.--.-no,-  ,.-.-,-,., ,              
-                                .                    .xsot<span id="aiTarget" class="target-letter">H</span>anmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
+                                .                    .xsot<span id="otherTarget" class="target-letter">H</span>anmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
                                                  .okherccmavbz.ouhkxszuxxohkzrx,uuhxxohkokohsnacaxbuohhhsbstz-.-aD.ohbk,....-               
                                              -xbeteeneskoboksushshhzbuzb,ouskxububxxhuxutbxusskSaszhhkzkobxuho,.  -,.sshoh..,               
    .,                                   .hkuzsmres,u....,ssksuk.,.-szhoushooommmahenrzukuznuxksrnvcrbhhuhoxxsuh,-,zxkbook..,,-..            
@@ -631,7 +631,7 @@
              .   .,-.oo-xux,,..,-,.-.hav17aem1GTnerlIFAGMYDNWMKPMBBMUUTF7ZZCFi7jntteneexxsuhbsbhkuskzh.,,,s.,                         .     
           rk    .-,-z,-,,,..,.,.,,kksnTQFvmnILF1raflTTVSUOXDUCDPPGXYDXZSATCjfiImvrvcrsxussouskxzkzhu,.,,xu-                              b  
          oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozxKzo.sboz..                     -          e  
-               ,,---...-,.zx.,bvvuxbef<span id="gamedevTarget" class="target-letter">D</span>EZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
+               ,,---...-,.zx.,bvvuxbef<span id="game_developmentTarget" class="target-letter">D</span>EZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
               -.,---,,.,sb-.-soboxzxmr7CCFikaiYZfsaCUCFZ7LTFLLlTj71JtIfvrmtcerranmcvntvnmxhoxoxhbxk,        t         ,HNO,                 
                 h- .-.ob.,.hhkoksuxumvJcjrlcr1V7lIv1TLFCjJ1jSSTIijJeifnrvcvaveeamnmvnvobxbbnnzzuuk-       .QMN        .WMV                  
                 z,.--uxu.huhksuzuukkumvmff7JrJJLfTVISTVEiJ7l7j1avttmrtvetaveecctmaaraezoshzbk,              c                               
@@ -653,12 +653,12 @@
                 [1] RESUME
             </div>
             
-            <div class="solar-system gamedev" onclick="zoomToSection('gamedev')" onmouseenter="centerGalaxyOn('gamedev')" onmouseleave="resetGalaxyPosition()">
-                [2] GAME DEV
+            <div class="solar-system game_development" onclick="zoomToSection('game_development')" onmouseenter="centerGalaxyOn('game_development')" onmouseleave="resetGalaxyPosition()">
+                [2] GAME DEVELOPMENT
             </div>
             
-            <div class="solar-system ai" onclick="zoomToSection('ai')" onmouseenter="centerGalaxyOn('ai')" onmouseleave="resetGalaxyPosition()">
-                [3] AI RESEARCH
+            <div class="solar-system other" onclick="zoomToSection('other')" onmouseenter="centerGalaxyOn('other')" onmouseleave="resetGalaxyPosition()">
+                [3] OTHER
             </div>
             
             <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
@@ -708,55 +708,8 @@ ACHIEVEMENTS:
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
-<!--
-        <div class="detail-view" id="gamedevView">
-            <div class="detail-content">
-                <div class="detail-title">
-                    ╔═══════════════════╗<br>
-                    ║  GAME DEVELOPMENT ║<br>
-                    ╚═══════════════════╝
-                </div>
-                <div class="detail-text">
-GAME DEVELOPMENT SECTOR:
------------------------
-Status: OPERATIONAL
-Classification: ENTERTAINMENT
 
-CORE TECHNOLOGIES:
------------------
-> Unity 3D Game Engine
-> C# Gameplay Programming
-> Level Design & Game Mechanics
-> Mobile & PC Game Development
-> 2D/3D Graphics Programming
-
-PROJECT PORTFOLIO:
------------------
-[ALPHA] Retro Space Shooter - Complete
-[BETA]  Puzzle Platformer - In Development  
-[GOLD]  Mobile Strategy Game - Released
-[DEV]   VR Experience - Prototype Phase
-
-SPECIALIZATIONS:
----------------
-* Procedural Content Generation
-* Physics Simulation Systems
-* AI Behavior Programming
-* Performance Optimization
-* Cross-Platform Deployment
-
-CURRENT OBJECTIVES:
-------------------
-[→] Developing next-gen game mechanics
-[→] Exploring VR/AR technologies
-[→] Mentoring junior game developers
-                </div>
-                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
-            </div>
-        </div>
-    -->
-
-        <div class="detail-view scrollable" id="gamedevView">
+        <div class="detail-view scrollable" id="game_developmentView">
             <div class="detail-content long-content">
                 <div class="detail-title">
                     ╔════════════════════╗<br>
@@ -986,17 +939,17 @@ CURRENT OBJECTIVES:
             </div>
         </div>
 
-        <div class="detail-view scrollable" id="aiView">
+        <div class="detail-view scrollable" id="otherView">
             <div class="detail-content long-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║  AI RESEARCH      ║<br>
+                    ║       OTHER       ║<br>
                     ╚═══════════════════╝
                 </div>
                 
                 <div class="detail-text">
                     <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
-                        PORTFOLIO OF AI RESEARCH PROJECTS & PUBLICATIONS
+                        PORTFOLIO OF OTHER PROJECTS & PUBLICATIONS
                     </p>
                 </div>
 
@@ -1228,7 +1181,7 @@ CURRENT OBJECTIVES:
             <div class="detail-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║ SOFTWARE DEV      ║<br>
+                    ║     SOFTWARE      ║<br>
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
@@ -1285,7 +1238,7 @@ Performance Score: 98/100
         let isMenuOpen = false;
         let currentView = 'galaxy';
         let targetLetterCoords = {}; // Object to store initial coordinates
-        const sections = ['resume', 'gamedev', 'ai', 'software'];
+        const sections = ['resume', 'software', 'game_development', 'other'];
 
         // Function to calculate and store the resting coordinates of target letters
         function storeInitialCoords() {
@@ -1496,9 +1449,9 @@ Performance Score: 98/100
             if (!isMenuOpen && currentView === 'galaxy') {
                 const sectionMap = {
                     '1': 'resume',
-                    '2': 'gamedev', 
-                    '3': 'ai',
-                    '4': 'software'
+                    '2': 'software', 
+                    '3': 'game_development',
+                    '4': 'other'
                 };
                 
                 if (sectionMap[e.key]) {
