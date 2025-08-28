@@ -504,7 +504,6 @@
             color: #ff0041;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             font-weight: bold;
-            text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
             will-change: transform, width, height, top, left, font-size;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -709,7 +708,7 @@ ACHIEVEMENTS:
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
-
+<!--
         <div class="detail-view" id="gamedevView">
             <div class="detail-content">
                 <div class="detail-title">
@@ -752,6 +751,237 @@ CURRENT OBJECTIVES:
 [→] Exploring VR/AR technologies
 [→] Mentoring junior game developers
                 </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
+    -->
+
+        <div class="detail-view scrollable" id="gamedevView">
+            <div class="detail-content long-content">
+                <div class="detail-title">
+                    ╔════════════════════╗<br>
+                    ║  GAME DEVELOPMENT  ║<br>
+                    ╚════════════════════╝
+                </div>
+                
+                <div class="detail-text">
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
+                        GAME DEVELOPMENT PROJECTS
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Revo Zero</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 1 month</span>
+                        <span>Team Size: 3 developers</span>
+                        <span>Budget: Sleepless Nights </span>
+                    </div>
+                    <div class="project-description">
+                        Revo Zero was made in under a month by 3 developers, and is a game where you play as a young kid who is trying to make their way through the "Revo Zero tornument",
+                        The game has a unique and clean physics system, which allows the tops on the screen to affect each other significantly and still control great. There's also unique mechanics
+                        involving "tracing" a circle around the enemy. It's a quick but difficult play that involves a lot of skill.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Godot</span>
+                            <span class="tech-tag">2D physics</span>
+                            <span class="tech-tag">Object Oriented Programming</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">[CLASSIFIED]</a>
+                        <a href="#" class="project-link">Internal Report</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">BUG SQUASHER</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 2 days</span>
+                        <span>Team Size: 1 developer</span>
+                        <span>Budget: Hope</span>
+                    </div>
+                    <div class="project-description">
+                        BUG SQUASHER was a tower defense game that was awarded runner-up at the Georgia Tech Global Game Jam. It's a game that was developed bottom up, that had
+                        easily expandable features, with multiple different types of towers and enemies. Along with a map that changed as the game went on.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Unity</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">ICML Paper</a>
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Roll n Die</div>
+                        <div class="project-status status-complete">[COMPLETED]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 2 days</span>
+                        <span>Team Size: 2 developers</span>
+                        <span>Budget: 1 trillion dreams</span>
+                    </div>
+                    <div class="project-description">
+                        Roll n Die is a roguelike video game, that allows the player to fight hordes of enemies, with increasing strength as time goes on. The player was given
+                        a differnt power for each side of the "die" and \
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Qiskit</span>
+                            <span class="tech-tag">Cirq</span>
+                            <span class="tech-tag">Quantum Circuits</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Variational Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Nature MI (Under Review)</a>
+                        <a href="#" class="project-link">Preprint</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Real-Time Vision Pipeline</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 8 months</span>
+                        <span>Team Size: 5 researchers</span>
+                        <span>Performance: 99.7% accuracy</span>
+                    </div>
+                    <div class="project-description">
+                        Production-ready computer vision system for autonomous vehicles. Handles real-time object detection, 
+                        semantic segmentation, and 3D scene reconstruction at 60fps. Deployed in 15+ autonomous vehicle 
+                        prototypes across the industry.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">YOLO v8</span>
+                            <span class="tech-tag">TensorRT</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">ROS</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">IEEE TPAMI</a>
+                        <a href="#" class="project-link">Technical Report</a>
+                        <a href="#" class="project-link">Industry Partnership</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Federated Learning Framework</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 16 months</span>
+                        <span>Team Size: 8 researchers</span>
+                        <span>Citations: 267</span>
+                    </div>
+                    <div class="project-description">
+                        Developed privacy-preserving federated learning system with differential privacy guarantees. 
+                        Enables collaborative AI training across organizations without data sharing. Adopted by 3 
+                        Fortune 500 companies for sensitive data applications.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Differential Privacy</span>
+                            <span class="tech-tag">Secure Aggregation</span>
+                            <span class="tech-tag">TensorFlow Federated</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">Distributed Systems</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">ICLR Paper</a>
+                        <a href="#" class="project-link">Open Source</a>
+                        <a href="#" class="project-link">Industry Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Continual Learning System</div>
+                        <div class="project-status status-prototype">[PROTOTYPE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: Ongoing (6 months)</span>
+                        <span>Team Size: 3 researchers</span>
+                        <span>Stage: Beta Testing</span>
+                    </div>
+                    <div class="project-description">
+                        Novel approach to lifelong learning that prevents catastrophic forgetting while enabling 
+                        continuous adaptation to new tasks. Uses memory consolidation mechanisms inspired by 
+                        neuroscience research.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Meta-Learning</span>
+                            <span class="tech-tag">Memory Networks</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Neuromorphic Computing</span>
+                            <span class="tech-tag">Elastic Weight Consolidation</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">NeurIPS Submission</a>
+                        <a href="#" class="project-link">Prototype Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Large Language Model Optimization</div>
+                        <div class="project-status status-active">[ACTIVE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: Ongoing (9 months)</span>
+                        <span>Team Size: 7 researchers</span>
+                        <span>Collaboration: OpenAI Partnership</span>
+                    </div>
+                    <div class="project-description">
+                        Research collaboration focusing on efficient fine-tuning techniques for large language models. 
+                        Developed parameter-efficient methods that achieve 95% of full fine-tuning performance while 
+                        using only 0.1% of the parameters.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">LoRA</span>
+                            <span class="tech-tag">Adapter Layers</span>
+                            <span class="tech-tag">Hugging Face</span>
+                            <span class="tech-tag">DeepSpeed</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">Collaboration Report</a>
+                        <a href="#" class="project-link">Optimization Toolkit</a>
+                    </div>
+                </div>
+
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
