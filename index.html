@@ -147,6 +147,30 @@
             text-shadow: 0 0 10px #ff0041, 0 0 15px #ff0041;
             font-weight: bold;
         }
+        
+        /* New styles for the quote display */
+        .quote-display {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            font-size: 14px;
+            z-index: 10;
+            letter-spacing: 1px;
+            font-style: italic;
+            color: #888;
+            transition: opacity 0.5s ease;
+        }
+
+        .quote-display .quote-author {
+            color: #00ff41;
+            font-style: normal;
+            font-weight: bold;
+        }
+
 
         .solar-system {
             position: absolute;
@@ -428,6 +452,11 @@
                 flex-direction: column;
                 gap: 5px;
             }
+            
+            .quote-display {
+                font-size: 12px;
+                bottom: 20px;
+            }
         }
 
         .detail-title {
@@ -556,6 +585,10 @@
             .detail-content { padding: 15px; }
             .detail-title { font-size: 18px; }
             .detail-text { font-size: 12px; }
+            .quote-display {
+                font-size: 11px;
+                width: 90%;
+            }
         }
 
         @media (min-aspect-ratio: 21/9) {
@@ -664,6 +697,8 @@
             <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
                 [4] SOFTWARE
             </div>
+            
+            <div id="quote-display" class="quote-display"></div>
         </div>
 
         <div class="zoom-transition" id="zoomTransition"></div>
@@ -1235,6 +1270,26 @@ Performance Score: 98/100
     </div>
 
     <script>
+        // --- START: New Quote Data and Function ---
+        const quotes = [
+            { text: "He is so funny and awesome", author: "Coworker" },
+            { text: "Great hire, please", author: "Dad" },
+            { text: "Handsome, Gorgeous, Incredible", author: "Me" },
+            { text: "A true master of the digital frontier.", author: "Tech Journal" },
+            { text: "Turned our complex problems into elegant solutions.", author: "Former Client" }
+        ];
+
+        function displayRandomQuote() {
+            const quoteContainer = document.getElementById('quote-display');
+            if (quoteContainer) {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const randomQuote = quotes[randomIndex];
+                // Use innerHTML to allow for the <span> tag for styling the author
+                quoteContainer.innerHTML = `"${randomQuote.text}" - <span class="quote-author">${randomQuote.author}</span>`;
+            }
+        }
+        // --- END: New Quote Data and Function ---
+        
         let isMenuOpen = false;
         let currentView = 'galaxy';
         let targetLetterCoords = {}; // Object to store initial coordinates
@@ -1425,8 +1480,11 @@ Performance Score: 98/100
 
         // --- Event Listeners ---
         
-        // Calculate coordinates on initial load
-        document.addEventListener('DOMContentLoaded', storeInitialCoords);
+        // Calculate coordinates and display quote on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            storeInitialCoords();
+            displayRandomQuote();
+        });
 
         // Recalculate coordinates on window resize
         window.addEventListener('resize', storeInitialCoords);
