@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galaxy Portfolio</title>
     <style>
+        :root {
+            --color-primary-highlight: rgb(218, 50, 246);
+            --color-secondary-highlight: rgb(255, 215, 120);
+            --color-tertiary-highlight: rgb(249, 149, 55);
+            --color-light-blue: rgb(214, 238, 245);
+            --color-medium-blue: rgb(96, 129, 232);
+            --color-dark-purple: rgb(80, 67, 236);
+            --color-orange: rgb(221, 83, 36);
+            --color-pinkish-purple: rgb(172, 68, 163);
+            --color-maroon: rgb(188, 64, 89);
+            --color-dark-orange: rgb(149, 54, 26);
+            --color-deep-blue: rgb(48, 35, 139);
+            --color-dark-magenta: rgb(95, 33, 76);
+            --color-darkest-purple: rgb(29, 29, 82);
+            --color-dark-red: rgb(76, 23, 20);
+            --color-very-dark-gray: rgb(18, 19, 41);
+            --color-background: rgb(4, 3, 7);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,8 +32,8 @@
 
         body {
             font-family: 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            background: #000;
-            color: #00ff41;
+            background: var(--color-background);
+            color: var(--color-light-blue);
             overflow: hidden;
             height: 100vh;
             image-rendering: pixelated;
@@ -35,9 +54,9 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            background: #000;
-            border: 2px solid #00ff41;
-            color: #00ff41;
+            background: var(--color-background);
+            border: 2px solid var(--color-light-blue);
+            color: var(--color-light-blue);
             padding: 8px 16px;
             font-family: inherit;
             cursor: pointer;
@@ -49,8 +68,8 @@
         }
 
         .menu-btn:hover {
-            background: #00ff41;
-            color: #000;
+            background: var(--color-light-blue);
+            color: var(--color-background);
         }
 
         .menu-overlay {
@@ -59,7 +78,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000;
+            background: var(--color-background);
             display: none;
             align-items: center;
             justify-content: center;
@@ -76,9 +95,9 @@
             text-align: center;
             font-size: 18px;
             line-height: 2.5;
-            border: 2px solid #00ff41;
+            border: 2px solid var(--color-light-blue);
             padding: 40px;
-            background: #000;
+            background: var(--color-background);
             transform: scale(0.9);
             transition: transform 0.2s ease;
         }
@@ -89,20 +108,20 @@
 
         .menu-item {
             display: block;
-            color: #00ff41;
+            color: var(--color-light-blue);
             text-decoration: none;
             margin: 10px 0;
             padding: 8px 16px;
-            border: 1px solid #00ff41;
+            border: 1px solid var(--color-light-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: #000;
+            background: var(--color-background);
             transition: all 0.2s ease;
         }
 
         .menu-item:hover {
-            background: #00ff41;
-            color: #000;
+            background: var(--color-light-blue);
+            color: var(--color-background);
         }
 
         .galaxy-view {
@@ -142,8 +161,8 @@
         }
 
         .target-letter {
-            color: #ff0041;
-            text-shadow: 0 0 10px #ff0041, 0 0 15px #ff0041;
+            color: var(--color-primary-highlight);
+            text-shadow: 0 0 10px var(--color-primary-highlight), 0 0 15px var(--color-primary-highlight);
             font-weight: bold;
         }
         
@@ -159,12 +178,12 @@
             z-index: 10;
             letter-spacing: 1px;
             font-style: italic;
-            color: #888;
+            color: rgba(214, 238, 245, 0.5); /* Semi-transparent version of the light-blue */
             transition: opacity 0.5s ease;
         }
 
         .quote-display .quote-author {
-            color: #00ff41;
+            color: var(--color-light-blue);
             font-style: normal;
             font-weight: bold;
         }
@@ -174,9 +193,9 @@
             position: absolute;
             cursor: pointer;
             padding: 8px 12px;
-            border: 2px solid #00ff41;
-            background: #000;
-            color: #00ff41;
+            border: 2px solid var(--color-light-blue);
+            background: var(--color-background);
+            color: var(--color-light-blue);
             font-family: inherit;
             font-size: 14px;
             text-transform: uppercase;
@@ -188,7 +207,10 @@
             transition: all 0.2s ease;
         }
 
-        .solar-system:hover { background: #00ff41; color: #000; }
+        .solar-system:hover { 
+            background: var(--color-light-blue); 
+            color: var(--color-background); 
+        }
 
         .solar-system.resume { top: 25%; left: 15%; }
         .solar-system.software { top: 25%; right: 15%; }
@@ -202,7 +224,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000;
+            background: var(--color-background);
             display: none;
             align-items: center;
             justify-content: center;
@@ -227,9 +249,9 @@
             max-width: 800px;
             width: 100%;
             text-align: left;
-            border: 2px solid #00ff41;
+            border: 2px solid var(--color-light-blue);
             padding: 40px;
-            background: #000;
+            background: var(--color-background);
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
@@ -243,10 +265,10 @@
         }
 
         .project-section {
-            border: 1px solid #00ff41;
+            border: 1px solid var(--color-light-blue);
             margin: 30px 0;
             padding: 25px;
-            background: #001100;
+            background: rgba(29, 29, 82, 0.2);
             position: relative;
             opacity: 0;
             transform: translateX(-20px);
@@ -278,7 +300,7 @@
         .project-title {
             font-size: 18px;
             font-weight: bold;
-            color: #00ff41;
+            color: var(--color-light-blue);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -293,29 +315,29 @@
         }
 
         .status-active { 
-            border-color: #00ff41; 
-            color: #00ff41; 
-            background: rgba(0, 255, 65, 0.1);
+            border-color: var(--color-medium-blue); 
+            color: var(--color-medium-blue); 
+            background: rgba(96, 129, 232, 0.1);
         }
         .status-complete { 
-            border-color: #41ff00; 
-            color: #41ff00; 
-            background: rgba(65, 255, 0, 0.1);
+            border-color: var(--color-medium-blue); 
+            color: var(--color-medium-blue); 
+            background: rgba(96, 129, 232, 0.1);
         }
         .status-prototype { 
-            border-color: #ffaa00; 
-            color: #ffaa00; 
-            background: rgba(255, 170, 0, 0.1);
+            border-color: var(--color-tertiary-highlight); 
+            color: var(--color-tertiary-highlight); 
+            background: rgba(249, 149, 55, 0.1);
         }
         .status-classified { 
-            border-color: #ff0041; 
-            color: #ff0041; 
-            background: rgba(255, 0, 65, 0.1);
+            border-color: var(--color-primary-highlight); 
+            color: var(--color-primary-highlight); 
+            background: rgba(218, 50, 246, 0.1);
         }
 
         .project-meta {
             font-size: 14px;
-            color: #888;
+            color: rgba(214, 238, 245, 0.5); /* Semi-transparent version of the light-blue */
             margin-bottom: 15px;
             display: flex;
             gap: 20px;
@@ -332,7 +354,7 @@
         }
 
         .tech-stack h4 {
-            color: #00ff41;
+            color: var(--color-light-blue);
             margin-bottom: 8px;
             font-size: 14px;
             text-transform: uppercase;
@@ -347,10 +369,10 @@
 
         .tech-tag {
             padding: 2px 8px;
-            border: 1px solid #666;
-            color: #ccc;
+            border: 1px solid var(--color-medium-blue);
+            color: var(--color-light-blue);
+            background: rgba(214, 238, 245, 0.1);
             font-size: 12px;
-            background: rgba(102, 102, 102, 0.1);
         }
 
         .project-links {
@@ -362,8 +384,8 @@
 
         .project-link {
             padding: 6px 12px;
-            border: 1px solid #00ff41;
-            color: #00ff41;
+            border: 1px solid var(--color-light-blue);
+            color: var(--color-light-blue);
             text-decoration: none;
             font-size: 12px;
             text-transform: uppercase;
@@ -372,8 +394,8 @@
         }
 
         .project-link:hover {
-            background: #00ff41;
-            color: #000;
+            background: var(--color-light-blue);
+            color: var(--color-background);
         }
 
         .loading-overlay {
@@ -398,12 +420,12 @@
 
         .loading-content {
             text-align: center;
-            border: 2px solid #00ff41;
+            border: 2px solid var(--color-light-blue);
             padding: 20px 30px;
-            background: #000;
-            color: #00ff41;
+            background: var(--color-background);
+            color: var(--color-light-blue);
             transform: translateY(80px) scale(0.8);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            box-shadow: 0 0 20px rgba(218, 50, 246, 0.3);
             opacity: 0;
             transition: all 0.4s ease-out;
         }
@@ -423,7 +445,7 @@
         .loading-bar {
             width: 180px;
             height: 3px;
-            border: 1px solid #00ff41;
+            border: 1px solid var(--color-light-blue);
             margin: 0 auto;
             position: relative;
             overflow: hidden;
@@ -431,10 +453,10 @@
 
         .loading-progress {
             height: 100%;
-            background: #00ff41;
+            background: var(--color-light-blue);
             width: 0%;
             transition: width 0.3s ease;
-            box-shadow: 0 0 10px #00ff41;
+            box-shadow: 0 0 10px var(--color-light-blue);
         }
 
         @media (max-width: 768px) {
@@ -490,9 +512,9 @@
         }
 
         .back-btn {
-            background: #000;
-            border: 2px solid #00ff41;
-            color: #00ff41;
+            background: var(--color-background);
+            border: 2px solid var(--color-light-blue);
+            color: var(--color-light-blue);
             padding: 10px 20px;
             font-family: inherit;
             cursor: pointer;
@@ -513,8 +535,8 @@
         }
 
         .back-btn:hover {
-            background: #00ff41;
-            color: #000;
+            background: var(--color-light-blue);
+            color: var(--color-background);
         }
 
         .zoom-transition {
@@ -526,7 +548,7 @@
             align-items: center;
             justify-content: center;
             font-family: inherit;
-            color: #ff0041;
+            color: var(--color-primary-highlight);
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             font-weight: bold;
             will-change: transform, width, height, top, left, font-size;
@@ -539,14 +561,13 @@
             height: 100vh !important;
             top: 0 !important;
             left: 0 !important;
-            background: rgba(0, 0, 0, 0.85) !important;
+            background: rgba(4, 3, 7, 0.85) !important;
             border: none !important;
             font-size: 30vmin !important;
         }
         
-        /* --- START: New Contact Screen Styles --- */
         .contact-header {
-            color: #888;
+            color: rgba(214, 238, 245, 0.5); /* Semi-transparent version of the light-blue */
             font-size: 14px;
             margin-bottom: 10px;
             font-style: italic;
@@ -564,46 +585,43 @@
             align-items: center;
             gap: 15px;
             font-size: 16px;
-            flex-wrap: wrap; /* For responsiveness */
+            flex-wrap: wrap;
         }
 
         .contact-icon {
-            color: #ff0041; /* Red color to match other highlights */
+            color: var(--color-primary-highlight);
             font-weight: bold;
         }
 
         .contact-label {
-            color: #00ff41; /* Main green color */
+            color: var(--color-light-blue);
             font-weight: bold;
-            min-width: 80px; /* For alignment */
+            min-width: 80px;
         }
 
         .contact-value a {
-            color: #ccc;
+            color: var(--color-light-blue);
             text-decoration: none;
-            border-bottom: 1px dashed #666;
+            border-bottom: 1px dashed var(--color-medium-blue);
             transition: all 0.2s ease;
         }
 
         .contact-value a:hover {
             color: #fff;
-            border-bottom-color: #00ff41;
-            background-color: rgba(0, 255, 65, 0.1);
+            border-bottom-color: var(--color-light-blue);
+            background-color: rgba(218, 50, 246, 0.1);
         }
 
         .contact-status {
             line-height: 1.8;
             font-size: 14px;
-            color: #ccc;
-            border-left: 2px solid #00ff41;
+            color: var(--color-light-blue);
+            border-left: 2px solid var(--color-light-blue);
             padding-left: 20px;
             margin: 20px 0;
-            white-space: pre-wrap; /* Allows wrapping */
+            white-space: pre-wrap;
         }
-        /* --- END: New Contact Screen Styles --- */
 
-
-        /* Responsive Design */
         @media (max-width: 1024px) {
             .solar-system.resume { top: 20%; left: 10%; }
             .solar-system.game_development { top: 20%; right: 10%; }
@@ -741,7 +759,7 @@
                         --......,..,-,....,...-,,obxzbxxuhabshshbo,-,,,,...- .    n                                                         
           -      t FWY    .  ,-.,.-,-.,....-...        , -b-.                    bB                                                         
                    JHJ               ,..  -.                                 ,         -                              b,                    
-                             .-                                                                                                             
+                             .-                                                                                                                  
                                                                            c<span id="contactTarget" class="target-letter">W</span>                                                               
                                                                                     -   ,           u                                       
                         ,,                                                                                                                  
@@ -1099,7 +1117,6 @@
     </div>
 
     <script>
-        // --- START: Quote Data ---
         const quotes = [
             { text: "This guy will not shut up about linux", author: "Noapt" },
             { text: "A great addition to any team", author: "Some guy on my team" },
@@ -1108,39 +1125,30 @@
             { text: "Spent 8 hours automating something he could have done in 15 minutes.", author: "Me" },
         ];
         
-        // --- MODIFIED: This function now includes a fade transition ---
         function displayRandomQuote() {
             const quoteContainer = document.getElementById('quote-display');
             if (quoteContainer) {
-                // 1. Fade the current quote out
                 quoteContainer.style.opacity = 0;
-
-                // 2. After the fade-out is complete, change the content and fade back in
                 setTimeout(() => {
                     const randomIndex = Math.floor(Math.random() * quotes.length);
                     const randomQuote = quotes[randomIndex];
                     quoteContainer.innerHTML = `"${randomQuote.text}" - <span class="quote-author">${randomQuote.author}</span>`;
-                    
-                    // 3. Fade the new quote in
                     quoteContainer.style.opacity = 1;
-                }, 500); // This delay (500ms) matches the CSS transition time
+                }, 500);
             }
         }
         
         let isMenuOpen = false;
         let currentView = 'galaxy';
-        let targetLetterCoords = {}; // Object to store initial coordinates
+        let targetLetterCoords = {};
         const sections = ['resume', 'software', 'game_development', 'other', 'contact'];
 
-        // Function to calculate and store the resting coordinates of target letters
         function storeInitialCoords() {
             const galaxy = document.querySelector('.galaxy');
-            // Temporarily remove transition to get instant, accurate position
             const originalTransition = galaxy.style.transition;
             galaxy.style.transition = 'none';
             galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
 
-            // Allow DOM to update before measuring
             setTimeout(() => {
                 sections.forEach(section => {
                     const target = document.getElementById(section + 'Target');
@@ -1152,14 +1160,12 @@
                         };
                     }
                 });
-                // Restore transition
                 galaxy.style.transition = originalTransition;
             }, 0);
         }
 
-        // The new robust function for centering the galaxy
         function centerGalaxyOn(section) {
-            if (!targetLetterCoords[section]) return; // Guard clause
+            if (!targetLetterCoords[section]) return;
             
             const galaxy = document.querySelector('.galaxy');
             const screenCenterX = window.innerWidth / 2;
@@ -1329,16 +1335,12 @@
             }, 300);
         }
 
-        // --- Event Listeners ---
-        
-        // --- MODIFIED: This now starts the 10-second cycle after the first quote is shown ---
         document.addEventListener('DOMContentLoaded', () => {
             storeInitialCoords();
             displayRandomQuote(); // Show the first quote on load
             setInterval(displayRandomQuote, 10000); // Change the quote every 10 seconds (10000ms)
         });
 
-        // Recalculate coordinates on window resize
         window.addEventListener('resize', storeInitialCoords);
         
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
