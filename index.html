@@ -196,9 +196,9 @@
         }
 
         .solar-system.resume { top: 25%; left: 15%; }
-        .solar-system.game_development { top: 25%; right: 15%; }
-        .solar-system.other { bottom: 25%; left: 15%; }
-        .solar-system.software { bottom: 25%; right: 15%; }
+        .solar-system.software { top: 25%; right: 15%; }
+        .solar-system.game_development { bottom: 25%; left: 15%; }
+        .solar-system.other { bottom: 25%; right: 15%; }
         .solar-system.contact { bottom: 10%; left: 50%; transform: translateX(-50%); }
 
         .detail-view {
@@ -756,16 +756,16 @@
                 [1] RESUME
             </div>
             
+            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
+                [2] SOFTWARE
+            </div>
+            
             <div class="solar-system game_development" onclick="zoomToSection('game_development')" onmouseenter="centerGalaxyOn('game_development')" onmouseleave="resetGalaxyPosition()">
-                [2] GAME DEVELOPMENT
+                [3] GAME DEVELOPMENT
             </div>
             
             <div class="solar-system other" onclick="zoomToSection('other')" onmouseenter="centerGalaxyOn('other')" onmouseleave="resetGalaxyPosition()">
-                [3] OTHER
-            </div>
-            
-            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
-                [4] SOFTWARE
+                [4] OTHER
             </div>
             
             <div class="solar-system contact" onclick="zoomToSection('contact')" onmouseenter="centerGalaxyOn('contact')" onmouseleave="resetGalaxyPosition()">
@@ -785,33 +785,12 @@
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-<pre>
-/************************************************
- * Agent: Dragos Lup
- * Title: Senior Software Developer
- * Status: ACTIVE
- * Location: [CLASSIFIED]
- ************************************************/
-
-[SECTION_SUMMARY]
-> Proficient full-stack developer with extensive
-  experience in leading teams and architecting
-  scalable, cross-platform applications.
-> Expertise in Agile methodologies and database
-  optimization to drive project success.
-
-[SECTION_SKILLS]
-Languages  : [ JavaScript, Python, C#, Java, SQL    ]
-Frameworks : [ React, Node.js, .NET, Spring Boot   ]
-Databases  : [ PostgreSQL, MongoDB, Redis          ]
-Tools      : [ Docker, Git, AWS, Linux             ]
-
-[SECTION_ACHIEVEMENTS]
-(lead)     => Managed and mentored team of 8+ engineers.
-(deliver)  => Shipped over 15 production applications.
-(optimize) => Reduced core system latency by 40%.
-(automate) => Implemented robust CI/CD pipelines.
-</pre>
+                    <p>I'm a passionate developer with a love for both software and game development. I'm always looking for new challenges and opportunities to learn and grow.</p>
+                    <p>You can find my resumes below:</p>
+                    <ul>
+                        <li><a href="https://github.com/Dragos-Lup/Resume/blob/main/Dragos%20Lup%20Resume.pdf">Software Development Resume</a></li>
+                        <li><a href="https://github.com/Dragos-Lup/Resume/blob/main/Game%20Developer%20Resume.pdf">Game Development Resume</a></li>
+                    </ul>
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -823,12 +802,6 @@ Tools      : [ Docker, Git, AWS, Linux             ]
                     ╔════════════════════╗<br>
                     ║  GAME DEVELOPMENT  ║<br>
                     ╚════════════════════╝
-                </div>
-                
-                <div class="detail-text">
-                    <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
-                        GAME DEVELOPMENT PROJECTS
-                    </p>
                 </div>
 
                 <div class="project-section">
@@ -857,37 +830,7 @@ Tools      : [ Docker, Git, AWS, Linux             ]
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">[CLASSIFIED]</a>
-                        <a href="#" class="project-link">Internal Report</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Dansu</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 1 month</span>
-                        <span>Team Size: 2 developers</span>
-                        <span>Budget: Prayer </span>
-                    </div>
-                    <div class="project-description">
-                        Dansu is a game built to mirror OSU. The player "dances" to the beat in order to beat songs. We used an MMPose library to track the players movements
-                        using nothing but their camera. Then, the player could use their head, hands, and hips in order to match to different circles on the screen. 
-                        The MMPose Library was way too slow, so after a lot of tweaking, we managed to get a 1 frame per 3 second game, to a 30 fps game.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">MMPose</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Object Oriented Programming</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">[CLASSIFIED]</a>
-                        <a href="#" class="project-link">Internal Report</a>
+                        <a href="https://github.com/Dragos-Lup/Revo-Zero" class="project-link">GitHub</a>
                     </div>
                 </div>
 
@@ -916,9 +859,7 @@ Tools      : [ Docker, Git, AWS, Linux             ]
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">ICML Paper</a>
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Demo</a>
+                        <a href="https://github.com/Dragos-Lup/Global-Game-Jam-2023" class="project-link">GitHub</a>
                     </div>
                 </div>
 
@@ -944,103 +885,7 @@ Tools      : [ Docker, Git, AWS, Linux             ]
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">Nature MI (Under Review)</a>
-                        <a href="#" class="project-link">Preprint</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Real-Time Vision Pipeline</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 8 months</span>
-                        <span>Team Size: 5 researchers</span>
-                        <span>Performance: 99.7% accuracy</span>
-                    </div>
-                    <div class="project-description">
-                        Production-ready computer vision system for autonomous vehicles. Handles real-time object detection, 
-                        semantic segmentation, and 3D scene reconstruction at 60fps. Deployed in 15+ autonomous vehicle 
-                        prototypes across the industry.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">YOLO v8</span>
-                            <span class="tech-tag">TensorRT</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">ROS</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">IEEE TPAMI</a>
-                        <a href="#" class="project-link">Technical Report</a>
-                        <a href="#" class="project-link">Industry Partnership</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Federated Learning Framework</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 16 months</span>
-                        <span>Team Size: 8 researchers</span>
-                        <span>Citations: 267</span>
-                    </div>
-                    <div class="project-description">
-                        Developed privacy-preserving federated learning system with differential privacy guarantees. 
-                        Enables collaborative AI training across organizations without data sharing. Adopted by 3 
-                        Fortune 500 companies for sensitive data applications.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Differential Privacy</span>
-                            <span class="tech-tag">Secure Aggregation</span>
-                            <span class="tech-tag">TensorFlow Federated</span>
-                            <span class="tech-tag">Cryptography</span>
-                            <span class="tech-tag">Distributed Systems</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">ICLR Paper</a>
-                        <a href="#" class="project-link">Open Source</a>
-                        <a href="#" class="project-link">Industry Case Study</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Continual Learning System</div>
-                        <div class="project-status status-prototype">[PROTOTYPE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: Ongoing (6 months)</span>
-                        <span>Team Size: 3 researchers</span>
-                        <span>Stage: Beta Testing</span>
-                    </div>
-                    <div class="project-description">
-                        Novel approach to lifelong learning that prevents catastrophic forgetting while enabling 
-                        continuous adaptation to new tasks. Uses memory consolidation mechanisms inspired by 
-                        neuroscience research.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Meta-Learning</span>
-                            <span class="tech-tag">Memory Networks</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Neuromorphic Computing</span>
-                            <span class="tech-tag">Elastic Weight Consolidation</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">NeurIPS Submission</a>
-                        <a href="#" class="project-link">Prototype Demo</a>
+                        <a href="https://github.com/Dragos-Lup/Roll-n-Die" class="project-link">GitHub</a>
                     </div>
                 </div>
 
@@ -1055,230 +900,31 @@ Tools      : [ Docker, Git, AWS, Linux             ]
                     ║       OTHER       ║<br>
                     ╚═══════════════════╝
                 </div>
-                
-                <div class="detail-text">
-                    <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
-                        PORTFOLIO OF OTHER PROJECTS & PUBLICATIONS
-                    </p>
-                </div>
 
                 <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Project NEXUS</div>
-                        <div class="project-status status-classified">[CLASSIFIED]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 18 months</span>
-                        <span>Team Size: 12 researchers</span>
-                        <span>Budget: $2.3M</span>
+                        <div class="project-title">Fun Fact #1</div>
                     </div>
                     <div class="project-description">
-                        Advanced autonomous decision-making framework for multi-agent coordination in dynamic environments. 
-                        This project focuses on developing AI systems capable of real-time strategic planning and distributed 
-                        consensus mechanisms for mission-critical applications.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Deep Reinforcement Learning</span>
-                            <span class="tech-tag">Multi-Agent Systems</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">Distributed Computing</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">[CLASSIFIED]</a>
-                        <a href="#" class="project-link">Internal Report</a>
+                        I'm a huge fan of the Linux operating system. I've been using it for over 5 years, and I'm always trying to learn more about it. I'm currently using Arch Linux, and I'm a big fan of the command line. I'm always looking for new ways to automate my workflow and make my life easier.
                     </div>
                 </div>
 
                 <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Neural Architecture Search Suite</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 14 months</span>
-                        <span>Team Size: 6 researchers</span>
-                        <span>Citations: 127</span>
+                        <div class="project-title">Fun Fact #2</div>
                     </div>
                     <div class="project-description">
-                        Developed an efficient gradient-based optimization framework for automated neural architecture search. 
-                        The system reduces search time by 85% while discovering architectures that outperform manually designed 
-                        networks across multiple benchmarks.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">JAX</span>
-                            <span class="tech-tag">AutoML</span>
-                            <span class="tech-tag">Bayesian Optimization</span>
-                            <span class="tech-tag">Cloud Computing</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">ICML Paper</a>
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Demo</a>
+                        I'm a big fan of the game "The Legend of Zelda: Breath of the Wild". I've spent over 200 hours playing it, and I'm still not tired of it. I'm currently trying to complete the game in master mode, and it's been a huge challenge. I'm also a big fan of the game's soundtrack, and I often listen to it while I'm working.
                     </div>
                 </div>
 
                 <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Quantum-Enhanced Learning</div>
-                        <div class="project-status status-active">[ACTIVE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: Ongoing (12 months)</span>
-                        <span>Team Size: 4 researchers</span>
-                        <span>Funding: NSF Grant</span>
+                        <div class="project-title">Fun Fact #3</div>
                     </div>
                     <div class="project-description">
-                        Investigating quantum-classical hybrid neural networks that leverage quantum computing principles 
-                        for enhanced feature learning. Early results show 30% improvement in training efficiency for 
-                        specific problem domains.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Qiskit</span>
-                            <span class="tech-tag">Cirq</span>
-                            <span class="tech-tag">Quantum Circuits</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Variational Algorithms</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Nature MI (Under Review)</a>
-                        <a href="#" class="project-link">Preprint</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Real-Time Vision Pipeline</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 8 months</span>
-                        <span>Team Size: 5 researchers</span>
-                        <span>Performance: 99.7% accuracy</span>
-                    </div>
-                    <div class="project-description">
-                        Production-ready computer vision system for autonomous vehicles. Handles real-time object detection, 
-                        semantic segmentation, and 3D scene reconstruction at 60fps. Deployed in 15+ autonomous vehicle 
-                        prototypes across the industry.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">YOLO v8</span>
-                            <span class="tech-tag">TensorRT</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">ROS</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">IEEE TPAMI</a>
-                        <a href="#" class="project-link">Technical Report</a>
-                        <a href="#" class="project-link">Industry Partnership</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Federated Learning Framework</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 16 months</span>
-                        <span>Team Size: 8 researchers</span>
-                        <span>Citations: 267</span>
-                    </div>
-                    <div class="project-description">
-                        Developed privacy-preserving federated learning system with differential privacy guarantees. 
-                        Enables collaborative AI training across organizations without data sharing. Adopted by 3 
-                        Fortune 500 companies for sensitive data applications.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Differential Privacy</span>
-                            <span class="tech-tag">Secure Aggregation</span>
-                            <span class="tech-tag">TensorFlow Federated</span>
-                            <span class="tech-tag">Cryptography</span>
-                            <span class="tech-tag">Distributed Systems</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">ICLR Paper</a>
-                        <a href="#" class="project-link">Open Source</a>
-                        <a href="#" class="project-link">Industry Case Study</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Continual Learning System</div>
-                        <div class="project-status status-prototype">[PROTOTYPE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: Ongoing (6 months)</span>
-                        <span>Team Size: 3 researchers</span>
-                        <span>Stage: Beta Testing</span>
-                    </div>
-                    <div class="project-description">
-                        Novel approach to lifelong learning that prevents catastrophic forgetting while enabling 
-                        continuous adaptation to new tasks. Uses memory consolidation mechanisms inspired by 
-                        neuroscience research.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Meta-Learning</span>
-                            <span class="tech-tag">Memory Networks</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Neuromorphic Computing</span>
-                            <span class="tech-tag">Elastic Weight Consolidation</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">NeurIPS Submission</a>
-                        <a href="#" class="project-link">Prototype Demo</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Large Language Model Optimization</div>
-                        <div class="project-status status-active">[ACTIVE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: Ongoing (9 months)</span>
-                        <span>Team Size: 7 researchers</span>
-                        <span>Collaboration: OpenAI Partnership</span>
-                    </div>
-                    <div class="project-description">
-                        Research collaboration focusing on efficient fine-tuning techniques for large language models. 
-                        Developed parameter-efficient methods that achieve 95% of full fine-tuning performance while 
-                        using only 0.1% of the parameters.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Transformers</span>
-                            <span class="tech-tag">LoRA</span>
-                            <span class="tech-tag">Adapter Layers</span>
-                            <span class="tech-tag">Hugging Face</span>
-                            <span class="tech-tag">DeepSpeed</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Collaboration Report</a>
-                        <a href="#" class="project-link">Optimization Toolkit</a>
+                        I'm a huge foodie. I love trying new restaurants and cuisines, and I'm always looking for new recipes to try. I'm a big fan of spicy food, and I'm always looking for new ways to challenge my taste buds. I'm also a big fan of cooking, and I love to experiment with new ingredients and techniques.
                     </div>
                 </div>
 
@@ -1286,58 +932,66 @@ Tools      : [ Docker, Git, AWS, Linux             ]
             </div>
         </div>
 
-        <div class="detail-view" id="softwareView">
-            <div class="detail-content">
+        <div class="detail-view scrollable" id="softwareView">
+            <div class="detail-content long-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
                     ║     SOFTWARE      ║<br>
                     ╚═══════════════════╝
                 </div>
-                <div class="detail-text">
-SOFTWARE DEVELOPMENT CORE:
--------------------------
-System Status: ONLINE
-Performance: OPTIMAL
-Uptime: 99.97%
 
-CORE COMPETENCIES:
------------------
-> Full-Stack Web Applications
-> API Design & Development  
-> Database Architecture
-> Cloud Computing & DevOps
-> Microservices Architecture
-
-TECHNOLOGY STACK:
-----------------
-Frontend: React, Vue.js, TypeScript
-Backend: Node.js, Python, Java, C#
-Databases: PostgreSQL, MongoDB, Redis
-Cloud: AWS, Docker, Kubernetes
-Tools: Git, Jenkins, Terraform
-
-ARCHITECTURE PATTERNS:
----------------------
-* RESTful API Design
-* Event-Driven Architecture
-* Domain-Driven Design
-* SOLID Principles
-* Test-Driven Development
-
-CURRENT SYSTEMS:
----------------
-[PROD] E-commerce Platform - 1M+ users
-[PROD] Real-time Analytics Dashboard
-[STAGING] Distributed Message Queue
-[DEV] Blockchain Integration Layer
-
-METRICS:
--------
-Code Quality Score: A+
-Test Coverage: 95%
-Deployment Success: 99.8%
-Performance Score: 98/100
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">AI Powered Fitness</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 1 month</span>
+                        <span>Team Size: 2 developers</span>
+                        <span>Budget: Prayer</span>
+                    </div>
+                    <div class="project-description">
+                        A fitness app that uses AI to track your workouts and provide feedback. It uses your camera to track your form and reps, and provides real-time feedback to help you improve. We used a MMPose library to track the players movements using nothing but their camera. Then, the player could use their head, hands, and hips in order to match to different circles on the screen. The MMPose Library was way too slow, so after a lot of tweaking, we managed to get a 1 frame per 3 second game, to a 30 fps game.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">MMPose</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Object Oriented Programming</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Dragos-Lup/Dansu" class="project-link">GitHub</a>
+                    </div>
                 </div>
+
+                <div class="project-section">
+                    <div class="project-header">
+                        <div class="project-title">Portfolio</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
+                    </div>
+                    <div class="project-meta">
+                        <span>Duration: 1 week</span>
+                        <span>Team Size: 1 developer</span>
+                        <span>Budget: My sanity</span>
+                    </div>
+                    <div class="project-description">
+                        This portfolio was built from scratch using HTML, CSS, and JavaScript. It's designed to be a fun, interactive way to showcase my projects and skills. The galaxy background is a particle system that I built from scratch, and the zoom effect is a combination of CSS and JavaScript. The site is also fully responsive, so it should look great on any device.
+                    </div>
+                    <div class="tech-stack">
+                        <h4>Technologies</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io" class="project-link">GitHub</a>
+                    </div>
+                </div>
+
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
