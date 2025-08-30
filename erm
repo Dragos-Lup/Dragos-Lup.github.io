@@ -138,39 +138,7 @@
             line-height: 1;
             white-space: pre;
             font-family: 'Courier New', monospace;
-            transition: transform 0.6s ease-out;
         }
-
-        /* Style for the target letters */
-        .target-letter {
-            color: #ff0041;
-            text-shadow: 0 0 10px #ff0041, 0 0 15px #ff0041;
-            font-weight: bold;
-        }
-        
-        /* New styles for the quote display */
-        .quote-display {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-            font-size: 14px;
-            z-index: 10;
-            letter-spacing: 1px;
-            font-style: italic;
-            color: #888;
-            transition: opacity 0.5s ease;
-        }
-
-        .quote-display .quote-author {
-            color: #00ff41;
-            font-style: normal;
-            font-weight: bold;
-        }
-
 
         .solar-system {
             position: absolute;
@@ -196,9 +164,50 @@
         }
 
         .solar-system.resume { top: 25%; left: 15%; }
-        .solar-system.game_development { top: 25%; right: 15%; }
-        .solar-system.other { bottom: 25%; left: 15%; }
+        .solar-system.gamedev { top: 25%; right: 15%; }
+        .solar-system.ai { bottom: 25%; left: 15%; }
         .solar-system.software { bottom: 25%; right: 15%; }
+
+        .target-char {
+            color: #ff0041;
+            text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
+            animation: targetPulse 2s ease-in-out infinite alternate;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes targetPulse {
+            from { 
+                text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
+                transform: scale(1);
+            }
+            to { 
+                text-shadow: 0 0 25px #ff0041, 0 0 35px #ff0041, 0 0 45px #ff0041;
+                transform: scale(1.2);
+            }
+        }
+
+        .pointer-line {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pointer-line.active {
+            opacity: 1;
+        }
+
+        .line-segment {
+            position: absolute;
+            color: #ff0041;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1;
+            text-shadow: 0 0 10px #ff0041;
+        }
 
         .detail-view {
             position: fixed;
@@ -452,11 +461,6 @@
                 flex-direction: column;
                 gap: 5px;
             }
-            
-            .quote-display {
-                font-size: 12px;
-                bottom: 20px;
-            }
         }
 
         .detail-title {
@@ -523,7 +527,8 @@
 
         .zoom-transition {
             position: fixed;
-            background: transparent;
+            border: 2px solid #ff0041;
+            background: #000;
             z-index: 15;
             pointer-events: none;
             display: none;
@@ -531,11 +536,11 @@
             justify-content: center;
             font-family: inherit;
             color: #ff0041;
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.8s linear;
             font-weight: bold;
-            will-change: transform, width, height, top, left, font-size;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px #ff0041, 0 0 25px #ff0041;
         }
 
         .zooming {
@@ -543,16 +548,15 @@
             height: 100vh !important;
             top: 0 !important;
             left: 0 !important;
-            background: rgba(0, 0, 0, 0.85) !important;
+            background: #000 !important;
             border: none !important;
-            font-size: 30vmin !important;
         }
 
         /* Responsive Design */
         @media (max-width: 1024px) {
             .solar-system.resume { top: 20%; left: 10%; }
-            .solar-system.game_development { top: 20%; right: 10%; }
-            .solar-system.other { bottom: 20%; left: 10%; }
+            .solar-system.gamedev { top: 20%; right: 10%; }
+            .solar-system.ai { bottom: 20%; left: 10%; }
             .solar-system.software { bottom: 20%; right: 10%; }
         }
 
@@ -565,8 +569,8 @@
                 min-width: 100px; 
             }
             .solar-system.resume { top: 15%; left: 5%; }
-            .solar-system.game_development { top: 15%; right: 5%; }
-            .solar-system.other { bottom: 15%; left: 5%; }
+            .solar-system.gamedev { top: 15%; right: 5%; }
+            .solar-system.ai { bottom: 15%; left: 5%; }
             .solar-system.software { bottom: 15%; right: 5%; }
             .menu-content { font-size: 16px; padding: 30px; }
             .detail-content { padding: 20px; }
@@ -585,21 +589,17 @@
             .detail-content { padding: 15px; }
             .detail-title { font-size: 18px; }
             .detail-text { font-size: 12px; }
-            .quote-display {
-                font-size: 11px;
-                width: 90%;
-            }
         }
 
         @media (min-aspect-ratio: 21/9) {
-            .solar-system.resume, .solar-system.other { left: 25%; }
-            .solar-system.game_development, .solar-system.software { right: 25%; }
+            .solar-system.resume, .solar-system.ai { left: 25%; }
+            .solar-system.gamedev, .solar-system.software { right: 25%; }
         }
 
         @media (max-aspect-ratio: 3/4) {
             .solar-system.resume { top: 30%; left: 10%; }
-            .solar-system.game_development { top: 45%; right: 10%; }
-            .solar-system.other { bottom: 45%; left: 10%; }
+            .solar-system.gamedev { top: 45%; right: 10%; }
+            .solar-system.ai { bottom: 45%; left: 10%; }
             .solar-system.software { bottom: 30%; right: 10%; }
         }
     </style>
@@ -625,9 +625,9 @@
                     ╚═══════════════════╝
                 </div>
                 <a href="#" class="menu-item" onclick="showSection('resume')">[1] RESUME</a>
-                <a href="#" class="menu-item" onclick="showSection('software')">[2] SOFTWARE</a>
-                <a href="#" class="menu-item" onclick="showSection('game_development')">[3] GAME DEVELOPMENT</a>
-                <a href="#" class="menu-item" onclick="showSection('other')">[4] OTHER</a>
+                <a href="#" class="menu-item" onclick="showSection('gamedev')">[2] GAME DEVELOPMENT</a>
+                <a href="#" class="menu-item" onclick="showSection('ai')">[3] ARTIFICIAL INTELLIGENCE</a>
+                <a href="#" class="menu-item" onclick="showSection('software')">[4] SOFTWARE DEVELOPMENT</a>
                 <a href="#" class="menu-item" onclick="toggleMenu()">[ESC] CLOSE</a>
             </div>
         </div>
@@ -640,14 +640,14 @@
             </div>
             <pre class="galaxy">                                                              i                                                        u                    
                                               .                                                     ,     .                                 
-                                    7BW   js      cC            c                                                      .                   
+                                    7BW   js      cC            c                                                      .Q                   
                                     zBc   x-                                                  ,.      x.z                                   
                                                                    z       , ..-, ,,-,,- -,   .     . ,    .                                
                                                 7m             ,, .- ,,.,, .,.-,, ,,,...,,,,-.,..,-.--...,-- ..--.-                         
                                                             .,,,.. -,. .,.     -k-..,,.-.,-.,zh,.-,,,s. -,.  bh-b,-, . -                    
                                                   .. . . -.       -,-,,--,.kzohbsh-.,-,..u,-zkhzkch,.-,--.---h,-,.,.,.-. -.  s,             
                                                   uk.,.,, u,-kucnkmIj1anmhannabxbbuu,,sbhmmbuzokzxuhux-.--.-no,-  ,.-.-,-,., ,              
-                                .                    .xsot<span id="otherTarget" class="target-letter">H</span>anmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
+                                .                    .xsotIanmifevvezbbrobxIozkskzuckhzo-zbsrmuxtoxskohuu,xubo. of-.--,-,,-,.               
                                                  .okherccmavbz.ouhkxszuxxohkzrx,uuhxxohkokohsnacaxbuohhhsbstz-.-aD.ohbk,....-               
                                              -xbeteeneskoboksushshhzbuzb,ouskxububxxhuxutbxusskSaszhhkzkobxuho,.  -,.sshoh..,               
    .,                                   .hkuzsmres,u....,ssksuk.,.-szhoushooommmahenrzukuznuxksrnvcrbhhuhoxxsuh,-,zxkbook..,,-..            
@@ -656,21 +656,21 @@
                           ae     .,zubsvvbhsbh....xk.-..-,,zuznxenert1711il1iJEF1rL7lmtjmrcmuJJfahokobkxzubzukxbxokxboouh -.                
                           QH   .-bzbenbux--.-..uohkoh..-ksktbvenmJ1flFFZTVEl7fJiilMUTf1rtrnojImnkeabbxbxozhczzzkbhzozuhkb                   
                              ,,kuxubzx-.     .xknosookbzvcentJjfjEVEZAXGODULELECGVDXEfvnmtcmIvbzxxkbkuuxsshohuzo,ho.-,...          .        
-                             ,bxuz-,   .   ,bbkzbkuxkmaaecjJJ<span id="resumeTarget" class="target-letter">Q</span>SLYUUYDNNKQBBGTCYWLTYGZ1FEvrjlcukoohohhkbkooxzzs,-,.k,.,.-              ,     
+                             ,bxuz-,   .   ,bbkzbkuxkmaaecjJJLSLYUUYDNNKQBBGTCYWLTYGZ1FEvrjlcukoohohhkbkooxzzs,-,.k,.,.-              ,     
                         -,-bhsbo-,   -   -zkkkmsokueejmniEFTFUDDGUNWQBRMRQRMYYXGLCLE7ltrcIcczzk.kkbzuuzkbbzos-,.u,-.,.                      
                       .,o.bvkzz-.. -,-,..kzkma7ae1EIcnnfTCPUDQRRHNHBWMWMHRNBROXOYCCJ7mrfemubzk,kxhzhhooxbzk.-,,h,--             .           
-                      x,,o-su-,...--,--bstcl1febrUnac7Cj1ZDBHPQWWMKBMHQNBRHHDFOOZL1nct1cmoxxxuszuksbzzzxk,--<span id="softwareTarget" class="target-letter">K</span>-s,.                     .     
+                      x,,o-su-,...--,--bstcl1febrUnac7Cj1ZDBHPQWWMKBMHQNBRHHDFOOZL1nct1cmoxxxuszuksbzzzxk,--k-s,.                     .     
             ,h   -- .kah.xzh-,-..---..znaJI1rralJrnlJLVTMCLQNUOBMRRBMNQNRNXZVYSC7cvrncrxssuzuuhkbhxszbsk.-,..-,.                     WQK    
              .   .,-.oo-xux,,..,-,.-.hav17aem1GTnerlIFAGMYDNWMKPMBBMUUTF7ZZCFi7jntteneexxsuhbsbhkuskzh.,,,s.,                         .     
           rk    .-,-z,-,,,..,.,.,,kksnTQFvmnILF1raflTTVSUOXDUCDPPGXYDXZSATCjfiImvrvcrsxussouskxzkzhu,.,,xu-                              b  
-         oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozxKzo.sboz..                     -          e  
-               ,,---...-,.zx.,bvvuxbef<span id="game_developmentTarget" class="target-letter">D</span>EZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
+         oKQ   .,.......,,,ks-.,zbuuknjlifTTiFG7j7JT7VAGOPZUGUYOXPDXGOZ7flfavntevetvvtozsxzxxozx<span class="target-char" id="targetChar">K</span>zo.sboz..                     -          e  
+               ,,---...-,.zx.,bvvuxbefJEZPEcaLDtrc1fTCUOSWUYPGOGPTUYTJ77Jffrmraravmcnvtvzboksxhoooobo.                  .     o             
               -.,---,,.,sb-.-soboxzxmr7CCFikaiYZfsaCUCFZ7LTFLLlTj71JtIfvrmtcerranmcvntvnmxhoxoxhbxk,        t         ,HNO,                 
                 h- .-.ob.,.hhkoksuxumvJcjrlcr1V7lIv1TLFCjJ1jSSTIijJeifnrvcvaveeamnmvnvobxbbnnzzuuk-       .QMN        .WMV                  
                 z,.--uxu.huhksuzuukkumvmff7JrJJLfTVISTVEiJ7l7j1avttmrtvetaveecctmaaraezoshzbk,              c                               
                      -.--,.-usoksuuomrctcctI11rlLETJJrtIretreatvetemnr1eracntnccvtvarvxzux-,                                                
                   D1 ,..-..,-,,zkzbobbmvkseecemSIjLIIfLIEiJI7ifnI1mjf7rm1v7anrmeeahbsb,---,.                                                
-                     --bo...-,xx,buuhsuzxhxxrkaramciaimfijiSi7ntveevzvtnflcvmarshk.,----,               .                    .             
+                     --bo...-,xx,buuhsuzxhxxrkaramciaimfijiSi7ntveevzvtnflcvmarshk.,----,               .H                    .             
                      .,.,.,.ou-,.uhuxuhxkbkzsusuokkhokovrhYRcererlnemnvtnrvozu---- .-,.                  -                                  
                        -.-.-.b.,---,.-,hs-koksuohksrxoxmbkkzhtvce1kztos,,-,,,,...                                                           
                         --......,..,-,....,...-,,obxzbxxuhabshshbo,-,,,,...- .    n                                                         
@@ -681,24 +681,27 @@
                                                                                     -   ,           u                                       
                         ,,                                                                                                                  
                                          o,                                                                                                 </pre>
-            
-            <div class="solar-system resume" onclick="zoomToSection('resume')" onmouseenter="centerGalaxyOn('resume')" onmouseleave="resetGalaxyPosition()">
+                                         
+            <div class="solar-system resume" onclick="zoomToSection('resume')" onmouseenter="showPointer('resume')" onmouseleave="hidePointer('resume')">
                 [1] RESUME
             </div>
             
-            <div class="solar-system game_development" onclick="zoomToSection('game_development')" onmouseenter="centerGalaxyOn('game_development')" onmouseleave="resetGalaxyPosition()">
-                [2] GAME DEVELOPMENT
+            <div class="solar-system gamedev" onclick="zoomToSection('gamedev')" onmouseenter="showPointer('gamedev')" onmouseleave="hidePointer('gamedev')">
+                [2] GAME DEV
             </div>
             
-            <div class="solar-system other" onclick="zoomToSection('other')" onmouseenter="centerGalaxyOn('other')" onmouseleave="resetGalaxyPosition()">
-                [3] OTHER
+            <div class="solar-system ai" onclick="zoomToSection('ai')" onmouseenter="showPointer('ai')" onmouseleave="hidePointer('ai')">
+                [3] SOFTWARE
             </div>
             
-            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="centerGalaxyOn('software')" onmouseleave="resetGalaxyPosition()">
+            <div class="solar-system software" onclick="zoomToSection('software')" onmouseenter="showPointer('software')" onmouseleave="hidePointer('software')">
                 [4] SOFTWARE
             </div>
-            
-            <div id="quote-display" class="quote-display"></div>
+
+            <div class="pointer-line" id="resumePointer"></div>
+            <div class="pointer-line" id="gamedevPointer"></div>
+            <div class="pointer-line" id="aiPointer"></div>
+            <div class="pointer-line" id="softwarePointer"></div>
         </div>
 
         <div class="zoom-transition" id="zoomTransition"></div>
@@ -744,274 +747,91 @@ ACHIEVEMENTS:
             </div>
         </div>
 
-        <div class="detail-view scrollable" id="game_developmentView">
-            <div class="detail-content long-content">
+        <div class="detail-view" id="gamedevView">
+            <div class="detail-content">
                 <div class="detail-title">
-                    ╔════════════════════╗<br>
-                    ║  GAME DEVELOPMENT  ║<br>
-                    ╚════════════════════╝
+                    ╔═══════════════════╗<br>
+                    ║  GAME DEVELOPMENT ║<br>
+                    ╚═══════════════════╝
                 </div>
-                
                 <div class="detail-text">
-                    <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
-                        GAME DEVELOPMENT PROJECTS
-                    </p>
-                </div>
+GAME DEVELOPMENT SECTOR:
+-----------------------
+Status: OPERATIONAL
+Classification: ENTERTAINMENT
 
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Revo Zero</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 1 month</span>
-                        <span>Team Size: 3 developers</span>
-                        <span>Budget: Sleepless Nights </span>
-                    </div>
-                    <div class="project-description">
-                        Revo Zero was made in under a month by 3 developers, and is a game where you play as a young kid who is trying to make 
-                        their way through the "Revo Zero tornument", The game has a unique and clean physics system, which allows the tops on 
-                        the screen to affect each other significantly and still control great. I made multiple changes to the physics in order 
-                        to enhance fps from 15 to 90. There's also unique mechanics involving "tracing" a circle around the enemy. It's a quick 
-                        but difficult play that involves a lot of skill.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Godot</span>
-                            <span class="tech-tag">2D physics</span>
-                            <span class="tech-tag">Object Oriented Programming</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">[CLASSIFIED]</a>
-                        <a href="#" class="project-link">Internal Report</a>
-                    </div>
-                </div>
+CORE TECHNOLOGIES:
+-----------------
+> Unity 3D Game Engine
+> C# Gameplay Programming
+> Level Design & Game Mechanics
+> Mobile & PC Game Development
+> 2D/3D Graphics Programming
 
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Dansu</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 1 month</span>
-                        <span>Team Size: 2 developers</span>
-                        <span>Budget: Prayer </span>
-                    </div>
-                    <div class="project-description">
-                        Dansu is a game built to mirror OSU. The player "dances" to the beat in order to beat songs. We used an MMPose library to track the players movements
-                        using nothing but their camera. Then, the player could use their head, hands, and hips in order to match to different circles on the screen. 
-                        The MMPose Library was way too slow, so after a lot of tweaking, we managed to get a 1 frame per 3 second game, to a 30 fps game.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">MMPose</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Object Oriented Programming</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">[CLASSIFIED]</a>
-                        <a href="#" class="project-link">Internal Report</a>
-                    </div>
-                </div>
+PROJECT PORTFOLIO:
+-----------------
+[ALPHA] Retro Space Shooter - Complete
+[BETA]  Puzzle Platformer - In Development  
+[GOLD]  Mobile Strategy Game - Released
+[DEV]   VR Experience - Prototype Phase
 
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">CRITTER CRUSHERS</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 2 days</span>
-                        <span>Team Size: 1 developer</span>
-                        <span>Budget: Hope</span>
-                    </div>
-                    <div class="project-description">
-                        Critter Crusher was a tower defense game which had you growing plants in order to defend the roots of a tree from bugs. 
-                        It was awarded runner-up at the Georgia Tech Global Game Jam and made in 48 hours. It was developed bottom up, that had 
-                        easily expandable features, with multiple different types of towers, tower upgrades and enemies. The game has a map that changes over time
-                        as the roots of the tree grow.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Unity</span>
-                            <span class="tech-tag">Pathfinding</span>
-                            <span class="tech-tag">C#</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">ICML Paper</a>
-                        <a href="#" class="project-link">GitHub</a>
-                        <a href="#" class="project-link">Demo</a>
-                    </div>
-                </div>
+SPECIALIZATIONS:
+---------------
+* Procedural Content Generation
+* Physics Simulation Systems
+* AI Behavior Programming
+* Performance Optimization
+* Cross-Platform Deployment
 
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Roll n Die</div>
-                        <div class="project-status status-complete">[COMPLETED]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 2 days</span>
-                        <span>Team Size: 2 developers</span>
-                        <span>Budget: 1 trillion dreams</span>
-                    </div>
-                    <div class="project-description">
-                        Roll n Die is a roguelike video game, that allows the player to fight hordes of enemies, with increasing strength as time goes on. The player was given
-                        a different power for each side of the "die". The game is fast paced and fun, and was made in under 48 hours.                   </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Unity</span>
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">Systems Managment</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">Nature MI (Under Review)</a>
-                        <a href="#" class="project-link">Preprint</a>
-                    </div>
+CURRENT OBJECTIVES:
+------------------
+[→] Developing next-gen game mechanics
+[→] Exploring VR/AR technologies
+[→] Mentoring junior game developers
                 </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Real-Time Vision Pipeline</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 8 months</span>
-                        <span>Team Size: 5 researchers</span>
-                        <span>Performance: 99.7% accuracy</span>
-                    </div>
-                    <div class="project-description">
-                        Production-ready computer vision system for autonomous vehicles. Handles real-time object detection, 
-                        semantic segmentation, and 3D scene reconstruction at 60fps. Deployed in 15+ autonomous vehicle 
-                        prototypes across the industry.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">YOLO v8</span>
-                            <span class="tech-tag">TensorRT</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">ROS</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">IEEE TPAMI</a>
-                        <a href="#" class="project-link">Technical Report</a>
-                        <a href="#" class="project-link">Industry Partnership</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Federated Learning Framework</div>
-                        <div class="project-status status-complete">[COMPLETE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: 16 months</span>
-                        <span>Team Size: 8 researchers</span>
-                        <span>Citations: 267</span>
-                    </div>
-                    <div class="project-description">
-                        Developed privacy-preserving federated learning system with differential privacy guarantees. 
-                        Enables collaborative AI training across organizations without data sharing. Adopted by 3 
-                        Fortune 500 companies for sensitive data applications.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Differential Privacy</span>
-                            <span class="tech-tag">Secure Aggregation</span>
-                            <span class="tech-tag">TensorFlow Federated</span>
-                            <span class="tech-tag">Cryptography</span>
-                            <span class="tech-tag">Distributed Systems</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">ICLR Paper</a>
-                        <a href="#" class="project-link">Open Source</a>
-                        <a href="#" class="project-link">Industry Case Study</a>
-                    </div>
-                </div>
-
-                <div class="project-section">
-                    <div class="project-header">
-                        <div class="project-title">Continual Learning System</div>
-                        <div class="project-status status-prototype">[PROTOTYPE]</div>
-                    </div>
-                    <div class="project-meta">
-                        <span>Duration: Ongoing (6 months)</span>
-                        <span>Team Size: 3 researchers</span>
-                        <span>Stage: Beta Testing</span>
-                    </div>
-                    <div class="project-description">
-                        Novel approach to lifelong learning that prevents catastrophic forgetting while enabling 
-                        continuous adaptation to new tasks. Uses memory consolidation mechanisms inspired by 
-                        neuroscience research.
-                    </div>
-                    <div class="tech-stack">
-                        <h4>Technologies</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Meta-Learning</span>
-                            <span class="tech-tag">Memory Networks</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Neuromorphic Computing</span>
-                            <span class="tech-tag">Elastic Weight Consolidation</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">NeurIPS Submission</a>
-                        <a href="#" class="project-link">Prototype Demo</a>
-                    </div>
-                </div>
-
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
 
-        <div class="detail-view scrollable" id="otherView">
+        <div class="detail-view scrollable" id="aiView">
             <div class="detail-content long-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║       OTHER       ║<br>
+                    ║  SOFTWARE         ║<br>
                     ╚═══════════════════╝
                 </div>
                 
                 <div class="detail-text">
                     <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: #888;">
-                        PORTFOLIO OF OTHER PROJECTS & PUBLICATIONS
+                        PORTFOLIO OF SOFTWARE PROJECTS
                     </p>
                 </div>
 
                 <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Project NEXUS</div>
-                        <div class="project-status status-classified">[CLASSIFIED]</div>
+                        <div class="project-title">Campus Cats App</div>
+                        <div class="project-status status-complete">[COMPLETED]</div>
                     </div>
                     <div class="project-meta">
-                        <span>Duration: 18 months</span>
-                        <span>Team Size: 12 researchers</span>
-                        <span>Budget: $2.3M</span>
+                        <span>Duration: 6 months</span>
+                        <span>Team Size: 4 engineers</span>
+                        <span>Budget: $50</span>
                     </div>
                     <div class="project-description">
-                        Advanced autonomous decision-making framework for multi-agent coordination in dynamic environments. 
-                        This project focuses on developing AI systems capable of real-time strategic planning and distributed 
-                        consensus mechanisms for mission-critical applications.
+                        Campus Cats is a mobile app for Georgia Tech’s Campus Cats club, enabling users to report cat sightings, 
+                        upload photos, chat with members, and access information about campus cats. The app aims to foster 
+                        communication and engagement within the Campus Cats community while helping track and care for stray cats on campus.
+                        Creating the app involved extensive work with Firebase for real-time data synchronization, TypeScript for the frontend,
+                        and Node.js for the backend.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
                         <div class="tech-tags">
-                            <span class="tech-tag">Deep Reinforcement Learning</span>
-                            <span class="tech-tag">Multi-Agent Systems</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">Distributed Computing</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">HTML</span>
                         </div>
                     </div>
                     <div class="project-links">
@@ -1022,18 +842,15 @@ ACHIEVEMENTS:
 
                 <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Neural Architecture Search Suite</div>
+                        <div class="project-title"> Manga OCR</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
                     </div>
                     <div class="project-meta">
-                        <span>Duration: 14 months</span>
-                        <span>Team Size: 6 researchers</span>
-                        <span>Citations: 127</span>
+                        <span>Duration: 4 months</span>
+                        <span>Team Size: 3 researchers</span>
                     </div>
                     <div class="project-description">
-                        Developed an efficient gradient-based optimization framework for automated neural architecture search. 
-                        The system reduces search time by 85% while discovering architectures that outperform manually designed 
-                        networks across multiple benchmarks.
+                        Developed 
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -1046,7 +863,7 @@ ACHIEVEMENTS:
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">ICML Paper</a>
+                        <a href="#" class="project-link">https://ryanlueds.github.io/ml-page/</a>
                         <a href="#" class="project-link">GitHub</a>
                         <a href="#" class="project-link">Demo</a>
                     </div>
@@ -1213,11 +1030,12 @@ ACHIEVEMENTS:
             </div>
         </div>
 
+        <!--
         <div class="detail-view" id="softwareView">
             <div class="detail-content">
                 <div class="detail-title">
                     ╔═══════════════════╗<br>
-                    ║     SOFTWARE      ║<br>
+                    ║ SOFTWARE DEV      ║<br>
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
@@ -1268,87 +1086,107 @@ Performance Score: 98/100
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
+    -->
     </div>
 
     <script>
-        // --- START: Quote Data ---
-        const quotes = [
-            { text: "This guy will not shut up about linux", author: "Noapt" },
-            { text: "A great addition to any team", author: "Some guy on my team" },
-            { text: "A passionate and insanely fast learner", author: "iTech Owner" },
-            { text: "Greatest Programmer who has ever lived", author: "My Dad" },
-            { text: "Spent 8 hours automating something he could have done in 15 minutes.", author: "Me" },
-        ];
-        
-        // --- MODIFIED: This function now includes a fade transition ---
-        function displayRandomQuote() {
-            const quoteContainer = document.getElementById('quote-display');
-            if (quoteContainer) {
-                // 1. Fade the current quote out
-                quoteContainer.style.opacity = 0;
-
-                // 2. After the fade-out is complete, change the content and fade back in
-                setTimeout(() => {
-                    const randomIndex = Math.floor(Math.random() * quotes.length);
-                    const randomQuote = quotes[randomIndex];
-                    quoteContainer.innerHTML = `"${randomQuote.text}" - <span class="quote-author">${randomQuote.author}</span>`;
-                    
-                    // 3. Fade the new quote in
-                    quoteContainer.style.opacity = 1;
-                }, 500); // This delay (500ms) matches the CSS transition time
-            }
-        }
-        
         let isMenuOpen = false;
         let currentView = 'galaxy';
-        let targetLetterCoords = {}; // Object to store initial coordinates
-        const sections = ['resume', 'software', 'game_development', 'other'];
+        let activePointers = [];
 
-        // Function to calculate and store the resting coordinates of target letters
-        function storeInitialCoords() {
-            const galaxy = document.querySelector('.galaxy');
-            // Temporarily remove transition to get instant, accurate position
-            const originalTransition = galaxy.style.transition;
-            galaxy.style.transition = 'none';
-            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
-
-            // Allow DOM to update before measuring
-            setTimeout(() => {
-                sections.forEach(section => {
-                    const target = document.getElementById(section + 'Target');
-                    if (target) {
-                        const rect = target.getBoundingClientRect();
-                        targetLetterCoords[section] = {
-                            x: rect.left + rect.width / 2,
-                            y: rect.top + rect.height / 2,
-                        };
-                    }
-                });
-                // Restore transition
-                galaxy.style.transition = originalTransition;
-            }, 0);
+        function getTargetPosition() {
+            const targetChar = document.getElementById('targetChar');
+            const rect = targetChar.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
         }
 
-        // The new robust function for centering the galaxy
-        function centerGalaxyOn(section) {
-            if (!targetLetterCoords[section]) return; // Guard clause
-            
-            const galaxy = document.querySelector('.galaxy');
-            const screenCenterX = window.innerWidth / 2;
-            const screenCenterY = window.innerHeight / 2;
-
-            const restingTargetX = targetLetterCoords[section].x;
-            const restingTargetY = targetLetterCoords[section].y;
-
-            const deltaX = screenCenterX - restingTargetX;
-            const deltaY = screenCenterY - restingTargetY;
-            
-            galaxy.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
+        function getButtonPosition(buttonClass) {
+            const button = document.querySelector(`.solar-system.${buttonClass}`);
+            const rect = button.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2
+            };
         }
 
-        function resetGalaxyPosition() {
-            const galaxy = document.querySelector('.galaxy');
-            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
+        function createLine(startX, startY, endX, endY) {
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            const lineElements = [];
+            const segmentSpacing = 15;
+            
+            // Diagonal line to reach target's Y level
+            if (Math.abs(deltaY) > 5) {
+                const diagonalSteps = Math.floor(Math.abs(deltaY) / segmentSpacing);
+                const yDirection = deltaY > 0 ? 1 : -1;
+                const xDirection = deltaX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= diagonalSteps; i++) {
+                    const x = startX + (i * segmentSpacing * 0.5 * xDirection);
+                    const y = startY + (i * segmentSpacing * yDirection);
+                    
+                    const char = ((yDirection > 0 && xDirection > 0) || (yDirection < 0 && xDirection < 0)) ? '\\' : '/';
+                    
+                    lineElements.push({ char, x, y });
+                }
+            }
+            
+            // Horizontal line to target X
+            const diagonalEndX = startX + (Math.floor(Math.abs(deltaY) / segmentSpacing) * segmentSpacing * 0.5 * (deltaX > 0 ? 1 : -1));
+            const currentY = startY + deltaY;
+            const remainingX = endX - diagonalEndX;
+            
+            if (Math.abs(remainingX) > 5) {
+                const horizontalSteps = Math.floor(Math.abs(remainingX) / segmentSpacing);
+                const xDirection = remainingX > 0 ? 1 : -1;
+                
+                for (let i = 1; i <= horizontalSteps; i++) {
+                    const x = diagonalEndX + (i * segmentSpacing * xDirection);
+                    const y = currentY;
+                    lineElements.push({ char: '_', x, y });
+                }
+            }
+            
+            // Star at target
+            lineElements.push({
+                char: '★',
+                x: endX - 8,
+                y: endY - 8
+            });
+            
+            return lineElements;
+        }
+
+        function showPointer(section) {
+            const buttonPos = getButtonPosition(section);
+            const targetPos = getTargetPosition();
+            const pointer = document.getElementById(`${section}Pointer`);
+            const lineElements = createLine(buttonPos.x, buttonPos.y, targetPos.x, targetPos.y);
+            
+            pointer.innerHTML = '';
+            
+            lineElements.forEach(element => {
+                const segment = document.createElement('div');
+                segment.className = 'line-segment';
+                segment.textContent = element.char;
+                segment.style.left = element.x + 'px';
+                segment.style.top = element.y + 'px';
+                pointer.appendChild(segment);
+            });
+            
+            pointer.classList.add('active');
+            if (!activePointers.includes(section)) {
+                activePointers.push(section);
+            }
+        }
+
+        function hidePointer(section) {
+            const pointer = document.getElementById(`${section}Pointer`);
+            pointer.classList.remove('active');
+            activePointers = activePointers.filter(p => p !== section);
         }
 
         function toggleMenu() {
@@ -1371,43 +1209,59 @@ Performance Score: 98/100
             loadingOverlay.style.display = 'flex';
             setTimeout(() => loadingOverlay.classList.add('show'), 10);
             
+            // Animate progress bar
             loadingProgress.style.width = '0%';
-            setTimeout(() => loadingProgress.style.width = '30%', 100);
-            setTimeout(() => loadingProgress.style.width = '70%', 200);
-            setTimeout(() => loadingProgress.style.width = '100%', 300);
+            setTimeout(() => {
+                loadingProgress.style.width = '30%';
+            }, 100);
+            setTimeout(() => {
+                loadingProgress.style.width = '70%';
+            }, 200);
+            setTimeout(() => {
+                loadingProgress.style.width = '100%';
+            }, 300);
             
+            // Hide loading after animation
             setTimeout(() => {
                 loadingOverlay.classList.remove('show');
-                setTimeout(() => loadingOverlay.style.display = 'none', 200);
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 200);
             }, 500);
         }
 
         function zoomToSection(section) {
             if (currentView !== 'galaxy') return;
             
-            const targetLetter = document.getElementById(section + 'Target');
-            if (!targetLetter) return;
-
-            const letterRect = targetLetter.getBoundingClientRect();
+            const targetPos = getTargetPosition();
             const zoomTransition = document.getElementById('zoomTransition');
             const galaxyView = document.getElementById('galaxyView');
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
             
-            zoomTransition.style.top = `${letterRect.top}px`;
-            zoomTransition.style.left = `${letterRect.left}px`;
-            zoomTransition.style.width = `${letterRect.width}px`;
-            zoomTransition.style.height = `${letterRect.height}px`;
-            zoomTransition.innerHTML = targetLetter.textContent;
-            zoomTransition.style.fontSize = window.getComputedStyle(targetLetter.parentElement).fontSize;
+            // Set initial zoom transition position at the target character
+            const initialSize = 30;
+            zoomTransition.style.top = (targetPos.y - initialSize/2) + 'px';
+            zoomTransition.style.left = (targetPos.x - initialSize/2) + 'px';
+            zoomTransition.style.width = initialSize + 'px';
+            zoomTransition.style.height = initialSize + 'px';
+            zoomTransition.innerHTML = 'K';
+            zoomTransition.style.fontSize = '24px';
             
+            // Show loading overlay and zoom transition simultaneously
             loadingOverlay.style.display = 'flex';
             zoomTransition.style.display = 'flex';
             
+            // Small delay to ensure elements are rendered
             setTimeout(() => {
                 zoomTransition.classList.add('zooming');
-                setTimeout(() => loadingOverlay.classList.add('show'), 150);
                 
+                // Delay loading appearance slightly for natural flow
+                setTimeout(() => {
+                    loadingOverlay.classList.add('show');
+                }, 150);
+                
+                // Start progress bar animation
                 loadingProgress.style.width = '0%';
                 setTimeout(() => loadingProgress.style.width = '40%', 300);
                 setTimeout(() => loadingProgress.style.width = '75%', 500);
@@ -1422,6 +1276,7 @@ Performance Score: 98/100
                 galaxyView.style.display = 'none';
                 galaxyView.classList.remove('fade-out');
                 
+                // Hide loading overlay
                 loadingOverlay.classList.remove('show');
                 setTimeout(() => loadingOverlay.style.display = 'none', 200);
                 
@@ -1433,8 +1288,8 @@ Performance Score: 98/100
                     zoomTransition.style.height = '';
                     zoomTransition.style.top = '';
                     zoomTransition.style.left = '';
-                    zoomTransition.innerHTML = '';
                     zoomTransition.style.fontSize = '';
+                    zoomTransition.innerHTML = '';
                 }, 100);
             }, 800);
             
@@ -1487,18 +1342,7 @@ Performance Score: 98/100
             }, 300);
         }
 
-        // --- Event Listeners ---
-        
-        // --- MODIFIED: This now starts the 10-second cycle after the first quote is shown ---
-        document.addEventListener('DOMContentLoaded', () => {
-            storeInitialCoords();
-            displayRandomQuote(); // Show the first quote on load
-            setInterval(displayRandomQuote, 10000); // Change the quote every 10 seconds (10000ms)
-        });
-
-        // Recalculate coordinates on window resize
-        window.addEventListener('resize', storeInitialCoords);
-        
+        // Event Listeners
         document.getElementById('menuOverlay').addEventListener('click', function(e) {
             if (e.target === this) {
                 toggleMenu();
@@ -1514,12 +1358,13 @@ Performance Score: 98/100
                 }
             }
             
+            // Number key navigation in galaxy view
             if (!isMenuOpen && currentView === 'galaxy') {
                 const sectionMap = {
                     '1': 'resume',
-                    '2': 'software', 
-                    '3': 'game_development',
-                    '4': 'other'
+                    '2': 'gamedev', 
+                    '3': 'ai',
+                    '4': 'software'
                 };
                 
                 if (sectionMap[e.key]) {
@@ -1528,6 +1373,13 @@ Performance Score: 98/100
             }
         });
 
+        // Update pointers on window resize
+        window.addEventListener('resize', () => {
+            activePointers.forEach(section => {
+                hidePointer(section);
+                setTimeout(() => showPointer(section), 10);
+            });
+        });
     </script>
 </body>
 </html>
