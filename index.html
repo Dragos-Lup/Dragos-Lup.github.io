@@ -199,6 +199,7 @@
         .solar-system.game_development { top: 25%; right: 15%; }
         .solar-system.other { bottom: 25%; left: 15%; }
         .solar-system.software { bottom: 25%; right: 15%; }
+        .solar-system.contact { bottom: 10%; left: 50%; transform: translateX(-50%); }
 
         .detail-view {
             position: fixed;
@@ -547,6 +548,65 @@
             border: none !important;
             font-size: 30vmin !important;
         }
+        
+        /* --- START: New Contact Screen Styles --- */
+        .contact-header {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            flex-wrap: wrap; /* For responsiveness */
+        }
+
+        .contact-icon {
+            color: #ff0041; /* Red color to match other highlights */
+            font-weight: bold;
+        }
+
+        .contact-label {
+            color: #00ff41; /* Main green color */
+            font-weight: bold;
+            min-width: 80px; /* For alignment */
+        }
+
+        .contact-value a {
+            color: #ccc;
+            text-decoration: none;
+            border-bottom: 1px dashed #666;
+            transition: all 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: #fff;
+            border-bottom-color: #00ff41;
+            background-color: rgba(0, 255, 65, 0.1);
+        }
+
+        .contact-status {
+            line-height: 1.8;
+            font-size: 14px;
+            color: #ccc;
+            border-left: 2px solid #00ff41;
+            padding-left: 20px;
+            margin: 20px 0;
+            white-space: pre-wrap; /* Allows wrapping */
+        }
+        /* --- END: New Contact Screen Styles --- */
+
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -568,6 +628,7 @@
             .solar-system.game_development { top: 15%; right: 5%; }
             .solar-system.other { bottom: 15%; left: 5%; }
             .solar-system.software { bottom: 15%; right: 5%; }
+            .solar-system.contact { bottom: 5%; }
             .menu-content { font-size: 16px; padding: 30px; }
             .detail-content { padding: 20px; }
             .detail-title { font-size: 20px; }
@@ -589,6 +650,13 @@
                 font-size: 11px;
                 width: 90%;
             }
+            .contact-item {
+                font-size: 14px;
+                gap: 10px;
+            }
+            .contact-label {
+                min-width: 70px;
+            }
         }
 
         @media (min-aspect-ratio: 21/9) {
@@ -601,6 +669,7 @@
             .solar-system.game_development { top: 45%; right: 10%; }
             .solar-system.other { bottom: 45%; left: 10%; }
             .solar-system.software { bottom: 30%; right: 10%; }
+            .solar-system.contact { bottom: 20%; }
         }
     </style>
 </head>
@@ -628,6 +697,7 @@
                 <a href="#" class="menu-item" onclick="showSection('software')">[2] SOFTWARE</a>
                 <a href="#" class="menu-item" onclick="showSection('game_development')">[3] GAME DEVELOPMENT</a>
                 <a href="#" class="menu-item" onclick="showSection('other')">[4] OTHER</a>
+                <a href="#" class="menu-item" onclick="showSection('contact')">[5] CONTACT</a>
                 <a href="#" class="menu-item" onclick="toggleMenu()">[ESC] CLOSE</a>
             </div>
         </div>
@@ -677,7 +747,7 @@
           -      t FWY    .  ,-.,.-,-.,....-...        , -b-.                    bB                                                         
                    JHJ               ,..  -.                                 ,         -                              b,                    
                              .-                                                                                                             
-                                                                           cW                                                               
+                                                                           c<span id="contactTarget" class="target-letter">W</span>                                                               
                                                                                     -   ,           u                                       
                         ,,                                                                                                                  
                                          o,                                                                                                 </pre>
@@ -698,6 +768,10 @@
                 [4] SOFTWARE
             </div>
             
+            <div class="solar-system contact" onclick="zoomToSection('contact')" onmouseenter="centerGalaxyOn('contact')" onmouseleave="resetGalaxyPosition()">
+                [5] CONTACT
+            </div>
+            
             <div id="quote-display" class="quote-display"></div>
         </div>
 
@@ -711,34 +785,33 @@
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-PERSONAL INFORMATION:
---------------------
-Name: Dragos Lup
-Profession: Senior Software Developer
-Location: [CLASSIFIED]
-Status: ACTIVE
+<pre>
+/************************************************
+ * Agent: Dragos Lup
+ * Title: Senior Software Developer
+ * Status: ACTIVE
+ * Location: [CLASSIFIED]
+ ************************************************/
 
-EXPERIENCE SUMMARY:
-------------------
-> Full-Stack Web Development
-> Team Leadership & Mentoring  
-> Agile Development Methodologies
-> Cross-Platform Application Development
-> Database Architecture & Optimization
+[SECTION_SUMMARY]
+> Proficient full-stack developer with extensive
+  experience in leading teams and architecting
+  scalable, cross-platform applications.
+> Expertise in Agile methodologies and database
+  optimization to drive project success.
 
-TECHNICAL SKILLS:
-----------------
-Languages: JavaScript, Python, C#, Java, SQL
-Frameworks: React, Node.js, .NET, Spring Boot
-Databases: PostgreSQL, MongoDB, Redis
-Tools: Docker, Git, AWS, Linux
+[SECTION_SKILLS]
+Languages  : [ JavaScript, Python, C#, Java, SQL    ]
+Frameworks : [ React, Node.js, .NET, Spring Boot   ]
+Databases  : [ PostgreSQL, MongoDB, Redis          ]
+Tools      : [ Docker, Git, AWS, Linux             ]
 
-ACHIEVEMENTS:
-------------
-[*] Led development team of 8+ engineers
-[*] Delivered 15+ production applications
-[*] Reduced system latency by 40%
-[*] Implemented CI/CD pipelines
+[SECTION_ACHIEVEMENTS]
+(lead)     => Managed and mentored team of 8+ engineers.
+(deliver)  => Shipped over 15 production applications.
+(optimize) => Reduced core system latency by 40%.
+(automate) => Implemented robust CI/CD pipelines.
+</pre>
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
@@ -1268,6 +1341,52 @@ Performance Score: 98/100
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
+
+        <div class="detail-view" id="contactView">
+            <div class="detail-content">
+                <div class="detail-title">
+                    ╔═══════════════════╗<br>
+                    ║      CONTACT      ║<br>
+                    ╚═══════════════════╝
+                </div>
+                <div class="detail-text">
+                    <div class="contact-header">// ESTABLISHING SECURE CONNECTION...</div>
+                    <div class="contact-header">// CONNECTION ESTABLISHED. TRANSMITTING DATA...</div>
+                    <br>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-icon">[ @ ]</span>
+                            <span class="contact-label">EMAIL</span>
+                            <span class="contact-value"><a href="mailto:[YOUR_EMAIL@DOMAIN.COM]">[YOUR_EMAIL@DOMAIN.COM]</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">[ # ]</span>
+                            <span class="contact-label">PHONE</span>
+                            <span class="contact-value"><a href="tel:[YOUR_PHONE_NUMBER]">[YOUR_PHONE_NUMBER]</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">[in]</span>
+                            <span class="contact-label">LINKEDIN</span>
+                            <span class="contact-value"><a href="https://linkedin.com/in/[YOUR_PROFILE]" target="_blank">linkedin.com/in/[YOUR_PROFILE]</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">[<>]</span>
+                            <span class="contact-label">GITHUB</span>
+                            <span class="contact-value"><a href="https://github.com/[YOUR_USERNAME]" target="_blank">github.com/[YOUR_USERNAME]</a></span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="contact-header">// STATUS TRANSMISSION</div>
+                    <pre class="contact-status">
+[STATUS]      : AVAILABLE FOR OPPORTUNITIES
+[RESPONSE]    : < 24 HOURS
+[LOCATION]    : [CLASSIFIED]
+                    </pre>
+                    <div class="contact-header">// END OF TRANSMISSION</div>
+                </div>
+                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1302,7 +1421,7 @@ Performance Score: 98/100
         let isMenuOpen = false;
         let currentView = 'galaxy';
         let targetLetterCoords = {}; // Object to store initial coordinates
-        const sections = ['resume', 'software', 'game_development', 'other'];
+        const sections = ['resume', 'software', 'game_development', 'other', 'contact'];
 
         // Function to calculate and store the resting coordinates of target letters
         function storeInitialCoords() {
@@ -1367,6 +1486,13 @@ Performance Score: 98/100
         function showLoadingScreen(section) {
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
+            const loadingText = loadingOverlay.querySelector('.loading-text');
+
+            if (section === 'contact') {
+                loadingText.textContent = 'ACCESSING SATELLITE...';
+            } else {
+                loadingText.textContent = 'ACCESSING SECTOR...';
+            }
             
             loadingOverlay.style.display = 'flex';
             setTimeout(() => loadingOverlay.classList.add('show'), 10);
@@ -1393,6 +1519,13 @@ Performance Score: 98/100
             const galaxyView = document.getElementById('galaxyView');
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
+            const loadingText = loadingOverlay.querySelector('.loading-text');
+
+            if (section === 'contact') {
+                loadingText.textContent = 'ACCESSING SATELLITE...';
+            } else {
+                loadingText.textContent = 'ACCESSING SECTOR...';
+            }
             
             zoomTransition.style.top = `${letterRect.top}px`;
             zoomTransition.style.left = `${letterRect.left}px`;
@@ -1519,7 +1652,8 @@ Performance Score: 98/100
                     '1': 'resume',
                     '2': 'software', 
                     '3': 'game_development',
-                    '4': 'other'
+                    '4': 'other',
+                    '5': 'contact'
                 };
                 
                 if (sectionMap[e.key]) {
