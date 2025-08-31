@@ -126,6 +126,7 @@
 
         .galaxy-view {
             position: relative;
+            /* display: block; */
             width: 100%;
             height: 100%;
             opacity: 1;
@@ -244,7 +245,66 @@
             padding-top: 40px;
             padding-bottom: 40px;
         }
+        
+        .solar-system-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--color-background);
+            z-index: 20;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(214, 238, 245, 0.5) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, rgba(214, 238, 245, 0.5) 1px, transparent 1px),
+                radial-gradient(circle at 50% 90%, rgba(214, 238, 245, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 90% 10%, rgba(214, 238, 245, 0.3) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
 
+        .solar-system-view.show {
+            opacity: 1;
+        }
+        
+        .solar-system-sun {
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--color-secondary-highlight);
+            text-shadow: 0 0 15px var(--color-secondary-highlight), 0 0 30px var(--color-secondary-highlight), 0 0 50px var(--color-orange);
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .solar-system-body {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .solar-system-body:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .ascii-planet {
+            flex-shrink: 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            font-size: 10px;
+            line-height: 1;
+            color: var(--color-light-blue);
+            text-shadow: 0 0 5px rgba(214, 238, 245, 0.5);
+        }
+        
         .detail-content {
             max-width: 800px;
             width: 100%;
@@ -475,6 +535,15 @@
                 font-size: 12px;
                 bottom: 20px;
             }
+            
+            .solar-system-sun {
+                font-size: 3rem;
+            }
+
+            .solar-system-body, .solar-system-body:nth-child(odd) {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
 
         .detail-title {
@@ -528,7 +597,7 @@
             transform: translateY(10px);
         }
 
-        .detail-view.show .back-btn {
+        .detail-view.show .back-btn, .solar-system-view.show .back-btn {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 0.3s;
@@ -808,16 +877,22 @@
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
         </div>
+        
+        <div class="solar-system-view" id="game_developmentView">
+            <div class="solar-system-sun">GAME DEVELOPMENT</div>
 
-        <div class="detail-view scrollable" id="game_developmentView">
-            <div class="detail-content long-content">
-                <div class="detail-title">
-                    ╔════════════════════╗<br>
-                    ║  GAME DEVELOPMENT  ║<br>
-                    ╚════════════════════╝
-                </div>
-
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ..''..
+    .'        '.
+  .'            '.
+.'                '.
+'..              ..'
+  '..          ..'
+    '..      ..'
+      ''....''
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Revo Zero</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -846,8 +921,20 @@
                         <a href="https://github.com/Dragos-Lup/Revo-Zero" class="project-link">GitHub</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ******
+    ** **
+  ** **
+** **
+** **
+  ** **
+    ** **
+      ******
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">CRITTER CRUSHERS</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -875,8 +962,19 @@
                         <a href="https://github.com/Dragos-Lup/Global-Game-Jam-2023" class="project-link">GitHub</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ________
+    /          \
+  /              \
+|                |
+|                |
+  \              /
+    \__________/
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Roll n Die</div>
                         <div class="project-status status-complete">[COMPLETED]</div>
@@ -901,20 +999,26 @@
                         <a href="https://github.com/Dragos-Lup/Roll-n-Die" class="project-link">GitHub</a>
                     </div>
                 </div>
-
-                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
+
+            <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
         </div>
 
-        <div class="detail-view scrollable" id="otherView">
-            <div class="detail-content long-content">
-                <div class="detail-title">
-                    ╔═══════════════════╗<br>
-                    ║       OTHER       ║<br>
-                    ╚═══════════════════╝
-                </div>
+        <div class="solar-system-view" id="otherView">
+            <div class="solar-system-sun">OTHER</div>
 
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ++######++
+    ++##.    .##++
+  ++##.        .##++
+++##.            .##++
+++##.            .##++
+  ++##.        .##++
+    ++##.    .##++
+      ++######++
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Fun Fact #1</div>
                     </div>
@@ -922,8 +1026,20 @@
                         I'm a huge fan of the Linux operating system. I've been using it for over 5 years, and I'm always trying to learn more about it. I'm currently using Arch Linux, and I'm a big fan of the command line. I'm always looking for new ways to automate my workflow and make my life easier.
                     </div>
                 </div>
-
-                <div class="project-section">
+            </div>
+            
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ..''..
+    .'        '.
+  .'            '.
+.'                '.
+'..              ..'
+  '..          ..'
+    '..      ..'
+      ''....''
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Fun Fact #2</div>
                     </div>
@@ -931,8 +1047,20 @@
                         I'm a big fan of the game "The Legend of Zelda: Breath of the Wild". I've spent over 200 hours playing it, and I'm still not tired of it. I'm currently trying to complete the game in master mode, and it's been a huge challenge. I'm also a big fan of the game's soundtrack, and I often listen to it while I'm working.
                     </div>
                 </div>
+            </div>
 
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ********
+    ** **
+  ** **
+** **
+** **
+  ** **
+    ** **
+      ********
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Fun Fact #3</div>
                     </div>
@@ -940,19 +1068,25 @@
                         I'm a huge foodie. I love trying new restaurants and cuisines, and I'm always looking for new recipes to try. I'm a big fan of spicy food, and I'm always looking for new ways to challenge my taste buds. I'm also a big fan of cooking, and I love to experiment with new ingredients and techniques.
                     </div>
                 </div>
-
-                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
+
+            <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
         </div>
 
-        <div class="detail-view scrollable" id="softwareView">
-            <div class="detail-content long-content">
-                <div class="detail-title">
-                    ╔═══════════════════╗<br>
-                    ║     SOFTWARE      ║<br>
-                    ╚═══════════════════╝
-                </div>
-                <div class="project-section">
+        <div class="solar-system-view" id="softwareView">
+            <div class="solar-system-sun">SOFTWARE</div>
+
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ________
+    /          \
+  /              \
+|                |
+|                |
+  \              /
+    \__________/
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Campus Cats App</div>
                         <div class="project-status status-complete">[COMPLETED]</div>
@@ -984,8 +1118,20 @@
                         <a href="#" class="project-link">Internal Report</a>
                     </div>
                 </div>
-
-                <div class="project-section">
+            </div>
+            
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ..''..
+    .'        '.
+  .'            '.
+.'                '.
+'..              ..'
+  '..          ..'
+    '..      ..'
+      ''....''
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title"> Manga OCR</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -1013,7 +1159,20 @@
                         <a href="#" class="project-link">Demo</a>
                     </div>
                 </div>
-                <div class="project-section">
+            </div>
+
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ++######++
+    ++##.    .##++
+  ++##.        .##++
+++##.            .##++
+++##.            .##++
+  ++##.        .##++
+    ++##.    .##++
+      ++######++
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">AI Powered Fitness</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -1038,8 +1197,20 @@
                         <a href="https://github.com/Dragos-Lup/Dansu" class="project-link">GitHub</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-section">
+            <div class="solar-system-body">
+                <pre class="ascii-planet">
+      ********
+    ** **
+  ** **
+** **
+** **
+  ** **
+    ** **
+      ********
+                </pre>
+                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
                     <div class="project-header">
                         <div class="project-title">Portfolio</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -1064,9 +1235,9 @@
                         <a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io" class="project-link">GitHub</a>
                     </div>
                 </div>
-
-                <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
             </div>
+
+            <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
         </div>
 
         <div class="detail-view" id="contactView">
@@ -1186,6 +1357,7 @@
         }
 
         function toggleMenu() {
+            
             const overlay = document.getElementById('menuOverlay');
             isMenuOpen = !isMenuOpen;
             
@@ -1199,6 +1371,7 @@
         }
 
         function showLoadingScreen(section) {
+
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
             const loadingText = loadingOverlay.querySelector('.loading-text');
@@ -1303,7 +1476,7 @@
         }
 
         function showDetailView(section) {
-            const detailViews = document.querySelectorAll('.detail-view');
+            const detailViews = document.querySelectorAll('.detail-view, .solar-system-view');
             detailViews.forEach(view => {
                 view.classList.remove('show');
                 view.style.display = 'none';
@@ -1317,7 +1490,7 @@
         }
 
         function backToGalaxy() {
-            const detailViews = document.querySelectorAll('.detail-view');
+            const detailViews = document.querySelectorAll('.detail-view, .solar-system-view');
             const galaxyView = document.getElementById('galaxyView');
             
             detailViews.forEach(view => {
@@ -1337,8 +1510,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             storeInitialCoords();
-            displayRandomQuote(); // Show the first quote on load
-            setInterval(displayRandomQuote, 10000); // Change the quote every 10 seconds (10000ms)
+            displayRandomQuote(); 
+            setInterval(displayRandomQuote, 10000);
         });
 
         window.addEventListener('resize', storeInitialCoords);
