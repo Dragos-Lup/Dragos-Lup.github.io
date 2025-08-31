@@ -1352,35 +1352,44 @@
             galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
 
             setTimeout(() => {
+                const galaxyRect = galaxy.getBoundingClientRect();
+
                 sections.forEach(section => {
                     const target = document.getElementById(section + 'Target');
                     if (target) {
                         const rect = target.getBoundingClientRect();
+                        // Store relative offset inside galaxy
                         targetLetterCoords[section] = {
-                            x: rect.left + rect.width / 2,
-                            y: rect.top + rect.height / 2,
+                            x: rect.left - galaxyRect.left + rect.width / 2,
+                            y: rect.top - galaxyRect.top + rect.height / 2,
                         };
                     }
                 });
+
                 galaxy.style.transition = originalTransition;
             }, 0);
         }
 
         function centerGalaxyOn(section) {
             if (!targetLetterCoords[section]) return;
-            
+
             const galaxy = document.querySelector('.galaxy');
             const screenCenterX = window.innerWidth / 2;
             const screenCenterY = window.innerHeight / 2;
 
-            const restingTargetX = targetLetterCoords[section].x;
-            const restingTargetY = targetLetterCoords[section].y;
+            const galaxyRect = galaxy.getBoundingClientRect();
 
-            const deltaX = screenCenterX - restingTargetX;
-            const deltaY = screenCenterY - restingTargetY;
-            
+            // Find where the target currently is in viewport
+            const currentTargetX = galaxyRect.left + targetLetterCoords[section].x;
+            const currentTargetY = galaxyRect.top + targetLetterCoords[section].y;
+
+            // Calculate delta to move target into screen center
+            const deltaX = screenCenterX - currentTargetX;
+            const deltaY = screenCenterY - currentTargetY;
+
             galaxy.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
         }
+
 
         function resetGalaxyPosition() {
             const galaxy = document.querySelector('.galaxy');
