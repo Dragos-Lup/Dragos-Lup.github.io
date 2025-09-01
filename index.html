@@ -159,7 +159,7 @@
             line-height: 1;
             white-space: pre;
             font-family: 'Courier New', monospace;
-            transition: transform 0.6s ease-out;
+            transition: all 0.6s ease-out;
             margin: 0; 
             white-space: pre; 
             overflow-x: auto;
@@ -1348,51 +1348,51 @@
             const galaxy = document.querySelector('.galaxy');
             const originalTransition = galaxy.style.transition;
             galaxy.style.transition = 'none';
-            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
+            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0) scale(1)';
 
-            setTimeout(() => {
-                const galaxyRect = galaxy.getBoundingClientRect();
+            const galaxyRect = galaxy.getBoundingClientRect();
 
-                sections.forEach(section => {
-                    const target = document.getElementById(section + 'Target');
-                    if (target) {
-                        const rect = target.getBoundingClientRect();
-                        // Store relative offset inside galaxy
-                        targetLetterCoords[section] = {
-                            x: rect.left - galaxyRect.left + rect.width / 2,
-                            y: rect.top - galaxyRect.top + rect.height / 2,
-                        };
-                    }
-                });
+            sections.forEach(section => {
+                const target = document.getElementById(section + 'Target');
+                if (target) {
+                    const rect = target.getBoundingClientRect();
+                    targetLetterCoords[section] = {
+                        x: rect.left - galaxyRect.left + rect.width / 2,
+                        y: rect.top - galaxyRect.top + rect.height / 2,
+                    };
+                }
+            });
 
-                galaxy.style.transition = originalTransition;
-            }, 0);
+            galaxy.style.transition = originalTransition;
         }
 
         function centerGalaxyOn(section) {
             if (!targetLetterCoords[section]) return;
 
             const galaxy = document.querySelector('.galaxy');
-            const screenCenterX = window.innerWidth / 2;
-            const screenCenterY = window.innerHeight / 2;
+            galaxy.style.transition = 'all 0.6s ease-out';
 
-            const galaxyRect = galaxy.getBoundingClientRect();
+            const scale = 1.5;
+            const targetX = targetLetterCoords[section].x;
+            const targetY = targetLetterCoords[section].y;
 
-            // Find where the target currently is in viewport
-            const currentTargetX = galaxyRect.left + targetLetterCoords[section].x;
-            const currentTargetY = galaxyRect.top + targetLetterCoords[section].y;
+            const galaxyCenterX = galaxy.offsetWidth / 2;
+            const galaxyCenterY = galaxy.offsetHeight / 2;
 
-            // Calculate delta to move target into screen center
-            const deltaX = screenCenterX - currentTargetX;
-            const deltaY = screenCenterY - currentTargetY;
+            const vectorX = targetX - galaxyCenterX;
+            const vectorY = targetY - galaxyCenterY;
 
-            galaxy.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px)`;
+            const deltaX = -vectorX * scale;
+            const deltaY = -vectorY * scale;
+
+            galaxy.style.transform = `translate(-50%, -50%) translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
         }
-
 
         function resetGalaxyPosition() {
             const galaxy = document.querySelector('.galaxy');
-            galaxy.style.transform = 'translate(-50%, -50%) translate(0, 0)';
+            galaxy.style.transition = 'all 0.6s ease-out';
+            galaxy.style.transformOrigin = '50% 50%';
+            galaxy.style.transform = 'translate(-50%, -50%) scale(1)';
         }
 
         function toggleMenu() {
