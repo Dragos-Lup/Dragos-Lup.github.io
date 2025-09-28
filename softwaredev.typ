@@ -46,6 +46,16 @@
 )
 == Projects
 #project(
+  name: "Nosi Editor",
+  tools: "TypeScript, Rust",
+  disc: "Security Text Editor",
+  date: "July 2025",
+)
+- Fork of VSCode which prevents and identifies cheating in academic settings with multiple methods.
+- Provides file encryption and decryption, which disables copy and paste, and sharing the files.
+- Disables screensharing, screen recording, and also records keystrokes to add multiple levels of security.
+
+#project(
   name: "Campus Cats App",
   tools: "TypeScript, React, SQL",
   disc: "Cat Tracking Social App",
@@ -61,7 +71,7 @@
   disc: "Japanese Character Recognition",
   date: "December 2024",
 )
-- Tested ResNet, Tesseract and Vision Transformer models to identify Japanese Characters in manga.
+- Tested ResNet, Google Tesseract and Vision Transformer models to identify Japanese in manga.
 - Developed an image preprocessing pipeline, extracting text bubbles, improving speed by 150%.
 - Created and augmented a synthetic dataset with labeled images to enhance OCR performance.
 
@@ -73,16 +83,6 @@
 )
 - Play advancing game with only your web camera and body, using a pose estimation library.
 - Trained a custom model on a NVIDIA GPU to massively increase frame rate from 4fps to 30fps
-
-#project(
-  name: "Roll The Die",
-  tools: "C#, Unity",
-  disc: "Classic Roguelike Game",
-  date: "April 2024",
-)
-- Endless video game where the player controls a dice, destroying enemies with random effects.
-- Created in under 48 hours, with an easily expandable framework to be applied to future updates.
-- Focused on simple concepts to get satisfying and expandable mechanics, allowing for future updates
 
 == Work Experience
 
@@ -106,7 +106,7 @@
 - Focused on clean and modular fundamentals, using data structures for easy expandability.
 == Skills
 - *Coursework*: Procedural Content Generation, Computer Architecture, Algorithms, Computer Vision, Artificial Intelligence, Machine Learning, Deep Learning, Robotics and Perception
-- *Technologies*: C\#, C++, JavaScript, Python, Rust, HTML, SQL, Lua, GLSL, C, Java, Swift, Go
+- *Technologies*: C\#/C++/C, JavaScript, Python, Rust, HTML, SQL, Lua, GLSL, Java, Swift, Go
 - *Tools*: React, PyTorch, NumPy, Git, Firebase, Node.js, MongoDB, Unity, Docker, OpenGL
 - *Languages*: Romanian (Native), English (Native)
 
