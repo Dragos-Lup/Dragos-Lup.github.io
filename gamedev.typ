@@ -37,7 +37,7 @@
   gpa: "GPA: 3.54/4.0",
   degree: "BSc, Computer Science"
 )
-
+#v(-5pt)
 #edu(
   institution: "Stuyvesant Highschool",
   dates: "May 2021",
@@ -52,7 +52,7 @@
   date: "January 2025",
 )
 - Developed a boss rush game with a fast combat system, controlling a top in physics-based battles.
-- Engineered a custom physics model to simulate fast motion, improving frame rate from 15fps to 90fps.
+- Engineered a physics model to simulate fast motion, improving frame rate from 15fps to 90fps.
 - Designed an optimized SQL database for efficient data retrieval with 35% faster updates.
 
 #project(
@@ -61,7 +61,7 @@
   disc: "Japanese Character Recognition",
   date: "December 2024",
 )
-- Tested ResNet, Tesseract and Vision Transformer models to identify Japanese Characters in manga.
+- Tested ResNet, Google Tesseract and ViT models to identify Japanese Characters in manga.
 - Developed an image preprocessing pipeline, extracting text bubbles, improving speed by 150%.
 - Created and augmented a synthetic dataset with labeled images to enhance OCR performance.
 
@@ -73,6 +73,7 @@
 )
 - Play advancing game with only your web camera and body, using a pose estimation library.
 - Trained a custom model on a NVIDIA GPU to massively increase frame rate from 4fps to 30fps
+- Engineered a pose approximation layer to counteract delays during model inferencing.
 
 #project(
   name: "Roll The Die",
@@ -82,7 +83,7 @@
 )
 - Endless video game where the player controls a dice, destroying enemies with random effects.
 - Created in under 48 hours, with an easily expandable framework to be applied to future updates.
-- Focused on simple concepts to get satisfying and expandable mechanics, allowing for future updates
+- Focused on simple concepts to get satisfying and expandable mechanics for future updates
 
 == Work Experience
 
@@ -93,8 +94,8 @@
   dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
 )
 - Prioritized full stack development for the existing company website and database systems.
-- Optimized the company website back end, creating improvements that enhanced load times by 200%.
-- Created an intuitive data input system that streamlined the workflow for teams, improving efficiency.
+- Optimized the company website backend, creating improvements that reduced load times by 200%.
+- Created an intuitive data input system that improved efficiency in team workflows.
 
 == Activities and Awards
 

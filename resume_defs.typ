@@ -29,23 +29,28 @@
     font: font,
     size: font-size,
     lang: "en",
+    spacing: 85%,
     // Disable ligatures so ATS systems do not get confused when parsing fonts.
     ligatures: false
   )
 
   // Reccomended to have 0.5in margin on all sides
   set page(
-    margin: (0.5in),
+    margin: (0.55in),
     paper: paper,
   )
 
+  set par(
+    leading: 0.65em,
+    spacing: 14.5pt,
+  )
   // Link styles
   show link: underline
 
 
   // Small caps for section titles
   show heading.where(level: 2): it => [
-    #pad(top: 0pt, bottom: -14pt, [#smallcaps(it.body)])
+    #pad(top: -6pt, bottom: -14pt, [#smallcaps(it.body)])
     #line(length: 100%, stroke: 1pt)
   ]
 
@@ -107,7 +112,7 @@
   )
 
   // Main body.
-  set par(justify: true)
+  set par(justify: false)
 
   body
 }

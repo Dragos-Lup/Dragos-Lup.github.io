@@ -30,20 +30,20 @@
 )
 
 == Education
-
 #edu(
   institution: "Georgia Institute of Technology",
   dates: "May 2025",
   gpa: "GPA: 3.54/4.0",
   degree: "BSc, Computer Science"
 )
-
+#v(-5pt)
 #edu(
   institution: "Stuyvesant Highschool",
   dates: "May 2021",
   gpa: "GPA: 94.7/100",
   degree: "Highschool Diploma"
 )
+
 == Projects
 #project(
   name: "Nosi Editor",
@@ -53,7 +53,7 @@
 )
 - Fork of VSCode which prevents and identifies cheating in academic settings with multiple methods.
 - Provides file encryption and decryption, which disables copy and paste, and sharing the files.
-- Disables screensharing, screen recording, and also records keystrokes to add multiple levels of security.
+- Disables screensharing, screen recording, and records keystrokes to add multiple levels of security.
 
 #project(
   name: "Campus Cats App",
@@ -83,6 +83,7 @@
 )
 - Play advancing game with only your web camera and body, using a pose estimation library.
 - Trained a custom model on a NVIDIA GPU to massively increase frame rate from 4fps to 30fps
+- Engineered a pose approximation layer to counteract delays during model inferencing.
 
 == Work Experience
 
@@ -93,8 +94,8 @@
   dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
 )
 - Prioritized full stack development for the existing company website and database systems.
-- Optimized the company website back end, creating improvements that enhanced load times by 200%.
-- Created an intuitive data input system that streamlined the workflow for teams, improving efficiency.
+- Optimized the company website backend, creating improvements that reduced load times by 200%.
+- Created an intuitive data input system that improved efficiency in team workflows.
 
 == Activities and Awards
 
