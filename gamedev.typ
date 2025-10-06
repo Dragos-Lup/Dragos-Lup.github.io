@@ -44,6 +44,19 @@
   gpa: "GPA: 94.7/100",
   degree: "Highschool Diploma"
 )
+
+== Work Experience
+
+#work(
+  title: "Intern",
+  location: "Medias, Romania",
+  company: "iTech Computers",
+  dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
+)
+- Prioritized full stack development for the existing company website and database systems.
+- Optimized the company website backend, creating improvements that reduced load times by 200%.
+- Created an intuitive data input system that improved efficiency in team workflows.
+
 == Projects
 #project(
   name: "Revo Zero",
@@ -84,18 +97,6 @@
 - Endless video game where the player controls a dice, destroying enemies with random effects.
 - Created in under 48 hours, with an easily expandable framework to be applied to future updates.
 - Focused on simple concepts to get satisfying and expandable mechanics for future updates
-
-== Work Experience
-
-#work(
-  title: "Intern",
-  location: "Medias, Romania",
-  company: "iTech Computers",
-  dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
-)
-- Prioritized full stack development for the existing company website and database systems.
-- Optimized the company website backend, creating improvements that reduced load times by 200%.
-- Created an intuitive data input system that improved efficiency in team workflows.
 
 == Activities and Awards
 
