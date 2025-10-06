@@ -44,6 +44,18 @@
   degree: "Highschool Diploma"
 )
 
+== Work Experience
+
+#work(
+  title: "Intern",
+  location: "Medias, Romania",
+  company: "iTech Computers",
+  dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
+)
+- Prioritized full stack development for the existing company website and database systems.
+- Optimized the company website backend, creating improvements that reduced load times by 200%.
+- Created an intuitive data input system that improved efficiency in team workflows.
+
 == Projects
 #project(
   name: "Nosi Editor",
@@ -84,18 +96,6 @@
 - Play advancing game with only your web camera and body, using a pose estimation library.
 - Trained a custom model on a NVIDIA GPU to massively increase frame rate from 4fps to 30fps
 - Engineered a pose approximation layer to counteract delays during model inferencing.
-
-== Work Experience
-
-#work(
-  title: "Intern",
-  location: "Medias, Romania",
-  company: "iTech Computers",
-  dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
-)
-- Prioritized full stack development for the existing company website and database systems.
-- Optimized the company website backend, creating improvements that reduced load times by 200%.
-- Created an intuitive data input system that improved efficiency in team workflows.
 
 == Activities and Awards
 
