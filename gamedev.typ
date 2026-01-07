@@ -74,7 +74,7 @@
   disc: "Japanese Character Recognition",
   date: "December 2024",
 )
-- Tested ResNet, Google Tesseract and ViT models to identify Japanese Characters in manga.
+- Tested ResNet, Tesseract and Vision Transformer (ViT) models to identify Japanese in manga.
 - Developed an image preprocessing pipeline, extracting text bubbles, improving speed by 150%.
 - Created and augmented a synthetic dataset with labeled images to enhance OCR performance.
 
