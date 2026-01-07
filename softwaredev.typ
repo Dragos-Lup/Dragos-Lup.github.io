@@ -83,7 +83,7 @@
   disc: "Japanese Character Recognition",
   date: "December 2024",
 )
-- Tested ResNet, Google Tesseract and Vision Transformer models to identify Japanese in manga.
+- Tested ResNet, Tesseract and Vision Transformer (ViT) models to identify Japanese in manga.
 - Developed an image preprocessing pipeline, extracting text bubbles, improving speed by 150%.
 - Created and augmented a synthetic dataset with labeled images to enhance OCR performance.
 
@@ -107,7 +107,7 @@
 - Focused on clean and modular fundamentals, using data structures for easy expandability.
 == Skills
 - *Coursework*: Procedural Content Generation, Computer Architecture, Algorithms, Computer Vision, Artificial Intelligence, Machine Learning, Deep Learning, Robotics and Perception
-- *Technologies*: C\#/C++/C, JavaScript, Python, Rust, HTML, SQL, Lua, GLSL, Java, Swift, Go
+- *Technologies*: C\#/C++/C, JavaScript, Python, Rust, AWS, SQL, Lua, GLSL, Java, Swift, Go
 - *Tools*: React, PyTorch, NumPy, Git, Firebase, Node.js, MongoDB, Unity, Docker, OpenGL
 - *Languages*: Romanian (Native), English (Native)
 

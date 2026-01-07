@@ -229,6 +229,6 @@
   location: "",
 ) = {
   [ 
-    #strong[#institution] --- #degree , #gpa #h(1fr) #emph[#dates]
+    #strong[#institution] --- #degree, #gpa #h(1fr) #emph[#dates]
   ]
 }
