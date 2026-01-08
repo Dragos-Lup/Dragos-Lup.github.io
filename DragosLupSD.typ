@@ -47,20 +47,20 @@
 == Work Experience
 
 #work(
-  title: "Intern",
-  location: "Medias, Romania",
+  title: "Full Stack Engineering Intern",
+  location: "Medias, Romania (Hybrid)",
   company: "iTech Computers",
   dates: dates-helper(start-date: "May 2022", end-date: "September 2024"),
 )
-- Prioritized full stack development for the existing company website and database systems.
-- Optimized the company website backend, creating improvements that reduced load times by 200%.
-- Created an intuitive data input system that improved efficiency in team workflows.
+- Engineered full-stack enhancements for the web platform, streamlining legacy architectures.
+- Refactored backend to optimize data fetching, resulting in a 3x reduction in page load latency.
+- Developed a high-concurrency data entry interface, improving workflow for internal teams.
 
 == Projects
 #project(
   name: "Nosi Editor",
   tools: "TypeScript, Rust",
-  disc: "Security Text Editor",
+  disc: "Security-Focused Text Editor",
   date: "July 2025",
 )
 - Fork of VSCode which prevents and identifies cheating in academic settings with multiple methods.
