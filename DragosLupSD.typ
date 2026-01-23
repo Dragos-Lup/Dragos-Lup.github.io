@@ -63,7 +63,7 @@
   disc: "Security-Focused Text Editor",
   date: "July 2025",
 )
-- Fork of VSCode which prevents and identifies cheating in academic settings with multiple methods.
+- Specialized fork of VSCode designed to prevent cheating, currently in use at Georgia Tech.
 - Provides file encryption and decryption, which disables copy and paste, and sharing the files.
 - Disables screensharing, screen recording, and records keystrokes to add multiple levels of security.
 
@@ -74,7 +74,7 @@
   date: "March 2025",
 )
 - Developed a modular and responsive web app for tracking and cataloging campus cats, integrating Firebase authentication and GT SSO for a seamless user and future developer experience.
-- Designed an optimized SQL database for efficient data retrieval with 35% faster updates.
+- Optimized SQL queries and indexing, achieving 35% faster updates for high-frequency data.
 - Created an announcement system to notify users about found cats, reducing report processing time
 
 #project(
@@ -93,10 +93,9 @@
   disc: "Machine Learning Dancing Game",
   date: "June 2024",
 )
-- Play advancing game with only your web camera and body, using a pose estimation library.
+- Built a gesture-controlled rhythm game using MMPose for real-time pose estimation.
 - Trained a custom model on a NVIDIA GPU to massively increase frame rate from 4fps to 30fps
-- Engineered a pose approximation layer to counteract delays during model inferencing.
-
+- Designed a pose-approximation buffer layer to mask processing jitter, ensuring smooth gameplay.
 == Activities and Awards
 
 #extracurriculars(
