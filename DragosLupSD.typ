@@ -104,6 +104,7 @@
 )
 - Designed an evolving map and towers that changed as you played, creating diverging paths.
 - Focused on clean and modular fundamentals, using data structures for easy expandability.
+
 == Skills
 - *Coursework*: Procedural Content Generation, Computer Architecture, Algorithms, Computer Vision, Artificial Intelligence, Machine Learning, Deep Learning, Robotics and Perception
 - *Technologies*: C\#/C++/C, JavaScript, Python, Rust, AWS, SQL, Lua, GLSL, Java, Swift, Go
