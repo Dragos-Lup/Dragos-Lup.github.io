@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragos Lup</title>
+    <meta name="description" content="Dragos Lup — software and game developer. Portfolio of software, game development, and machine learning projects.">
+    <meta name="author" content="Dragos Lup">
+    <meta name="theme-color" content="#040307">
+    <title>Dragos Lup | Software &amp; Game Developer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🌌</text></svg>">
     <style>
         :root {
             --color-primary-highlight: rgb(246, 50, 50);
@@ -11,16 +15,7 @@
             --color-tertiary-highlight: rgb(249, 149, 55);
             --color-light-blue: rgb(160, 189, 198);
             --color-medium-blue: rgb(96, 129, 232);
-            --color-dark-purple: rgb(80, 67, 236);
             --color-orange: rgb(221, 83, 36);
-            --color-pinkish-purple: rgb(172, 68, 163);
-            --color-maroon: rgb(188, 64, 89);
-            --color-dark-orange: rgb(149, 54, 26);
-            --color-deep-blue: rgb(48, 35, 139);
-            --color-dark-magenta: rgb(95, 33, 76);
-            --color-darkest-purple: rgb(29, 29, 82);
-            --color-dark-red: rgb(76, 23, 20);
-            --color-very-dark-gray: rgb(18, 19, 41);
             --color-background: rgb(4, 3, 7);
         }
 
@@ -153,15 +148,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #fff; 
-            padding: 10px; 
+            color: #fff;
+            padding: 10px;
             font-size: 12px;
             line-height: 1;
             white-space: pre;
             font-family: 'Courier New', monospace;
             transition: all 0.6s ease-out;
-            margin: 0; 
-            white-space: pre; 
+            margin: 0;
             overflow-x: auto;
         }
 
@@ -339,19 +333,18 @@
             transition: all 0.3s ease;
         }
 
-        .detail-view.show .project-section {
+        .solar-system-view.show .project-section {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .detail-view.show .project-section:nth-child(1) { transition-delay: 0.1s; }
-        .detail-view.show .project-section:nth-child(2) { transition-delay: 0.2s; }
-        .detail-view.show .project-section:nth-child(3) { transition-delay: 0.3s; }
-        .detail-view.show .project-section:nth-child(4) { transition-delay: 0.4s; }
-        .detail-view.show .project-section:nth-child(5) { transition-delay: 0.5s; }
-        .detail-view.show .project-section:nth-child(6) { transition-delay: 0.6s; }
-        .detail-view.show .project-section:nth-child(7) { transition-delay: 0.7s; }
-        .detail-view.show .project-section:nth-child(8) { transition-delay: 0.8s; }
+        /* The sun heading is the first div child, so bodies start at nth-of-type(2) */
+        .solar-system-view.show .solar-system-body:nth-of-type(2) .project-section { transition-delay: 0.1s; }
+        .solar-system-view.show .solar-system-body:nth-of-type(3) .project-section { transition-delay: 0.2s; }
+        .solar-system-view.show .solar-system-body:nth-of-type(4) .project-section { transition-delay: 0.3s; }
+        .solar-system-view.show .solar-system-body:nth-of-type(5) .project-section { transition-delay: 0.4s; }
+        .solar-system-view.show .solar-system-body:nth-of-type(6) .project-section { transition-delay: 0.5s; }
+        .solar-system-view.show .solar-system-body:nth-of-type(7) .project-section { transition-delay: 0.6s; }
 
         .project-header {
             display: flex;
@@ -396,7 +389,7 @@
         .status-classified { 
             border-color: var(--color-primary-highlight); 
             color: var(--color-primary-highlight); 
-            background: rgba(218, 50, 246, 0.1);
+            background: rgba(246, 50, 50, 0.1);
         }
 
         .project-meta {
@@ -489,7 +482,7 @@
             background: var(--color-background);
             color: var(--color-light-blue);
             transform: translateY(80px) scale(0.8);
-            box-shadow: 0 0 20px rgba(218, 50, 246, 0.3);
+            box-shadow: 0 0 20px rgba(160, 189, 198, 0.3);
             opacity: 0;
             transition: all 0.4s ease-out;
         }
@@ -682,7 +675,7 @@
         .contact-value a:hover {
             color: #fff;
             border-bottom-color: var(--color-light-blue);
-            background-color: rgba(218, 50, 246, 0.1);
+            background-color: rgba(160, 189, 198, 0.1);
         }
 
         .contact-status {
@@ -874,11 +867,11 @@
                     ╚═══════════════════╝
                 </div>
                 <div class="detail-text">
-                    <p>I'm a passionate developer with a love for both software and game development. I'm always looking for new challenges and opportunities to learn and grow.</p>
+                    <p>I'm a developer with a love for both software and game development, always looking for new challenges and opportunities to learn and grow.</p>
                     <p>You can find my resumes below:</p>
                     <ul>
-                        <li><a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io/blob/main/DragosLupSD.pdf" target="_blank">Software Development Resume</a></li>
-                        <li><a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io/blob/main/DragosLupGD.pdf" target="_blank">Game Development Resume</a></li>
+                        <li><a href="DragosLupSD.pdf" target="_blank" rel="noopener">Software Development Resume</a></li>
+                        <li><a href="DragosLupGD.pdf" target="_blank" rel="noopener">Game Development Resume</a></li>
                     </ul>
                 </div>
                 <button class="back-btn" onclick="backToGalaxy()">← RETURN TO GALAXY</button>
@@ -901,7 +894,7 @@
   `.   ;/        .'
     `'-._____.
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Revo Zero</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -912,11 +905,11 @@
                         <span>Budget: Sleepless Nights </span>
                     </div>
                     <div class="project-description">
-                        Revo Zero was made in under a month by 3 developers, and is a game where you play as a young kid who is trying to make 
-                        their way through the "Revo Zero tornument", The game has a unique and clean physics system, which allows the tops on 
-                        the screen to affect each other significantly and still control great. I made multiple changes to the physics in order 
-                        to enhance fps from 15 to 90. There's also unique mechanics involving "tracing" a circle around the enemy. It's a quick 
-                        but difficult play that involves a lot of skill.
+                        Revo Zero was made in under a month by 3 developers. You play as a young kid fighting their way through the
+                        "Revo Zero tournament" in spinning-top battles. The game has a unique, clean physics system that lets the tops
+                        on screen affect each other significantly while still controlling great — I made multiple changes to the physics
+                        that brought the frame rate from 15 to 90 FPS. It also features a unique mechanic where you "trace" a circle
+                        around enemies. It's a quick but difficult play that rewards skill.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -927,7 +920,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://dragoslup.itch.io/revo-zero" class="project-link" target="_blank">Itch.io</a>
+                        <a href="https://dragoslup.itch.io/revo-zero" class="project-link" target="_blank" rel="noopener">Itch.io</a>
                     </div>
                 </div>
             </div>
@@ -943,7 +936,7 @@
     ** **
       ******
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">CRITTER CRUSHERS</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -954,10 +947,10 @@
                         <span>Budget: Hope</span>
                     </div>
                     <div class="project-description">
-                        Critter Crusher was a tower defense game which had you growing plants in order to defend the roots of a tree from bugs. 
-                        It was awarded runner-up at the Georgia Tech Global Game Jam and made in 48 hours. It was developed bottom up, that had 
-                        easily expandable features, with multiple different types of towers, tower upgrades and enemies. The game has a map that changes over time
-                        as the roots of the tree grow.
+                        Critter Crushers is a tower defense game where you grow plants to defend the roots of a tree from bugs.
+                        Made in 48 hours, it was awarded runner-up at the Georgia Tech Global Game Jam. It was developed bottom-up
+                        with easily expandable features, including multiple tower types, tower upgrades, and enemy varieties, plus
+                        a map that changes over time as the tree's roots grow.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -987,7 +980,7 @@
 :'  .:'
 '::'
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Roll n Die</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -998,18 +991,19 @@
                         <span>Budget: 1 trillion dreams</span>
                     </div>
                     <div class="project-description">
-                        Roll n Die is a roguelike video game, that allows the player to fight hordes of enemies, with increasing strength as time goes on. The player was given
-                        a different power for each side of the "die". The game is fast paced and fun, and was made in under 48 hours.                   </div>
+                        Roll n Die is a roguelike where you fight hordes of enemies that grow stronger as time goes on, with a
+                        different power tied to each side of the "die". The game is fast-paced and fun, and was made in under 48 hours.
+                    </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
                         <div class="tech-tags">
                             <span class="tech-tag">Unity</span>
                             <span class="tech-tag">C#</span>
-                            <span class="tech-tag">Systems Managment</span>
+                            <span class="tech-tag">Systems Management</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://dragoslup.itch.io/roll-n-die" target="_blank" class="project-link">Itch.io</a>
+                        <a href="https://dragoslup.itch.io/roll-n-die" target="_blank" rel="noopener" class="project-link">Itch.io</a>
                     </div>
                 </div>
             </div>
@@ -1034,12 +1028,12 @@
     `-.               .-'
         ~- . ___ . -~
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Fun Fact #1</div>
                     </div>
-                    <div class="project-description">    
-                        I did not know what to put here, I made it mostly for random hobby stuff
+                    <div class="project-description">
+                        This is the corner of the site for hobbies and random interests that don't fit anywhere else.
                     </div>
                 </div>
             </div>
@@ -1058,12 +1052,12 @@
 :'  .:'
 '::'
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Fun Fact the second</div>
+                        <div class="project-title">Fun Fact #2</div>
                     </div>
                     <div class="project-description">
-                        I've been wanting to switch over to NixOS recently just to see how it is.
+                        I've been wanting to switch over to NixOS recently, just to see what it's like.
                     </div>
                 </div>
             </div>
@@ -1079,12 +1073,12 @@
     ** **
       ********
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title">Fun Fact numero tres</div>
+                        <div class="project-title">Fun Fact #3</div>
                     </div>
                     <div class="project-description">
-                        I've been playing a lot of deadlock recently.
+                        I've been playing a lot of Deadlock recently.
                     </div>
                 </div>
             </div>
@@ -1094,7 +1088,8 @@
 
         <div class="solar-system-view" id="softwareView">
             <div class="solar-system-sun">SOFTWARE</div>
-        <div class="solar-system-body">
+
+            <div class="solar-system-body">
                 <pre class="ascii-planet">
         . -- ~~~ -- .
     .-~               ~-.
@@ -1108,7 +1103,7 @@
     `-.               .-'
         ~- . ___ . -~
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Nosi Editor</div>
                         <div class="project-status status-classified">[CLASSIFIED]</div>
@@ -1119,7 +1114,7 @@
                         <span>Budget: Hope for a better world</span>
                     </div>
                     <div class="project-description">
-                        Nosi Editor is a fork of VSCode designed to prevent and identify cheating in academic settings. It uses multiple forms of security, disabling screensharing, copy and pasting, and encrypting files. It's designed for use at the Georgia Institute of Technology where we mainly use python for high level classes, but it can theoretically support any language.
+                        Nosi Editor is a fork of VSCode designed to prevent and identify cheating in academic settings. It uses multiple forms of security — disabling screen sharing, blocking copy and paste, and encrypting files. It's designed for use at the Georgia Institute of Technology, where Python is the main language in high-level classes, but it can theoretically support any language.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -1130,7 +1125,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/ryanlueds/vscode" target="_blank" class="project-link">GitHub</a>
+                        <a href="https://github.com/ryanlueds/vscode" target="_blank" rel="noopener" class="project-link">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1148,10 +1143,10 @@
     `-.               .-'
         ~- . ___ . -~
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Campus Cats App</div>
-                        <div class="project-status status-complete">[COMPLETED]</div>
+                        <div class="project-status status-complete">[COMPLETE]</div>
                     </div>
                     <div class="project-meta">
                         <span>Duration: 6 months</span>
@@ -1176,7 +1171,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/willakins/Campus-Cats" target="_blank" class="project-link">GitHub</a>
+                        <a href="https://github.com/willakins/Campus-Cats" target="_blank" rel="noopener" class="project-link">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1195,9 +1190,9 @@
     `-.               .-'
         ~- . ___ . -~
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
-                        <div class="project-title"> Manga OCR</div>
+                        <div class="project-title">Manga OCR</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
                     </div>
                     <div class="project-meta">
@@ -1207,8 +1202,8 @@
                     <div class="project-description">
                         Developed an OCR (Optical Character Recognition) system specifically for manga, enabling text extraction from scanned manga pages.
                         We take the manga text bubbles, segment the characters, and turn every character into machine-readable text. Using this, we can translate
-                        entire sentences into english with just the text bubble as input. We had a ResNet model, a tesseract model, and a Vision Encoder Decoder Transformer model.
-
+                        entire sentences into English with just the text bubble as input. We compared three approaches: a ResNet model, a Tesseract model, and
+                        a Vision Encoder-Decoder Transformer.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -1220,7 +1215,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://ryanlueds.github.io/ml-page/" class="project-link" target="_blank">Writeup</a>
+                        <a href="https://ryanlueds.github.io/ml-page/" class="project-link" target="_blank" rel="noopener">Writeup</a>
                     </div>
                 </div>
             </div>
@@ -1239,7 +1234,7 @@
 :'  .:'
 '::'
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Dansu</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -1250,8 +1245,9 @@
                         <span>Budget: Prayer</span>
                     </div>
                     <div class="project-description">
-                        Dansu is a rhythm game where you use a camera and your body to hit the notes. It's based off of Osu and plays similar to Just Dance.
-                        We needed to do extensive optimization to get the game running smoothly, and from the main MMPose library we managed to get 1fps to 30fps.
+                        Dansu is a rhythm game where you use a camera and your body to hit the notes. It's based on osu! and plays similar to Just Dance.
+                        Getting the game running smoothly required extensive optimization — we took the pose tracking from 1 FPS with the stock MMPose
+                        library up to 30 FPS.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -1262,7 +1258,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/ryanlueds/Dansu" class="project-link" target="_blank">GitHub</a>
+                        <a href="https://github.com/ryanlueds/Dansu" class="project-link" target="_blank" rel="noopener">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1278,7 +1274,7 @@
     ** **
       ********
                 </pre>
-                <div class="project-section" style="opacity: 1; transform: translateX(0px);">
+                <div class="project-section">
                     <div class="project-header">
                         <div class="project-title">Portfolio</div>
                         <div class="project-status status-complete">[COMPLETE]</div>
@@ -1289,8 +1285,8 @@
                         <span>Budget: My sanity</span>
                     </div>
                     <div class="project-description">
-                        This portfolio was built from scratch using HTML, CSS, and JavaScript. It's designed to be a fun, interactive way to showcase my projects and skills.
-                        
+                        This portfolio was built from scratch using HTML, CSS, and JavaScript — no frameworks, no build step. It's designed to be a fun,
+                        interactive way to showcase my projects and skills.
                     </div>
                     <div class="tech-stack">
                         <h4>Technologies</h4>
@@ -1301,7 +1297,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io" class="project-link" target="_blank">GitHub</a>
+                        <a href="https://github.com/Dragos-Lup/Dragos-Lup.github.io" class="project-link" target="_blank" rel="noopener">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1324,22 +1320,22 @@
                         <div class="contact-item">
                             <span class="contact-icon">[ @ ]</span>
                             <span class="contact-label">EMAIL</span>
-                            <span class="contact-value"><a href="mailto:[dragosglup@gmail.com]">[dragosglup@gmail.com]</a></span>
+                            <span class="contact-value"><a href="mailto:dragosglup@gmail.com">[dragosglup@gmail.com]</a></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">[ # ]</span>
                             <span class="contact-label">PHONE</span>
-                            <span class="contact-value"><a href="tel:[646-377-5898]">[646-377-5898]</a></span>
+                            <span class="contact-value"><a href="tel:+16463775898">[646-377-5898]</a></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">[in]</span>
                             <span class="contact-label">LINKEDIN</span>
-                            <span class="contact-value"><a href="https://www.linkedin.com/in/dragoslup/" target="_blank">linkedin.com/in/dragoslup/</a></span>
+                            <span class="contact-value"><a href="https://www.linkedin.com/in/dragoslup/" target="_blank" rel="noopener">linkedin.com/in/dragoslup/</a></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">[<>]</span>
                             <span class="contact-label">GITHUB</span>
-                            <span class="contact-value"><a href="https://github.com/Dragos-Lup/" target="_blank">github.com/Dragos-Lup</a></span>
+                            <span class="contact-value"><a href="https://github.com/Dragos-Lup/" target="_blank" rel="noopener">github.com/Dragos-Lup</a></span>
                         </div>
                     </div>
                     <br>
@@ -1359,7 +1355,7 @@
     <script>
         const quotes = [
             { text: "This guy will not shut up about linux", author: "Noapt" },
-            { text: "A phenominal addition to any team", author: "Some guy on my team probably" },
+            { text: "A phenomenal addition to any team", author: "Some guy on my team probably" },
             { text: "Just the sweetest boy", author: "My Grandma" },
             { text: "Greatest Programmer who has ever lived", author: "My Dad" },
             { text: "Spent 8 hours automating something he could have done in 15 minutes.", author: "Me" },
@@ -1435,7 +1431,6 @@
         }
 
         function toggleMenu() {
-            
             const overlay = document.getElementById('menuOverlay');
             isMenuOpen = !isMenuOpen;
             
@@ -1449,7 +1444,6 @@
         }
 
         function showLoadingScreen(section) {
-
             const loadingOverlay = document.getElementById('loadingOverlay');
             const loadingProgress = document.getElementById('loadingProgress');
             const loadingText = loadingOverlay.querySelector('.loading-text');
